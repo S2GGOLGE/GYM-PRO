@@ -3,20 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\DELL\\OneDrive\\Masa\u00FCst\u00FC\\Projeler\\Sene Odevi\\Sene Odevi Backend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{79D5F063-7696-D0AB-906C-F89F8DB80C18}|SeneOdev\\SeneOdev.csproj|c:\\users\\dell\\onedrive\\masa\u00FCst\u00FC\\projeler\\sene odevi\\sene odevi backend\\seneodev\\admin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{79D5F063-7696-D0AB-906C-F89F8DB80C18}|SeneOdev\\SeneOdev.csproj|solutionrelative:seneodev\\admin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{79D5F063-7696-D0AB-906C-F89F8DB80C18}|SeneOdev\\SeneOdev.csproj|c:\\users\\dell\\onedrive\\masa\u00FCst\u00FC\\projeler\\sene odevi\\sene odevi backend\\seneodev\\weatherforecast.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{79D5F063-7696-D0AB-906C-F89F8DB80C18}|SeneOdev\\SeneOdev.csproj|solutionrelative:seneodev\\weatherforecast.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{79D5F063-7696-D0AB-906C-F89F8DB80C18}|SeneOdev\\SeneOdev.csproj|c:\\users\\dell\\onedrive\\masa\u00FCst\u00FC\\projeler\\sene odevi\\sene odevi backend\\seneodev\\kay\u0131tol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79D5F063-7696-D0AB-906C-F89F8DB80C18}|SeneOdev\\SeneOdev.csproj|solutionrelative:seneodev\\kay\u0131tol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{79D5F063-7696-D0AB-906C-F89F8DB80C18}|SeneOdev\\SeneOdev.csproj|c:\\users\\dell\\onedrive\\masa\u00FCst\u00FC\\projeler\\sene odevi\\sene odevi backend\\seneodev\\sunucu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{79D5F063-7696-D0AB-906C-F89F8DB80C18}|SeneOdev\\SeneOdev.csproj|solutionrelative:seneodev\\sunucu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{79D5F063-7696-D0AB-906C-F89F8DB80C18}|SeneOdev\\SeneOdev.csproj|c:\\users\\dell\\onedrive\\masa\u00FCst\u00FC\\projeler\\sene odevi\\sene odevi backend\\seneodev\\kay\u0131tol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{79D5F063-7696-D0AB-906C-F89F8DB80C18}|SeneOdev\\SeneOdev.csproj|solutionrelative:seneodev\\kay\u0131tol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{79D5F063-7696-D0AB-906C-F89F8DB80C18}|SeneOdev\\SeneOdev.csproj|c:\\users\\dell\\onedrive\\masa\u00FCst\u00FC\\projeler\\sene odevi\\sene odevi backend\\seneodev\\admin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79D5F063-7696-D0AB-906C-F89F8DB80C18}|SeneOdev\\SeneOdev.csproj|solutionrelative:seneodev\\admin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{79D5F063-7696-D0AB-906C-F89F8DB80C18}|SeneOdev\\SeneOdev.csproj|c:\\users\\dell\\onedrive\\masa\u00FCst\u00FC\\projeler\\sene odevi\\sene odevi backend\\seneodev\\weatherforecast.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79D5F063-7696-D0AB-906C-F89F8DB80C18}|SeneOdev\\SeneOdev.csproj|solutionrelative:seneodev\\weatherforecast.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{79D5F063-7696-D0AB-906C-F89F8DB80C18}|SeneOdev\\SeneOdev.csproj|c:\\users\\dell\\onedrive\\masa\u00FCst\u00FC\\projeler\\sene odevi\\sene odevi backend\\seneodev\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -34,37 +34,37 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "admin.cs",
               "DocumentMoniker": "C:\\Users\\DELL\\OneDrive\\Masa\u00FCst\u00FC\\Projeler\\Sene Odevi\\Sene Odevi Backend\\SeneOdev\\admin.cs",
               "RelativeDocumentMoniker": "SeneOdev\\admin.cs",
               "ToolTip": "C:\\Users\\DELL\\OneDrive\\Masa\u00FCst\u00FC\\Projeler\\Sene Odevi\\Sene Odevi Backend\\SeneOdev\\admin.cs",
               "RelativeToolTip": "SeneOdev\\admin.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAANAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-23T19:02:18.066Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "WeatherForecast.cs",
               "DocumentMoniker": "C:\\Users\\DELL\\OneDrive\\Masa\u00FCst\u00FC\\Projeler\\Sene Odevi\\Sene Odevi Backend\\SeneOdev\\WeatherForecast.cs",
               "RelativeDocumentMoniker": "SeneOdev\\WeatherForecast.cs",
               "ToolTip": "C:\\Users\\DELL\\OneDrive\\Masa\u00FCst\u00FC\\Projeler\\Sene Odevi\\Sene Odevi Backend\\SeneOdev\\WeatherForecast.cs",
               "RelativeToolTip": "SeneOdev\\WeatherForecast.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAtAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-23T18:57:22.648Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "SUNUCU.cs",
               "DocumentMoniker": "C:\\Users\\DELL\\OneDrive\\Masa\u00FCst\u00FC\\Projeler\\Sene Odevi\\Sene Odevi Backend\\SeneOdev\\SUNUCU.cs",
               "RelativeDocumentMoniker": "SeneOdev\\SUNUCU.cs",
@@ -77,7 +77,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "Kay\u0131tol.cs",
               "DocumentMoniker": "C:\\Users\\DELL\\OneDrive\\Masa\u00FCst\u00FC\\Projeler\\Sene Odevi\\Sene Odevi Backend\\SeneOdev\\Kay\u0131tol.cs",
               "RelativeDocumentMoniker": "SeneOdev\\Kay\u0131tol.cs",
@@ -98,8 +98,7 @@
               "RelativeToolTip": "SeneOdev\\login.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAABlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-19T17:13:37.433Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-19T17:13:37.433Z"
             },
             {
               "$type": "Document",
@@ -111,8 +110,7 @@
               "RelativeToolTip": "SeneOdev\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAHQAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-19T17:13:27.338Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-19T17:13:27.338Z"
             }
           ]
         },

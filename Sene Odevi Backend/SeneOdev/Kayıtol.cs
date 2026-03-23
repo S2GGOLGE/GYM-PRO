@@ -24,7 +24,6 @@ namespace SeneOdev
         {
             try
             {
-                // Bağlantı oluştur ve aç
                 using var baglanti = new SqlConnection(connstring);
                 baglanti.Open();
 
@@ -32,31 +31,41 @@ namespace SeneOdev
                 if (Password != PasswordRepeat)
                     return false;
 
-                // Kullanıcı adı veri tabanında var mı kontrol et
+                // Kullanıcı adı kontrol
                 string kontrol = "SELECT COUNT(*) FROM Kullanici WHERE Username=@Username";
                 using var comnd = new SqlCommand(kontrol, baglanti);
                 comnd.Parameters.Add("@Username", SqlDbType.NVarChar, 50).Value = Username;
-                int varmi = (int)comnd.ExecuteScalar();
-                if (varmi > 0)
-                    return false;
+                int varmi = Convert.ToInt32(comnd.ExecuteScalar());
+                if (varmi > 0) return false;
 
-                // Kullanıcıyı veri tabanına ekle
+                // Email kontrol
+                string emailKontrol = "SELECT COUNT(*) FROM Kullanici WHERE Email=@Email";
+                using var emailCmd = new SqlCommand(emailKontrol, baglanti);
+                emailCmd.Parameters.Add("@Email", SqlDbType.NVarChar, 100).Value = Email;
+                int emailVarMi = Convert.ToInt32(emailCmd.ExecuteScalar());
+                if (emailVarMi > 0) return false;
+
+                // Phone kontrol
+                string telKontrol = "SELECT COUNT(*) FROM Kullanici WHERE Phone=@Phone";
+                using var telCmd = new SqlCommand(telKontrol, baglanti);
+                telCmd.Parameters.Add("@Phone", SqlDbType.NVarChar, 20).Value = Phone;
+                int telVarMi = Convert.ToInt32(telCmd.ExecuteScalar());
+                if (telVarMi > 0) return false;
+
+                // Kullanıcıyı ekle
                 string query = @"INSERT INTO Kullanici
-        (Ad,Soyad,Username,Email,Phone,Gender,[PasswordHash])
-        VALUES (@Ad,@Soyad,@Username,@Email,@Phone,@Gender,@PasswordHash)";
+                    (Ad,Soyad,Username,Email,Phone,Gender,[PasswordHash])
+                    VALUES (@Ad,@Soyad,@Username,@Email,@Phone,@Gender,@PasswordHash)";
 
                 using var cmd = new SqlCommand(query, baglanti);
-
-                // Parametreleri ayarla ve veri tiplerini belirt
                 cmd.Parameters.Add("@Ad", SqlDbType.NVarChar, 50).Value = Name;
                 cmd.Parameters.Add("@Soyad", SqlDbType.NVarChar, 50).Value = Surname;
                 cmd.Parameters.Add("@Username", SqlDbType.NVarChar, 50).Value = Username;
                 cmd.Parameters.Add("@Email", SqlDbType.NVarChar, 100).Value = Email;
                 cmd.Parameters.Add("@Phone", SqlDbType.NVarChar, 20).Value = Phone;
                 cmd.Parameters.Add("@Gender", SqlDbType.NVarChar, 10).Value = Gender;
-                cmd.Parameters.Add("@PasswordHash", SqlDbType.NVarChar, 256).Value = Password; // İleride şifreyi hash ile sakla
+                cmd.Parameters.Add("@PasswordHash", SqlDbType.NVarChar, 256).Value = Password; // Şifreyi direkt kaydediyoruz
 
-                // INSERT işlemi başarılı mı kontrol et
                 return cmd.ExecuteNonQuery() > 0;
             }
             catch (Exception ex)

@@ -23,7 +23,7 @@ function kayit() {
             email: mail,
             phone: iletisim,
             gender: cinsiyet,
-            password: password,
+            password: password, 
             passwordRepeat: passRepeat
         })
     })
@@ -31,7 +31,7 @@ function kayit() {
         .then(data => {
             alert(data.message)
             if (data.success) {   // backend tarafında success = true dönüyorsa
-                window.location.href = "login.html"; // Login e git 
+                window.location.href = "giriş.html"; // Login e git 
             }
         })
         .catch(err => {

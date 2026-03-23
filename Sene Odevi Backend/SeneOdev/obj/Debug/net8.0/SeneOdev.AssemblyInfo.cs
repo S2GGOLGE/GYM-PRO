@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SeneOdev")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3494e195aa7973f4725e3f18e2a95bdb1008d174")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d258faff9bfa2f925df1a8499a10cafbec29e484")]
 [assembly: System.Reflection.AssemblyProductAttribute("SeneOdev")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SeneOdev")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
