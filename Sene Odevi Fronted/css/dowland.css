@@ -1,0 +1,88 @@
+body {
+    background: linear-gradient(-45deg, #4A90E2, #286ab4, #0571ec, #4A90E2);
+    background-size: 400% 400%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    height: 100vh;
+    animation: bgAnim 15s ease infinite;
+}
+
+.container {
+    background: linear-gradient(to right, #286ab4, #0571ec);
+    width: 50%;
+    height: 150px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: floatContainer 3s ease-in-out infinite alternate;
+}
+
+.menu {
+    background: linear-gradient(-45deg, #fff, #000, #fff, #000);
+    width: 25%;
+    height: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    background-size: 400% 400%;
+    animation: menuAnim 10s linear infinite;
+}
+
+.indir-btn {
+    color: white;
+    background-color: black;
+    width: 50%;
+    height: 25px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.indir-btn:hover {
+    background-color: #333;
+    transform: scale(1.05);
+}
+
+/* Animasyon keyframes */
+@keyframes bgAnim {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes floatContainer {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes menuAnim {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}

@@ -1,0 +1,6 @@
+@SeneOdev_HostAddress = http://localhost:5193
+
+GET {{SeneOdev_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

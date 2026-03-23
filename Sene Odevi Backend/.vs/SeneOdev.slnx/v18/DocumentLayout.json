@@ -1,0 +1,119 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\DELL\\OneDrive\\Masa\u00FCst\u00FC\\Projeler\\Sene Odevi\\Sene Odevi Backend\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{79D5F063-7696-D0AB-906C-F89F8DB80C18}|SeneOdev\\SeneOdev.csproj|c:\\users\\dell\\onedrive\\masa\u00FCst\u00FC\\projeler\\sene odevi\\sene odevi backend\\seneodev\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79D5F063-7696-D0AB-906C-F89F8DB80C18}|SeneOdev\\SeneOdev.csproj|solutionrelative:seneodev\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{79D5F063-7696-D0AB-906C-F89F8DB80C18}|SeneOdev\\SeneOdev.csproj|c:\\users\\dell\\onedrive\\masa\u00FCst\u00FC\\projeler\\sene odevi\\sene odevi backend\\seneodev\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79D5F063-7696-D0AB-906C-F89F8DB80C18}|SeneOdev\\SeneOdev.csproj|solutionrelative:seneodev\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{79D5F063-7696-D0AB-906C-F89F8DB80C18}|SeneOdev\\SeneOdev.csproj|c:\\users\\dell\\onedrive\\masa\u00FCst\u00FC\\projeler\\sene odevi\\sene odevi backend\\seneodev\\kay\u0131tol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79D5F063-7696-D0AB-906C-F89F8DB80C18}|SeneOdev\\SeneOdev.csproj|solutionrelative:seneodev\\kay\u0131tol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{79D5F063-7696-D0AB-906C-F89F8DB80C18}|SeneOdev\\SeneOdev.csproj|c:\\users\\dell\\onedrive\\masa\u00FCst\u00FC\\projeler\\sene odevi\\sene odevi backend\\seneodev\\hash.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79D5F063-7696-D0AB-906C-F89F8DB80C18}|SeneOdev\\SeneOdev.csproj|solutionrelative:seneodev\\hash.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{79D5F063-7696-D0AB-906C-F89F8DB80C18}|SeneOdev\\SeneOdev.csproj|c:\\users\\dell\\onedrive\\masa\u00FCst\u00FC\\projeler\\sene odevi\\sene odevi backend\\seneodev\\sunucu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79D5F063-7696-D0AB-906C-F89F8DB80C18}|SeneOdev\\SeneOdev.csproj|solutionrelative:seneodev\\sunucu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "SUNUCU.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\OneDrive\\Masa\u00FCst\u00FC\\Projeler\\Sene Odevi\\Sene Odevi Backend\\SeneOdev\\SUNUCU.cs",
+              "RelativeDocumentMoniker": "SeneOdev\\SUNUCU.cs",
+              "ToolTip": "C:\\Users\\DELL\\OneDrive\\Masa\u00FCst\u00FC\\Projeler\\Sene Odevi\\Sene Odevi Backend\\SeneOdev\\SUNUCU.cs",
+              "RelativeToolTip": "SeneOdev\\SUNUCU.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-23T17:48:32.739Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "HASH.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\OneDrive\\Masa\u00FCst\u00FC\\Projeler\\Sene Odevi\\Sene Odevi Backend\\SeneOdev\\HASH.cs",
+              "RelativeDocumentMoniker": "SeneOdev\\HASH.cs",
+              "ToolTip": "C:\\Users\\DELL\\OneDrive\\Masa\u00FCst\u00FC\\Projeler\\Sene Odevi\\Sene Odevi Backend\\SeneOdev\\HASH.cs",
+              "RelativeToolTip": "SeneOdev\\HASH.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-20T18:09:13.711Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Kay\u0131tol.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\OneDrive\\Masa\u00FCst\u00FC\\Projeler\\Sene Odevi\\Sene Odevi Backend\\SeneOdev\\Kay\u0131tol.cs",
+              "RelativeDocumentMoniker": "SeneOdev\\Kay\u0131tol.cs",
+              "ToolTip": "C:\\Users\\DELL\\OneDrive\\Masa\u00FCst\u00FC\\Projeler\\Sene Odevi\\Sene Odevi Backend\\SeneOdev\\Kay\u0131tol.cs",
+              "RelativeToolTip": "SeneOdev\\Kay\u0131tol.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAowCAAAABAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-19T17:13:38.05Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "login.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\OneDrive\\Masa\u00FCst\u00FC\\Projeler\\Sene Odevi\\Sene Odevi Backend\\SeneOdev\\login.cs",
+              "RelativeDocumentMoniker": "SeneOdev\\login.cs",
+              "ToolTip": "C:\\Users\\DELL\\OneDrive\\Masa\u00FCst\u00FC\\Projeler\\Sene Odevi\\Sene Odevi Backend\\SeneOdev\\login.cs",
+              "RelativeToolTip": "SeneOdev\\login.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAgwC8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-19T17:13:37.433Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\OneDrive\\Masa\u00FCst\u00FC\\Projeler\\Sene Odevi\\Sene Odevi Backend\\SeneOdev\\Program.cs",
+              "RelativeDocumentMoniker": "SeneOdev\\Program.cs",
+              "ToolTip": "C:\\Users\\DELL\\OneDrive\\Masa\u00FCst\u00FC\\Projeler\\Sene Odevi\\Sene Odevi Backend\\SeneOdev\\Program.cs",
+              "RelativeToolTip": "SeneOdev\\Program.cs",
+              "ViewState": "AgIAACIAAAAAAAAAAAAAAF8AAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-19T17:13:27.338Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 49,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

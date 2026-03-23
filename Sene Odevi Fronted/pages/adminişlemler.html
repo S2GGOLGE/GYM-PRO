@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel | Gym Pro</title>
+    <link rel="stylesheet" href="/css/adminislemler.css">
+     <link rel="icon" href="/css/Images/logo.png">
+</head>
+
+<body>
+    <!-- Menü -->
+    <div class="menu">
+        <button onclick="showDiv('sunucu', this)">Sunucu</button>
+        <button onclick="showDiv('loglar', this)">Loglar</button>
+        <button onclick="showDiv('kullanicilar', this)">Kullanıcılar</button>
+        <button onclick="logout()">Çıkış</button>
+    </div>
+
+
+    <!-- İşlem Divleri -->
+    <div id="sunucu" class="content-div">
+        <h2>Sunucu Kontrol</h2>
+        <input type="text" placeholder="Sunucu adı">
+        <button class="action-btn">Başlat</button>
+        <button class="action-btn">Durdur</button>
+    </div>
+
+    <div id="loglar" class="content-div">
+        <h2>Loglar</h2>
+        <textarea placeholder="Loglar buraya gelecek..." rows="10"></textarea>
+    </div>
+
+    <div id="kullanicilar" class="content-div">
+        <h2>Kullanıcılar</h2>
+        <input type="text" placeholder="Yeni admin">
+        <button class="action-btn">Ekle</button>
+        <button class="action-btn">Sil</button>
+    </div>
+
+    <script src="/js/adminıslemler.js"></script>
+</body>
+
+</html>

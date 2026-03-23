@@ -1,0 +1,88 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: rgba(128,128,128,0.4);
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px 0;
+    background-color: #222;
+}
+
+.menu button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    background-color: #333;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.menu button:hover {
+    background-color: #555;
+    transform: translateY(-3px);
+}
+
+.menu button.active {
+    background-color: #007bff;
+    box-shadow: 0 4px 10px rgba(0,123,255,0.4);
+}
+
+.content-div {
+    display: none;
+    margin: 20px auto;
+    width: 80%;
+    max-width: 900px;
+    background-color: gray;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.content-div h2 {
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.content-div input, .content-div textarea {
+    width: 70%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+}
+
+textarea {
+    resize: none;
+}
+
+.action-btn {
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 8px;
+    border: none;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.action-btn:hover {
+    background-color: #333;
+    transform: translateY(-2px);
+}
+.menu button:last-child {
+    background-color: #ff4d4d; /* kırmızı ton */
+}
+
+.menu button:last-child:hover {
+    background-color: #ff1a1a;
+    transform: translateY(-3px);
+}

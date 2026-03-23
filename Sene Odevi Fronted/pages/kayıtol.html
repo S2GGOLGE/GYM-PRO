@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kayıt Ol | Gym Pro</title>
+
+    <link rel="stylesheet" href="/css/kayıt.css">
+    <link rel="icon" href="/css/Images/logo.png">
+
+</head>
+
+<body>
+
+    <div class="menu">
+        <a href="/pages/başlangıc.html">Geri Dön</a>
+    </div>
+
+    <div class="container">
+
+        <form class="form" onsubmit="kayit(); return false;">
+
+            <input type="text" placeholder="Adınız.." id="name" required>
+
+            <input type="text" placeholder="Soyadınız..." id="surname" required>
+
+            <input type="text" placeholder="Kullanıcı Adı..." id="username" required>
+
+            <input type="email" placeholder="@example.com" id="mail" required>
+
+            <input type="tel" placeholder="İletişim..." id="iletisim" pattern="[0-9]{10,11}">
+            <input type="password" placeholder="Şifre..." id="pass" required>
+
+            <input type="password" placeholder="Şifre Tekrar..." id="passRepeat" required>
+
+            <div class="cinsiyet">
+
+                <input type="radio" name="gender" value="Erkek" id="cinsiyetErkek" required>Erkek
+
+                <input type="radio" name="gender" value="Bayan" id="cinsiyetBayan" required>Bayan
+
+            </div>
+
+            <button type="submit" class="kayıt-btn">Kayıt Ol</button>
+
+        </form>
+
+    </div>
+
+    <footer>
+        <p>© 2026 GymPro</p>
+    </footer>
+
+    <script src="/js/kayit.js"></script>
+
+</body>
+
+</html>
