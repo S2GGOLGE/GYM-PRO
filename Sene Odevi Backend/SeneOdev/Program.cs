@@ -1,5 +1,6 @@
 using Azure.Core;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
 using SeneOdev;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -92,7 +93,7 @@ app.MapPost("/adminlogin", ([FromBody] AdminLoginRequest request) =>
     string sonuc = admin.Login(request.Username, request.Password, request.Role);
 
     if (sonuc == "OK")
-        return Results.Ok(new { success = true, message = "Giriş başarılı" });
+        return Results.Ok(new { success = true, message = "Giriş başarılı"+request.Username+"Hoşgeldiniz" });
 
     return Results.BadRequest(new { success = false, message = sonuc });
 });
@@ -103,6 +104,26 @@ app.MapGet("/sunucu", ([FromBody] AdminLoginRequest request) =>
     SUNUCU.Client("127.0.0.1", 8587);
 });
 
+// PassUpdate ENDPOINT
+app.MapPost("/PassUpdate", ([FromBody]PassUpdateRequest request) =>
+{
+    Console.WriteLine("ŞİFRE YENİLEME İSTEĞİ GELDİ");
+    Console.WriteLine($"Username:{request.Username}");
+    Console.WriteLine($"Phone:{request.Phone}");
+    Console.WriteLine($"Email:{request.Email}");
+    Console.WriteLine($"New Pass:{request.Pass}");
+    Console.WriteLine($"New PassRepeat:{request.PassRepeat}");
+    var user = new Pass_Update
+    {
+        Password = request.Pass,
+        PasswordRepeat = request.PassRepeat
+    };
+    bool sonuc = user.Update();
+    if(sonuc)
+        return Results.Ok(new { success = true, message = "Yeni Şifreniz İle Giriş Yapabilirsiniz" });
+
+    return Results.BadRequest(new { success = false, message = "Guncelleme  başarısız" });
+});
 app.Run();
 
 // DTO TANIMLARI
@@ -127,4 +148,11 @@ public record AdminLoginRequest(
     string Username,
     string Password,
     string Role
+);
+public record PassUpdateRequest(
+    string Username,
+    string Phone,
+    string Email,
+    string Pass,
+    string PassRepeat
 );

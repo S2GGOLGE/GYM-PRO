@@ -35,3 +35,7 @@ function kayıt() {
     //Kayıt Ol sayfasına yonlendirme
     window.location.href = "kayıtol.html";
 }
+function Pass_Update() {
+    //Şifre Yenileme Sayfasına Yonlendirme
+    window.location.href = "passwordupdate.html";
+} 

@@ -79,7 +79,8 @@ body {
 
 /* butonlar */
 .gırıs-btn,
-.kayıtol-btn {
+.kayıtol-btn,
+.şifreupdate-btn {
     width: 45%;
     height: 35px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
@@ -93,7 +94,8 @@ body {
 
 /* buton hover animasyonu */
 .gırıs-btn:hover,
-.kayıtol-btn:hover {
+.kayıtol-btn:hover ,
+.şifreupdate-btn:hover{
     background-color: #0056b3;
     transform: scale(1.08);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);

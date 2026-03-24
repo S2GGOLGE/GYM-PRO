@@ -1,0 +1,120 @@
+body {
+    background: linear-gradient(to left, #4A90E2, #286ab4, #0571ec);
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0;
+    margin: 0;
+
+    display: flex;
+    justify-content: center;
+    /* yatay ortalama */
+    align-items: center;
+    /* dikey ortalama */
+    height: 100vh;
+    /* ekran yüksekliği */
+    animation: bgAnim 15s ease infinite;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    /* alt alta diz */
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 50%;
+    height: 400px;
+    animation: bgMove 15s ease infinite;
+}
+
+.form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex-direction: column;
+    width: 30%;
+    height: 200px;
+    border-radius: 10px;
+    background-color: rgba(23, 57, 211, 0.85);
+    /* hafif şeffaf beyaz */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    /* hafif gölge */
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.form:hover {
+    transform: scale(1.05);
+}
+
+.form input {
+    height: 10%;
+    border-radius: none;
+    font-size: 10pt;
+    transition: transform 0.3s, background-color 0.3s;
+    border-radius: 5px;
+}
+
+.form input:hover {
+    transform: scale(1.05);
+}
+
+.Update-btn {
+    background-color: rgba(255, 255, 255, 0.85);
+    /* hafif şeffaf beyaz */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    /* hafif gölge */
+    width: 150px;
+    height: 25px;
+    border-radius: 10px;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.Update-btn:hover {
+    transform: scale(1.05);
+}
+
+@keyframes bgMove {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* arkaplan animasyonu */
+@keyframes bgAnim {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.menu {
+    position: fixed;          /* üstte sabitler */
+    top: 0;                   /* sayfanın tepesinde */
+    left: 0;                  /* sol kenarda başlat */
+    width: 100%;              /* tam genişlik */
+    height: 50px;             /* istediğin yükseklik */
+    display: flex;
+    align-items: center;
+    background: linear-gradient(to left, #ffffff23, #0056b3);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    z-index: 1000;            /* diğer içeriklerin üstünde */
+}
+.menu a{
+    color: white;
+    text-decoration: none;
+}
