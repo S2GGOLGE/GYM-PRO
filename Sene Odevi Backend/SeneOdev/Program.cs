@@ -99,9 +99,13 @@ app.MapPost("/adminlogin", ([FromBody] AdminLoginRequest request) =>
 });
 
 // SUNUCU ENDPOINT (henüz hazır değil)
-app.MapGet("/sunucu", ([FromBody] AdminLoginRequest request) =>
+// MapGet yerine MapPost yapıyoruz
+app.MapPost("/sunucu", ([FromBody] AdminLoginRequest request) =>
 {
-    SUNUCU.Client("127.0.0.1", 8587);
+    // Uzak sunucuya bağlanıyorsan 127.0.0.1 yerine gerçek IP'yi yazmayı unutma!
+    string sonuc = SeneOdev.SUNUCU.Client("127.0.0.1", 8587);
+
+    return Results.Ok(new { message = sonuc });
 });
 
 // PassUpdate ENDPOINT

@@ -72,7 +72,7 @@
       }
     },
     "/sunucu": {
-      "get": {
+      "post": {
         "tags": [
           "SeneOdev"
         ],
