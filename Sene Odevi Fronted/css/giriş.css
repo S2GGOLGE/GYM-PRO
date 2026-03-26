@@ -1,32 +1,36 @@
+/* RENK DEĞİŞKENLERİ */
+:root {
+    --deep-black: #000000;
+    --neon-lime: #CCFF00;
+    --dark-grey: #1A1A1A;
+    --white: #FFFFFF;
+    --muted-grey: #888888;
+    --neon-glow: rgba(204, 255, 0, 0.4);
+}
+
 html,
 body {
     height: 100%;
     margin: 0;
     padding: 0;
-    background: linear-gradient(to left, #4A90E2, #286ab4, #0571ec);
+    /* Koyu ve derin geçişli arka plan */
+    background: linear-gradient(to left, #000000, #1a1a1a, #0a0a0a);
     background-size: 300% 300%;
     animation: bgAnim 8s ease infinite;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Segoe UI', Arial, sans-serif;
     font-size: medium;
+    color: var(--white);
 }
 
-/* arkaplan animasyonu */
+/* Arkaplan animasyonu */
 @keyframes bgAnim {
-    0% {
-        background-position: 0% 50%;
-    }
-
-    50% {
-        background-position: 100% 50%;
-    }
-
-    100% {
-        background-position: 0% 50%;
-    }
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 .container {
-    width: 50%;
+    width: 100%; /* Daha esnek bir yapı */
     height: 100%;
     display: flex;
     align-items: center;
@@ -34,18 +38,19 @@ body {
     margin: 0 auto;
 }
 
-/* form animasyonu */
+/* FORM - Dark Grey ve Keskin Tasarım */
 .form {
-    width: 50%;
-    padding: 20px;
-    background: linear-gradient(to right, #1974dbb7, #b3bdc988, #5287c988);
+    width: 320px; /* Sabit ve şık bir genişlik */
+    padding: 30px;
+    background: var(--dark-grey);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 10px;
-    border-radius: 5px;
-
+    gap: 12px;
+    border-radius: 12px;
+    border: 1px solid #333;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
     animation: formAnim 0.8s ease;
 }
 
@@ -54,7 +59,6 @@ body {
         opacity: 0;
         transform: translateY(60px);
     }
-
     to {
         opacity: 1;
         transform: translateY(0);
@@ -62,69 +66,76 @@ body {
 }
 
 .form input {
-    width: 50%;
+    width: 90%;
     text-align: center;
-    padding: 8px;
-    border-radius: 4px;
-    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #333;
+    background-color: #0a0a0a;
+    color: var(--white);
     transition: 0.3s;
 }
 
-/* input focus animasyonu */
+/* Input focus animasyonu */
 .form input:focus {
     outline: none;
-    transform: scale(1.05);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    border-color: var(--neon-lime);
+    transform: scale(1.03);
+    box-shadow: 0 0 12px var(--neon-glow);
 }
 
-/* butonlar */
+/* BUTONLAR - Neon Lime Vurgulu */
 .gırıs-btn,
 .kayıtol-btn,
 .şifreupdate-btn {
-    width: 45%;
-    height: 35px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
-    background-color: #0571ec;
-    color: white;
+    width: 95%;
+    height: 40px;
+    font-weight: bold;
+    border-radius: 6px;
+    background-color: var(--neon-lime);
+    color: var(--deep-black);
     border: none;
     cursor: pointer;
     transition: 0.3s;
+    margin-top: 5px;
 }
 
-/* buton hover animasyonu */
+/* Buton hover animasyonu */
 .gırıs-btn:hover,
-.kayıtol-btn:hover ,
-.şifreupdate-btn:hover{
-    background-color: #0056b3;
-    transform: scale(1.08);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+.kayıtol-btn:hover,
+.şifreupdate-btn:hover {
+    background-color: #e1ff5e;
+    transform: scale(1.05);
+    box-shadow: 0 0 20px var(--neon-glow);
 }
 
-/* menu */
+/* MENÜ - Arka Plan Silindi */
 .menu {
-    height: 50px;
+    height: 60px;
     display: flex;
     align-items: center;
-    background: linear-gradient(to left, #ffffff23, #0056b3);
-    border-radius: 5px;
+    background: transparent; /* Arka plan kaldırıldı */
+    padding-left: 20px;
 }
 
 .menu a {
-    color: #fff;
-    font-size: 12pt;
+    color: var(--neon-lime);
+    font-size: 13pt;
+    font-weight: bold;
     text-decoration: none;
-    padding-left: 15px;
+    padding: 10px 15px;
     transition: 0.3s;
 }
 
-/* link hover */
+/* Link hover */
 .menu a:hover {
-    color: #cfe6ff;
-    transform: translateX(5px);
+    text-shadow: 0 0 10px var(--neon-glow);
+    transform: translateY(-2px);
 }
 
 footer {
-    color: #fff;
+    color: var(--muted-grey);
     text-align: center;
+    padding: 20px 0;
+    font-size: 14px;
 }

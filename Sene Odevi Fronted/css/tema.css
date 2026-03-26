@@ -1,11 +1,23 @@
+/* RENK DEĞİŞKENLERİ */
+:root {
+    --deep-black: #000000;
+    --neon-lime: #CCFF00;
+    --dark-grey: #1A1A1A;
+    --white: #FFFFFF;
+    --muted-grey: #888888;
+    --neon-glow: rgba(204, 255, 0, 0.4);
+}
+
 body {
     margin: 0;
     padding: 0;
     height: 100vh;
-    background: linear-gradient(-45deg, #4A90E2, #286ab4, #0571ec, #4A90E2);
+    /* Koyu Cyber Gradyan */
+    background: linear-gradient(-45deg, #000000, #1a1a1a, #0a0a0a, #000000);
     background-size: 400% 400%;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Segoe UI', Arial, sans-serif;
     animation: bgAnim 15s ease infinite;
+    color: var(--white);
 }
 
 .container {
@@ -17,59 +29,90 @@ body {
     gap: 20px;
 }
 
+/* FORM KUTUSU - Dark Grey & Neon Border */
 .form {
-    padding: 20px;
-    width: 60%;
+    padding: 30px;
+    width: 350px; /* Daha derli toplu bir genişlik */
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
     gap: 25px;
-    background: linear-gradient(135deg, #1974dbb7, #5287c988);
+    background: var(--dark-grey);
+    border: 1px solid #333;
     border-radius: 15px;
-    backdrop-filter: blur(4px);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.6);
     animation: floatForm 3s ease-in-out infinite alternate;
 }
 
+/* BUTONLAR */
 .dark-btn, .light-btn {
-    width: 50%;
-    height: 50%;
-    font-size: 10pt;
+    width: 80%;
+    height: 45px;
+    font-size: 11pt;
+    font-weight: bold;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 8px;
     cursor: pointer;
     transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+/* Koyu Buton: Neon Vurgulu */
+.dark-btn {
+    background-color: #0a0a0a;
+    color: var(--white);
+    border-color: #333;
 }
 
 .dark-btn:hover {
-    background: linear-gradient(135deg, #1c1c1c, #5e5e5e);
+    background-color: var(--dark-grey);
+    border-color: var(--neon-lime);
+    color: var(--neon-lime);
+    box-shadow: 0 0 15px var(--neon-glow);
     transform: scale(1.05);
+}
+
+/* Açık Buton: Neon Dolgulu */
+.light-btn {
+    background-color: var(--neon-lime);
+    color: var(--deep-black);
 }
 
 .light-btn:hover {
-    background: linear-gradient(135deg, #ffffff, #c1c1c1);
+    background-color: #e1ff5e;
+    box-shadow: 0 0 20px var(--neon-glow);
     transform: scale(1.05);
 }
 
+/* MENÜ - Arka Plan Silindi */
 .menu {
-    height: 50px;
+    height: 60px;
     display: flex;
     align-items: center;
-    background: linear-gradient(to left, #ffffff23, #0056b3);
+    background: transparent; /* Arka plan kaldırıldı */
     border-radius: 5px;
 }
 
 a {
-    color: #fff;
+    color: var(--neon-lime);
     display: block;
     text-decoration: none;
-    font-size: 10pt;
+    font-size: 11pt;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+a:hover {
+    text-shadow: 0 0 10px var(--neon-glow);
 }
 
 footer {
-    color: #fff;
+    color: var(--muted-grey);
+    font-size: 13px;
+    margin-top: 10px;
 }
 
 /* Animasyonlar */
@@ -81,5 +124,5 @@ footer {
 
 @keyframes floatForm {
     0% { transform: translateY(0); }
-    100% { transform: translateY(-10px); }
+    100% { transform: translateY(-15px); }
 }

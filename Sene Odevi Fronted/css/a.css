@@ -1,9 +1,19 @@
+/* RENK DEĞİŞKENLERİ */
+:root {
+    --deep-black: #000000;
+    --neon-lime: #CCFF00;
+    --dark-grey: #1A1A1A;
+    --white: #FFFFFF;
+    --neon-glow: rgba(204, 255, 0, 0.4);
+}
+
 /* Genel stil */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: var(--deep-black); /* Açık gri yerine tam siyah */
     margin: 0;
     padding: 0;
+    color: var(--white);
 }
 
 .container {
@@ -15,28 +25,35 @@ body {
     gap: 20px;
 }
 
-/* kutular */
+/* KUTULAR - Neon Etkili */
 .kutu {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
+    background-color: var(--dark-grey); /* Ana kutu rengi */
+    border: 1px solid #333;
+    color: var(--white);
+    padding: 15px 25px;
     text-align: center;
-    border-radius: 10px;
-    width: 200px;
-    transition: transform 0.3s, background-color 0.3s;
+    border-radius: 12px;
+    width: 220px;
+    transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
 }
 
-/* link */
+/* LİNK */
 .kutu a {
-    color: white;
+    color: var(--white);
     text-decoration: none;
     font-size: 18px;
     font-weight: bold;
     display: block;
 }
 
-/* hover efekti */
+/* HOVER EFEKTİ - Neon Parlama */
 .kutu:hover {
-    background-color: #45a049;
-    transform: scale(1.05);
+    background-color: var(--dark-grey);
+    border-color: var(--neon-lime); /* Kenarlık neon yeşile döner */
+    transform: scale(1.08);
+    box-shadow: 0 0 20px var(--neon-glow);
+}
+
+.kutu:hover a {
+    color: var(--neon-lime); /* Yazı neon yeşile döner */
 }

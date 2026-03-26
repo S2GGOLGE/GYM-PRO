@@ -1,8 +1,19 @@
+/* RENK DEĞİŞKENLERİ */
+:root {
+    --deep-black: #000000;
+    --neon-lime: #CCFF00;
+    --dark-grey: #1A1A1A;
+    --white: #FFFFFF;
+    --muted-grey: #888888;
+    --neon-glow: rgba(204, 255, 0, 0.4);
+}
+
 body {
-    background: linear-gradient(-45deg, #4A90E2, #286ab4, #0571ec, #4A90E2);
-    background-size: 400% 400%; /* animasyon için büyük alan */
-    color: white;
-    font-family: Arial, Helvetica, sans-serif;
+    /* Deep Black Gradient Animasyonu */
+    background: linear-gradient(-45deg, #000000, #1a1a1a, #0a0a0a, #000000);
+    background-size: 400% 400%;
+    color: var(--white);
+    font-family: 'Segoe UI', Arial, sans-serif;
     margin: 0;
     animation: bgAnim 15s ease infinite;
 }
@@ -10,7 +21,10 @@ body {
 /* header */
 header {
     text-align: center;
-    padding: 20px;
+    padding: 30px;
+    color: var(--neon-lime); /* Başlık neon yapıldı */
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
 /* ana kutu */
@@ -18,87 +32,86 @@ header {
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-top: 100px;
+    margin-top: 50px;
     animation: containerAnim 2s ease-in-out infinite alternate;
 }
 
-/* işlemler */
+/* işlemler alanı */
 .islemler {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 20px;
-    background: rgba(0, 0, 0, 0.2);
+    background: var(--dark-grey); /* Koyu gri arka plan */
     padding: 30px;
-    border-radius: 10px;
+    border-radius: 15px;
+    border: 1px solid #333;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
-/* kutular */
+/* işlem kutuları */
 .islemler div {
-    width: 250px;
+    width: 280px;
     padding: 15px;
-    background: rgba(0, 0, 0, 0.3);
-    border-radius: 8px;
+    background: #0a0a0a; /* Kutuların içi daha koyu */
+    border-radius: 10px;
     text-align: center;
-    transition: 0.3s;
+    border: 1px solid transparent;
+    transition: 0.3s all ease;
 }
 
-/* link */
+/* linkler */
 .islemler a {
     text-decoration: none;
-    color: white;
+    color: var(--white);
     font-weight: bold;
+    display: block;
+    width: 100%;
 }
 
-/* hover */
+/* Kutuların üzerine gelince (Hover) */
 .islemler div:hover {
-    background: rgba(0, 0, 0, 0.5);
+    border-color: var(--neon-lime);
     transform: scale(1.05);
+    box-shadow: 0 0 15px var(--neon-glow);
 }
 
+.islemler div:hover a {
+    color: var(--neon-lime); /* Yazı da neon olsun */
+}
+
+/* Menü - Arka plan silindi */
 .menu {
-    height: 50px;
+    height: 60px;
     display: flex;
     align-items: center;
-    background: linear-gradient(to left, #ffffff23, #0056b3);
-    border-radius: 5px;
+    background: transparent; /* Arka plan kaldırıldı */
+    padding-left: 20px;
 }
 
 .menu a {
-    color: #fff;
-    font-size: 12pt;
+    color: var(--neon-lime);
+    font-size: 13pt;
+    font-weight: bold;
     text-decoration: none;
-    padding-left: 15px;
+    padding: 10px 15px;
     transition: 0.3s;
 }
 
-/* link hover */
+/* Link hover */
 .menu a:hover {
-    color: #cfe6ff;
-    transform: translateX(5px);
+    text-shadow: 0 0 10px var(--neon-glow);
+    transform: translateY(-2px);
 }
 
-/* arkaplan animasyonu */
+/* Animasyonlar */
 @keyframes bgAnim {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
-/* container animasyonu */
 @keyframes containerAnim {
-    0% {
-        transform: translateY(0);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(10px);
-        opacity: 0.9;
-    }
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(10px); opacity: 0.95; }
 }

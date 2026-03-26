@@ -1,87 +1,88 @@
+/* DEĞİŞKENLER - Kolay yönetim için */
+:root {
+    --bg-deep-black: #000000;
+    --card-dark-grey: #1A1A1A;
+    --text-main-white: #FFFFFF;
+    --text-muted-grey: #888888;
+    --neon-glow: rgba(204, 255, 0, 0.4);
+}
+
 /* BODY ve arkaplan */
 body {
-    background: linear-gradient(to left, #4A90E2, #286ab4, #0571ec);
+    /* Degradeyi daha koyu ve derin bir geçişe çevirdik */
+    background: linear-gradient(to left, #000000, #121212, #000000);
     background-size: 300% 300%;
     animation: bgAnim 12s ease infinite;
-    font-family: Arial, Helvetica, sans-serif;
-    color: #fff;
+    font-family: 'Segoe UI', Arial, sans-serif; /* Daha modern bir font desteği */
+    color: var(--text-main-white);
+    margin: 0;
 }
 
 @keyframes bgAnim {
-    0% {
-        background-position: 0% 50%;
-    }
-
-    50% {
-        background-position: 100% 50%;
-    }
-
-    100% {
-        background-position: 0% 50%;
-    }
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 /* MENÜ */
 .menu {
     display: flex;
     align-items: center;
-    /* Dikey ortala */
     justify-content: space-between;
-    /* Menüyü ve profil resmini ayır */
     gap: 10px;
-    padding: 0 10px;
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
+    padding: 0 20px;
+    background: var(--card-dark-grey); /* Kart rengi */
+    border-bottom: 2px solid #333; /* Hafif belirginlik */
+    border-radius: 0 0 10px 10px;
     height: 60px;
-    /* Sabit yükseklik */
     animation: fadeDown 0.8s ease;
 }
 
 .menu .btn {
     height: 40px;
-    /* Menü ve resimle uyumlu */
     line-height: 40px;
-    padding: 0 12px;
+    padding: 0 15px;
     font-size: 14px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    font-weight: bold;
+    color: var(--bg-deep-black); /* Neon üstüne siyah yazı */
+    background-color: var(--accent-neon-lime);
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s;
 }
 
 .menu .btn:hover {
     transform: scale(1.05);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 15px var(--neon-glow);
 }
 
 /* PROFİL RESMİ */
 .pp {
     display: flex;
     justify-content: flex-end;
-    /* Sağda hizala */
     align-items: center;
-    /* Menü ile aynı hizada */
     margin: 0;
 }
 
 .pp img {
-    width: 40px;
-    /* Menü yüksekliğinden küçük */
-    height: 40px;
+    width: 42px;
+    height: 42px;
     border-radius: 50%;
+    border: 2px solid var(--accent-neon-lime); /* Resim etrafına neon halka */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .pp img:hover {
     transform: scale(1.1);
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 20px var(--neon-glow);
 }
 
 /* CAROUSEL ANİMASYON */
-.carousel-inner .carousel-item {
-    transition: transform 0.6s ease-in-out, opacity 0.6s ease-in-out;
-}
-
 .carousel-inner img {
     width: 100%;
     border-radius: 10px;
+    border: 1px solid #333;
 }
 
 /* CONTENT ve SAĞ ALAN */
@@ -92,40 +93,34 @@ body {
     animation: fadeUp 0.8s ease;
 }
 
-/* FOOTER */
-footer {
-    text-align: center;
-    padding: 10px 0;
-    animation: fadeUp 0.8s ease;
-}
-
-/* FADE ANİMASYONLARI */
-@keyframes fadeDown {
-    from {
-        opacity: 0;
-        transform: translateY(-40px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(40px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-.kutu{
+/* KUTU / KARTLAR */
+.kutu {
     width: 100%;
     height: 550px;
     text-align: center;
-    float: left;
+    background-color: var(--card-dark-grey); /* Bölüm rengi */
+    border-radius: 15px;
+    padding: 20px;
+    box-sizing: border-box;
+    border: 1px solid #222;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 20px 0;
+    color: var(--text-muted-grey); /* Yardımcı gri */
+    font-size: 13px;
+    animation: fadeUp 0.8s ease;
+}
+
+/* FADE ANİMASYONLARI (Aynı kaldı) */
+@keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
 }

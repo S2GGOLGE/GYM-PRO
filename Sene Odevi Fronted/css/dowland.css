@@ -1,88 +1,87 @@
+/* RENK DEĞİŞKENLERİ */
+:root {
+    --deep-black: #000000;
+    --neon-lime: #CCFF00;
+    --dark-grey: #1A1A1A;
+    --white: #FFFFFF;
+    --neon-glow: rgba(204, 255, 0, 0.4);
+}
+
 body {
-    background: linear-gradient(-45deg, #4A90E2, #286ab4, #0571ec, #4A90E2);
+    /* Arka plan animasyonu - Koyu Tonlar */
+    background: linear-gradient(-45deg, #000000, #1a1a1a, #0a0a0a, #000000);
     background-size: 400% 400%;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Segoe UI', Arial, sans-serif;
     font-size: 10pt;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 15px;
     height: 100vh;
+    margin: 0;
+    color: var(--white);
     animation: bgAnim 15s ease infinite;
 }
 
+/* ANA KUTU (Container) */
 .container {
-    background: linear-gradient(to right, #286ab4, #0571ec);
+    background: var(--dark-grey); /* Mavi yerine Dark Grey */
     width: 50%;
     height: 150px;
     border-radius: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 1px solid #333;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     animation: floatContainer 3s ease-in-out infinite alternate;
 }
 
+/* MENÜ - Arka plan silindi ve temizlendi */
 .menu {
-    background: linear-gradient(-45deg, #fff, #000, #fff, #000);
+    background: transparent; /* Karmaşık gradient silindi */
     width: 25%;
     height: 75px;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 5px;
-    background-size: 400% 400%;
-    animation: menuAnim 10s linear infinite;
 }
 
+/* İNDİR BUTONU - Neon Lime */
 .indir-btn {
-    color: white;
-    background-color: black;
-    width: 50%;
-    height: 25px;
-    border-radius: 5px;
+    color: var(--deep-black); /* Siyah yazı */
+    background-color: var(--neon-lime); /* Parlak yeşil */
+    width: 80%; /* Biraz daha geniş ve basılabilir */
+    height: 35px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
     transition: all 0.3s ease;
+    box-shadow: 0 0 5px var(--neon-glow);
 }
 
 .indir-btn:hover {
-    background-color: #333;
-    transform: scale(1.05);
+    background-color: #e1ff5e;
+    transform: scale(1.1);
+    box-shadow: 0 0 20px var(--neon-glow);
 }
 
 /* Animasyon keyframes */
 @keyframes bgAnim {
-    0% {
-        background-position: 0% 50%;
-    }
-
-    50% {
-        background-position: 100% 50%;
-    }
-
-    100% {
-        background-position: 0% 50%;
-    }
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 @keyframes floatContainer {
-    0% {
-        transform: translateY(0);
-    }
-
-    100% {
-        transform: translateY(-10px);
-    }
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-15px); } /* Biraz daha belirgin hareket */
 }
 
+/* Gereksiz hale gelen menuAnim silinebilir veya boş bırakılabilir */
 @keyframes menuAnim {
-    0% {
-        background-position: 0% 50%;
-    }
-
-    50% {
-        background-position: 100% 50%;
-    }
-
-    100% {
-        background-position: 0% 50%;
-    }
+    0% { opacity: 1; }
+    100% { opacity: 1; }
 }

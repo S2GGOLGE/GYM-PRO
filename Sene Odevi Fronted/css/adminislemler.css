@@ -1,88 +1,125 @@
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: rgba(128,128,128,0.4);
+/* RENK DEĞİŞKENLERİ */
+:root {
+    --deep-black: #000000;
+    --neon-lime: #CCFF00;
+    --dark-grey: #1A1A1A;
+    --white: #FFFFFF;
+    --muted-grey: #888888;
+    --neon-glow: rgba(204, 255, 0, 0.4);
 }
 
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: var(--deep-black); /* Arka plan tam siyah */
+    color: var(--white);
+}
+
+/* MENÜ - Arka plan silindi */
 .menu {
     display: flex;
     justify-content: center;
     gap: 20px;
-    padding: 20px 0;
-    background-color: #222;
+    padding: 30px 0;
+    background-color: transparent; /* Arka plan kaldırıldı */
 }
 
 .menu button {
     padding: 12px 25px;
-    border: none;
+    border: 1px solid #333; /* Hafif çerçeve */
     border-radius: 8px;
-    background-color: #333;
-    color: #fff;
+    background-color: var(--dark-grey);
+    color: var(--white);
     font-size: 16px;
+    font-weight: bold;
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
 .menu button:hover {
-    background-color: #555;
+    border-color: var(--neon-lime);
+    color: var(--neon-lime);
     transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
 }
 
+/* Aktif Sekme Vurgusu */
 .menu button.active {
-    background-color: #007bff;
-    box-shadow: 0 4px 10px rgba(0,123,255,0.4);
+    background-color: var(--neon-lime);
+    color: var(--deep-black);
+    border-color: var(--neon-lime);
+    box-shadow: 0 0 20px var(--neon-glow);
 }
 
+/* İÇERİK ALANI (KART) */
 .content-div {
     display: none;
     margin: 20px auto;
     width: 80%;
     max-width: 900px;
-    background-color: gray;
+    background-color: var(--dark-grey); /* Gri yerine Dark Grey */
     padding: 30px;
     border-radius: 12px;
     text-align: center;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    border: 1px solid #222;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .content-div h2 {
-    margin-bottom: 20px;
-    color: #fff;
+    margin-bottom: 25px;
+    color: var(--neon-lime); /* Başlıklar neon */
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
+/* INPUT & TEXTAREA */
 .content-div input, .content-div textarea {
-    width: 70%;
-    padding: 10px;
-    margin: 10px 0;
+    width: 75%;
+    padding: 12px;
+    margin: 12px 0;
     border-radius: 8px;
-    border: none;
+    border: 1px solid #333;
+    background-color: #0a0a0a; /* Daha koyu iç alan */
+    color: var(--white);
     outline: none;
+    transition: 0.3s;
+}
+
+.content-div input:focus, .content-div textarea:focus {
+    border-color: var(--neon-lime);
+    box-shadow: 0 0 10px var(--neon-glow);
 }
 
 textarea {
     resize: none;
 }
 
+/* AKSİYON BUTONU (Formun içindeki buton) */
 .action-btn {
-    padding: 10px 20px;
-    margin: 10px;
+    padding: 12px 25px;
+    margin: 15px;
     border-radius: 8px;
     border: none;
-    background-color: black;
-    color: white;
+    background-color: var(--neon-lime);
+    color: var(--deep-black);
+    font-weight: bold;
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
 .action-btn:hover {
-    background-color: #333;
+    background-color: #e1ff5e;
     transform: translateY(-2px);
+    box-shadow: 0 0 15px var(--neon-glow);
 }
+
+/* ÇIKIŞ / ÖZEL BUTON (Son buton) */
 .menu button:last-child {
-    background-color: #ff4d4d; /* kırmızı ton */
+    background-color: #ff4d4d; /* Kırmızı korundu */
+    border-color: #ff4d4d;
 }
 
 .menu button:last-child:hover {
     background-color: #ff1a1a;
-    transform: translateY(-3px);
+    box-shadow: 0 0 15px rgba(255, 77, 77, 0.4);
 }

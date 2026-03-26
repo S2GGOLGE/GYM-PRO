@@ -1,10 +1,20 @@
+/* RENK DEĞİŞKENLERİ */
+:root {
+    --deep-black: #000000;
+    --neon-lime: #CCFF00;
+    --dark-grey: #1A1A1A;
+    --white: #FFFFFF;
+    --muted-grey: #888888;
+    --neon-glow: rgba(204, 255, 0, 0.4);
+}
+
 /* GENEL BODY */
 body {
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Segoe UI', Arial, sans-serif;
 
-    /* Gradient background animasyonu */
-    background: linear-gradient(270deg, #4A90E2, #286ab4, #0571ec);
+    /* Deep Black Gradient */
+    background: linear-gradient(270deg, #000000, #1a1a1a, #0a0a0a);
     background-size: 600% 600%;
     animation: bgAnim 20s ease infinite;
 
@@ -12,9 +22,10 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    color: var(--white);
 }
 
-/* MENU */
+/* MENU - Arka plan silindi */
 .menu {
     position: fixed;
     top: 0;
@@ -23,15 +34,21 @@ body {
 
     display: flex;
     align-items: center;
-    padding-left: 15px;
-
-    background: rgba(0, 0, 0, 0.2);
+    padding-left: 20px;
+    background: transparent; /* Arka plan silindi */
 }
 
 .menu a {
-    color: white;
+    color: var(--neon-lime); /* Menü linkleri neon yapıldı */
     text-decoration: none;
     font-weight: bold;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.menu a:hover {
+    text-shadow: 0 0 10px var(--neon-glow);
+    filter: brightness(1.2);
 }
 
 /* CONTAINER */
@@ -43,70 +60,75 @@ body {
     animation: containerAnim 15s ease-in-out infinite;
 }
 
-/* FORM */
+/* FORM - Dark Grey */
 .form {
     display: flex;
     flex-direction: column;
     gap: 12px;
 
     width: 300px;
-    padding: 20px;
+    padding: 25px;
 
     border-radius: 12px;
-    background-color: rgba(23, 57, 211, 0.85);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    background-color: var(--dark-grey); /* Kart rengi uygulandı */
+    border: 1px solid #333; /* İnce belirginlik hattı */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 
-    /* Hover scale */
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
 .form:hover {
     transform: scale(1.05);
+    border-color: var(--neon-lime); /* Hoverda neon çerçeve */
 }
 
 /* INPUT */
 .form input {
-    height: 35px;
+    height: 38px;
     border-radius: 6px;
-    border: none;
-    padding: 5px;
+    border: 1px solid #333;
+    padding: 0 10px;
     font-size: 14px;
+    background-color: #0a0a0a; /* Input içi daha koyu */
+    color: white;
 
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
-.form input:hover {
-    transform: scale(1.03);
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+.form input:focus {
+    outline: none;
+    border-color: var(--neon-lime);
+    box-shadow: 0 0 8px var(--neon-glow);
 }
 
-/* BUTTON */
+/* BUTTON - Neon Lime */
 .Update-btn {
-    background-color: white;
-    height: 35px;
-    border-radius: 10px;
+    background-color: var(--neon-lime); /* Vurgu rengi */
+    color: var(--deep-black); /* Siyah yazı */
+    height: 40px;
+    border-radius: 8px;
     border: none;
+    font-weight: bold;
     cursor: pointer;
-    transition: transform 0.2s ease, background-color 0.2s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
 }
 
 .Update-btn:hover {
-    transform: scale(1.05);
-    background-color: #f0f0f0;
+    transform: scale(1.03);
+    box-shadow: 0 0 20px var(--neon-glow);
+    filter: brightness(1.1);
 }
 
 /* ANIMATIONS */
 
-/* Background gradient animasyonu */
 @keyframes bgAnim {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
 
-/* Container yavaş hareket animasyonu */
 @keyframes containerAnim {
     0%   { transform: translateY(0); opacity: 1; }
-    50%  { transform: translateY(10px); opacity: 0.95; }
+    50%  { transform: translateY(10px); opacity: 0.98; }
     100% { transform: translateY(0); opacity: 1; }
 }
