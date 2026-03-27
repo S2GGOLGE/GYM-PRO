@@ -25,32 +25,6 @@ body {
     color: var(--white);
 }
 
-/* MENU - Arka plan silindi */
-.menu {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    height: 50px;
-
-    display: flex;
-    align-items: center;
-    padding-left: 20px;
-    background: transparent; /* Arka plan silindi */
-}
-
-.menu a {
-    color: var(--neon-lime); /* Menü linkleri neon yapıldı */
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 14px;
-    transition: 0.3s;
-}
-
-.menu a:hover {
-    text-shadow: 0 0 10px var(--neon-glow);
-    filter: brightness(1.2);
-}
-
 /* CONTAINER */
 .container {
     display: flex;
@@ -120,7 +94,6 @@ body {
 }
 
 /* ANIMATIONS */
-
 @keyframes bgAnim {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }

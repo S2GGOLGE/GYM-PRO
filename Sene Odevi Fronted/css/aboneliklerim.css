@@ -1,0 +1,99 @@
+:root {
+    --deep-black: #000000;
+    --neon-lime: #CCFF00;
+    --dark-grey: #1A1A1A;
+    --white: #FFFFFF;
+    --muted-grey: #888888;
+    --neon-glow: rgba(204, 255, 0, 0.4);
+}
+
+/* ANİMASYONLU ARKA PLAN */
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+body {
+    background: linear-gradient(-45deg, #000000, #1a1a1a, #0a0a0a, #000000);
+    background-size: 400% 400%;
+    animation: gradientBG 10s ease infinite;
+
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--white);
+    margin: 0;
+    padding: 0;
+}
+
+/* Ana container ortalama */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    gap: 40px;
+}
+
+/* Başlık */
+.yazi h1 {
+    font-size: 40px;
+    margin: 0;
+    text-align: center;
+}
+
+/* Kartlar yan yana */
+.content {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap; /* responsive için */
+    justify-content: center;
+}
+
+/* Kartlar ortak stil */
+.basic,
+.pro,
+.proplus {
+    width: 300px;
+    height: 500px;
+    background: linear-gradient(-45deg, #000000, #1A1A1A);
+    border-radius: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+    color: var(--white);
+    text-decoration: none;
+}
+
+/* Hover animasyonu */
+.basic:hover,
+.pro:hover,
+.proplus:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 20px var(--neon-glow);
+}
+
+/* PRO öne çıksın */
+.pro {
+    border: 2px solid var(--neon-lime);
+    transform: scale(1.1);
+    box-shadow: 0 0 30px var(--neon-glow);
+}
+
+/* PRO+ küçük highlight */
+.proplus {
+    border: 1px solid #444;
+}
+
+/* Footer */
+footer {
+    margin-top: 20px;
+    color: var(--muted-grey);
+    font-size: 14px;
+    text-align: center;
+}
+a{
+    text-decoration: none;
+}
