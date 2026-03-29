@@ -113,16 +113,19 @@ app.MapPost("/updatepass", (PassUpdate model) =>
         Console.WriteLine("MODEL NULL GELDİ! JSON bind olmadı");
         return Results.BadRequest(new { success = false, message = "Geçersiz veri." });
     }
+    Console.WriteLine("Şifre Yenileme Geldi");
+    Console.WriteLine($"Username:{model.Username}");
+    Console.WriteLine($"New Pass:{model.NewPass}");
+    Console.WriteLine($"New Pass Repeat:{model.NewPassRepeat} ");
 
-    Console.WriteLine($"Username: {model.Username}, NewPass: {model.NewPass}, NewPassRepeat: {model.NewPassRepeat}");
 
     var (success, message) = model.Update();
 
-    Console.WriteLine(success ? "UPDATE BAŞARILI ✅" : "UPDATE BAŞARISIZ ❌");
+    Console.WriteLine(success ? "UPDATE BAŞARILI " : "UPDATE BAŞARISIZ ");
 
     return success
         ? Results.Ok(new { success = true, message = message })
-        : Results.BadRequest(new { success = false, message = message });
+        :Results.BadRequest(new { success = false, message = message });
 });
 app.Run();
 

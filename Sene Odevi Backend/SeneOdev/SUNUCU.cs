@@ -22,7 +22,7 @@ namespace SeneOdev
                 client.EndConnect(result);
 
                 using NetworkStream stream = client.GetStream();
-                string mesaj = "selam";
+                string mesaj = "GYM|PRO BAĞLANDI";
                 byte[] data = Encoding.UTF8.GetBytes(mesaj);
                 stream.Write(data, 0, data.Length);
 
