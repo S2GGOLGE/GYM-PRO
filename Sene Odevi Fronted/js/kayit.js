@@ -9,7 +9,7 @@ function kayit() {
     let cinsiyet =
         document.getElementById("cinsiyetErkek").checked ? "Erkek" :
             document.getElementById("cinsiyetBayan").checked ? "Bayan" : "";
-
+    let Sozlesme=documentç.getElementById("Sozlesme").checked;
     let password = document.getElementById("pass").value;
     let passRepeat = document.getElementById("passRepeat").value;
     //Backend e Bağlan ardından parametleri post et
@@ -23,6 +23,7 @@ function kayit() {
             email: mail,
             phone: iletisim,
             gender: cinsiyet,
+            Sozlesme:sozlesme,
             password: password, 
             passwordRepeat: passRepeat
         })

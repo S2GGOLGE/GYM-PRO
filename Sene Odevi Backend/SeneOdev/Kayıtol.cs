@@ -13,6 +13,7 @@ namespace SeneOdev
         public string Email { get; set; }
         public string Phone { get; set; }
         public string Gender { get; set; }
+        public string Sozlesme { get; set; }
         public string Password { get; set; }
         public string PasswordRepeat { get; set; }
 
@@ -29,6 +30,8 @@ namespace SeneOdev
 
                 // Şifre ve tekrar şifre eşleşmesini kontrol et
                 if (Password != PasswordRepeat)
+                    return false;
+                if (Sozlesme != null)
                     return false;
 
                 // Kullanıcı adı kontrol

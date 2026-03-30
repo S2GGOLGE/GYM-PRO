@@ -58,6 +58,7 @@ app.MapPost("/sign_up", ([FromBody] SignupRequest request) =>
     Console.WriteLine($"Email: {request.Email}");
     Console.WriteLine($"Phone: {request.Phone}");
     Console.WriteLine($"Gender: {request.Gender}");
+    Console.WriteLine($"Sozleşme:{request.sozlesme}");
     Console.WriteLine($"Password: {request.Password}");
     Console.WriteLine($"Password Repeat: {request.PasswordRepeat}");
 
@@ -70,6 +71,7 @@ app.MapPost("/sign_up", ([FromBody] SignupRequest request) =>
         Email = request.Email,
         Phone = request.Phone,
         Gender = request.Gender,
+        Sozlesme = request.sozlesme,
         Password = request.Password,
         PasswordRepeat = request.PasswordRepeat
     };
@@ -143,6 +145,7 @@ public record SignupRequest(
     string Email,
     string Phone,
     string Gender,
+    string sozlesme,
     string Password,
     string PasswordRepeat
 );
