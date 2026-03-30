@@ -1,42 +1,67 @@
 function kayit() {
-    //Aşagı tanımlanan Parametreleri Tanımlanmıştır ve Id ler Verimiştir
-    let ad = document.getElementById("name").value;
-    let soyad = document.getElementById("surname").value;
-    let username = document.getElementById("username").value;
-    let mail = document.getElementById("mail").value;
-    let iletisim = document.getElementById("iletisim").value;
 
-    let cinsiyet =
-        document.getElementById("cinsiyetErkek").checked ? "Erkek" :
-            document.getElementById("cinsiyetBayan").checked ? "Bayan" : "";
-    let Sozlesme=documentç.getElementById("Sozlesme").checked;
+    console.log("BUTON ÇALIŞTI");
+
+    let name = document.getElementById("name").value.trim();
+    let surname = document.getElementById("surname").value.trim();
+    let username = document.getElementById("username").value.trim();
+    let email = document.getElementById("mail").value.trim();
+    let phone = document.getElementById("iletisim").value.trim();
     let password = document.getElementById("pass").value;
-    let passRepeat = document.getElementById("passRepeat").value;
-    //Backend e Bağlan ardından parametleri post et
-    fetch("https://localhost:7074/Sign_up", {
+    let passwordRepeat = document.getElementById("passRepeat").value;
+
+    let gender = document.getElementById("erkek").checked ? "Erkek" :
+                 document.getElementById("bayan").checked ? "Bayan" : "";
+
+    let sozlesme = document.getElementById("sozlesme").checked;
+
+    if (!name || !surname || !username || !email || !password || !passwordRepeat) {
+        alert("Boş alan bırakma!");
+        return;
+    }
+
+    if (password !== passwordRepeat) {
+        alert("Şifreler uyuşmuyor!");
+        return;
+    }
+
+    if (!sozlesme) {
+        alert("Sözleşmeyi kabul etmeden kayıt olamazsın!");
+        return;
+    }
+
+    let data = {
+        name,
+        surname,
+        username,
+        email,
+        phone,
+        gender,
+        sozlesme: "true",
+        password,
+        passwordRepeat
+    };
+
+    console.log("DATA:", data);
+
+    fetch("https://localhost:7074/sign_up", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-            name: ad,
-            surname: soyad,
-            username: username,
-            email: mail,
-            phone: iletisim,
-            gender: cinsiyet,
-            Sozlesme:sozlesme,
-            password: password, 
-            passwordRepeat: passRepeat
-        })
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
     })
-        .then(res => res.json())
-        .then(data => {
-            alert(data.message)
-            if (data.success) {   // backend tarafında success = true dönüyorsa
-                window.location.href = "giriş.html"; // Login e git 
-            }
-        })
-        .catch(err => {
-            //Hata Olur ise consola yazdır 
-            console.error("Fetch hatası:", err);
-        });
+    .then(async res => {
+        const result = await res.json();
+        if (!res.ok) throw new Error(result.message);
+        return result;
+    })
+    .then(res => {
+        alert(res.message);
+        if (res.success) window.location.href = "giriş.html";
+    })
+    .catch(err => {
+        console.error(err);
+        alert("Hata: " + err.message);
+    });
 }

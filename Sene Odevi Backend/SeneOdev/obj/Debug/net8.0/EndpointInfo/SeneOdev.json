@@ -71,28 +71,6 @@
         }
       }
     },
-    "/sunucu": {
-      "post": {
-        "tags": [
-          "SeneOdev"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/AdminLoginRequest"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
     "/updatepass": {
       "post": {
         "tags": [
@@ -102,7 +80,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/PassUpdate"
+                "$ref": "#/components/schemas/PassUpdateRequest"
               }
             }
           },
@@ -150,7 +128,7 @@
         },
         "additionalProperties": false
       },
-      "PassUpdate": {
+      "PassUpdateRequest": {
         "type": "object",
         "properties": {
           "username": {
@@ -192,6 +170,10 @@
             "nullable": true
           },
           "gender": {
+            "type": "string",
+            "nullable": true
+          },
+          "sozlesme": {
             "type": "string",
             "nullable": true
           },

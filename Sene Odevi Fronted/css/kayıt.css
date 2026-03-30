@@ -167,6 +167,33 @@ footer {
     animation: fadeUp 0.7s ease;
 }
 
+.sozlesme {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #ccc;
+}
+
+.sozlesme label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.sozlesme input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--white);
+    /* modern tarayıcılar */
+    cursor: pointer;
+}
+
+.sozlesme a {
+    color: var(--white);
+    text-decoration: none;
+    transition: 0.3s;
+}
+
 /* FADE ANİMASYONLARI */
 @keyframes fadeDown {
     from {

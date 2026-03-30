@@ -1,11 +1,17 @@
 using SeneOdev;
-using Azure.Core;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Data.SqlClient;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// CORS politikası ekle: tüm kaynaklardan gelen istekleri kabul et
+// --- 1. JSON YAPILANDIRMASI (Kritik!) ---
+// Frontend'den gelen 'username' gibi küçük harfli verilerin 
+// C# tarafındaki 'Username' (büyük harf) kayıtlarına otomatik dolmasını sağlar.
+builder.Services.Configure<Microsoft.AspNetCore.Http.Json.JsonOptions>(options =>
+{
+    options.SerializerOptions.PropertyNameCaseInsensitive = true;
+});
+
+// CORS politikası
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", policy =>
@@ -29,16 +35,15 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+// Yerel testlerde sorun yaşıyorsan geçici olarak yorum satırı yapabilirsin:
+// app.UseHttpsRedirection();
 
-// LOGIN ENDPOINT
+// --- ENDPOINT'LER ---
+
+// LOGIN
 app.MapPost("/login", ([FromBody] LoginRequest request) =>
 {
-    // Frontend'den gelen login isteğini CMD ekranına yazdır
-    Console.WriteLine("LOGIN İSTEĞİ GELDİ");
-    Console.WriteLine($"Username: {request.Username}");
-    Console.WriteLine($"Password: {request.Password}");
-
+    Console.WriteLine($"LOGIN İSTEĞİ: {request.Username}");
     string sonuc = Login.GirisYap(request.Username, request.Password);
 
     if (sonuc == "OK")
@@ -46,32 +51,23 @@ app.MapPost("/login", ([FromBody] LoginRequest request) =>
 
     return Results.BadRequest(new { success = false, message = sonuc });
 });
-
-// SIGNUP ENDPOINT
+//SingUp
 app.MapPost("/sign_up", ([FromBody] SignupRequest request) =>
 {
-    // Frontend'den gelen kayıt isteğini CMD ekranına yazdır
-    Console.WriteLine("SIGNUP İSTEĞİ GELDİ");
-    Console.WriteLine($"Name: {request.Name}");
-    Console.WriteLine($"Surname: {request.Surname}");
-    Console.WriteLine($"Username: {request.Username}");
-    Console.WriteLine($"Email: {request.Email}");
-    Console.WriteLine($"Phone: {request.Phone}");
-    Console.WriteLine($"Gender: {request.Gender}");
-    Console.WriteLine($"Sozleşme:{request.sozlesme}");
-    Console.WriteLine($"Password: {request.Password}");
-    Console.WriteLine($"Password Repeat: {request.PasswordRepeat}");
+    Console.WriteLine("SIGNUP ÇALIŞTI"); // 🔥 debug
+
+    if (request == null)
+        return Results.BadRequest(new { success = false, message = "Veri gelmedi" });
 
     var user = new KayitOl
     {
-        // Yeni kullanıcı ekle
         Name = request.Name,
         Surname = request.Surname,
         Username = request.Username,
         Email = request.Email,
         Phone = request.Phone,
         Gender = request.Gender,
-        Sozlesme = request.sozlesme,
+        Sozlesme = request.Sozlesme,
         Password = request.Password,
         PasswordRepeat = request.PasswordRepeat
     };
@@ -81,62 +77,53 @@ app.MapPost("/sign_up", ([FromBody] SignupRequest request) =>
     if (sonuc)
         return Results.Ok(new { success = true, message = "Kayıt başarılı" });
 
-    return Results.BadRequest(new { success = false, message = "Kayıt başarısız" });
+    return Results.BadRequest(new
+    {
+        success = false,
+        message = "Kayıt başarısız (şifreler uyuşmuyor, kullanıcı var veya sözleşme kabul edilmedi)"
+    });
 });
 
-// ADMIN LOGIN ENDPOINT
+// ADMIN LOGIN
 app.MapPost("/adminlogin", ([FromBody] AdminLoginRequest request) =>
 {
-    // Admin giriş isteğini CMD ekranına yazdır
-    Console.WriteLine("ADMIN LOGIN İSTEĞİ GELDİ");
-    Console.WriteLine($"Username: {request.Username}");
-    Console.WriteLine($"Password: {request.Password}");
-
+    Console.WriteLine($"ADMIN LOGIN: {request.Username}");
     string sonuc = admin.Login(request.Username, request.Password, request.Role);
 
     if (sonuc == "OK")
-        return Results.Ok(new { success = true, message = "Giriş başarılı"+request.Username+"Hoşgeldiniz" });
+        return Results.Ok(new { success = true, message = $"Giriş başarılı. Hoş geldin {request.Username}" });
 
     return Results.BadRequest(new { success = false, message = sonuc });
 });
-// MapGet yerine MapPost yapıyoruz
-app.MapPost("/sunucu", ([FromBody] AdminLoginRequest request) =>
-{
-    // Uzak sunucuya bağlanıyorsan 127.0.0.1 yerine gerçek IP'yi yazmayı unutma!
-    string sonuc = SeneOdev.SUNUCU.Client("127.0.0.1", 8587);
 
-    return Results.Ok(new { message = sonuc });
-});
-
-app.MapPost("/updatepass", (PassUpdate model) =>
+// ŞİFRE GÜNCELLEME
+app.MapPost("/updatepass", ([FromBody] PassUpdateRequest request) =>
 {
-    if (model == null)
+    if (request == null) return Results.BadRequest(new { success = false, message = "Veri gelmedi." });
+
+    Console.WriteLine($"ŞİFRE YENİLEME: {request.Username}");
+
+    // Bu kısmın çalışması için PassUpdate sınıfında 
+    // Update(user, pass, passrepeat) gibi bir metodun olmalı.
+    var model = new PassUpdate
     {
-        Console.WriteLine("MODEL NULL GELDİ! JSON bind olmadı");
-        return Results.BadRequest(new { success = false, message = "Geçersiz veri." });
-    }
-    Console.WriteLine("Şifre Yenileme Geldi");
-    Console.WriteLine($"Username:{model.Username}");
-    Console.WriteLine($"New Pass:{model.NewPass}");
-    Console.WriteLine($"New Pass Repeat:{model.NewPassRepeat} ");
-
+        Username = request.Username,
+        NewPass = request.NewPass,
+        NewPassRepeat = request.NewPassRepeat
+    };
 
     var (success, message) = model.Update();
 
-    Console.WriteLine(success ? "UPDATE BAŞARILI " : "UPDATE BAŞARISIZ ");
-
     return success
         ? Results.Ok(new { success = true, message = message })
-        :Results.BadRequest(new { success = false, message = message });
+        : Results.BadRequest(new { success = false, message = message });
 });
+
 app.Run();
 
-// DTO TANIMLARI
-// DTO: Data Transfer Object, veri kapsülleme için kullanılır, mantıksal işlem içermez
-public record LoginRequest(
-    string Username,
-    string Password
-);
+// --- DTO (VERİ TRANSFER) TANIMLARI ---
+
+public record LoginRequest(string Username, string Password);
 
 public record SignupRequest(
     string Name,
@@ -145,18 +132,15 @@ public record SignupRequest(
     string Email,
     string Phone,
     string Gender,
-    string sozlesme,
+    string Sozlesme,
     string Password,
     string PasswordRepeat
 );
 
-public record AdminLoginRequest(
-    string Username,
-    string Password,
-    string Role
-);
+public record AdminLoginRequest(string Username, string Password, string Role);
+
 public record PassUpdateRequest(
     string Username,
-    string Pass,
-    string PassRepeat
+    string NewPass,
+    string NewPassRepeat
 );

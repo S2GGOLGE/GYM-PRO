@@ -16,39 +16,33 @@
     <div class="menu">
         <a href="/pages/başlangıc.html"> ←Geri Dön</a>
     </div>
-
     <div class="container">
 
-        <form class="form" onsubmit="kayit(); return false;">
-
-            <input type="text" placeholder="Adınız.." id="name" required>
-
-            <input type="text" placeholder="Soyadınız..." id="surname" required>
-
-            <input type="text" placeholder="Kullanıcı Adı..." id="username" required>
-
-            <input type="email" placeholder="@example.com" id="mail" required>
-
-            <input type="tel" placeholder="İletişim..." id="iletisim" pattern="[0-9]{10,11}">
-            <input type="password" placeholder="Şifre..." id="pass" required>
-
-            <input type="password" placeholder="Şifre Tekrar..." id="passRepeat" required>
+        <div class="form">
+            <input type="text" id="name" placeholder="Ad">
+            <input type="text" id="surname" placeholder="Soyad">
+            <input type="text" id="username" placeholder="Kullanıcı adı">
+            <input type="email" id="mail" placeholder="Email">
+            <input type="text" id="iletisim" placeholder="Telefon">
 
             <div class="cinsiyet">
-
-                <input type="radio" name="gender" value="Erkek" id="cinsiyetErkek" required>Erkek
-
-                <input type="radio" name="gender" value="Bayan" id="cinsiyetBayan" required>Bayan
-            </div>
-            <div class="sozleşme">
-                <input type="radio" name="sozlesme" value="Kullancı sozlesme Okudum Onaylıyorum" id="sozlesme" required>
-                <a href="/pages/sozleşme.html">Kullancı Sozleşmesini Okudum Onaylıyorum</a>
+                <input type="radio" name="gender" id="erkek"> Erkek
+                <input type="radio" name="gender" id="bayan"> Bayan
             </div>
 
-            <button type="submit" class="kayıt-btn">Kayıt Ol</button>
+            <div class="sozlesme">
+                <input type="checkbox" id="sozlesme">
+                <a href="/pages/sozleşme.html" target="_blank">
+                    Kullanıcı Sözleşmesini Okudum Onaylıyorum
+                </a>
+            </div>
 
-        </form>
+            <input type="password" id="pass" placeholder="Şifre">
+            <input type="password" id="passRepeat" placeholder="Şifre Tekrar">
 
+            <button onclick="kayit()" class="kayıt-btn">Kayıt Ol</button>
+
+        </div>
     </div>
 
     <footer>

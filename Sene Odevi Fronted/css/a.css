@@ -5,6 +5,7 @@
     --dark-grey: #1A1A1A;
     --white: #FFFFFF;
     --neon-glow: rgba(204, 255, 0, 0.4);
+    --Transparent: #00000000;
 }
 
 /* Genel stil */
@@ -72,4 +73,18 @@ body {
 .kutu:hover a {
     color: var(--neon-lime);
     /* Yazı neon yeşile döner */
+}
+
+.Connect {
+    background-color: var(--Transparent);
+    color: var(--white);
+    width: 50%;
+    border-radius: 10px;
+}
+
+.Connect:hover {
+    border-color: red;
+    /* Kenarlık neon yeşile döner */
+    transform: scale(1.08);
+    box-shadow: 0 0 20px red;
 }
