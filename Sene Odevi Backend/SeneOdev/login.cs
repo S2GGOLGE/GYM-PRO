@@ -1,54 +1,54 @@
-﻿namespace SeneOdev;
-
-using Microsoft.Data.SqlClient;
+﻿using Microsoft.Data.SqlClient;
 using System.Data;
 
-public class Login
+namespace SeneOdev
 {
-    public static string GirisYap(string username, string password)
+    public class Login
     {
-        // Kullanıcının boş alan bırakıp bırakmadığını kontrol et
-        string sonuc = BosAlanKontrolu(username, password);
-        if (sonuc != "OK")
-            return sonuc;
+        public static string GirisYap(string username, string password)
+        {
+            string sonuc = BosAlanKontrolu(username, password);
+            if (sonuc != "OK")
+                return sonuc;
 
-        // SQL Server veri tabanına bağlantı dizesi
-        string connstring = "Data Source=EMREE\\SQLEXPRESS;Initial Catalog=Sene_Odevi;Integrated Security=True;Encrypt=False";
+            string connstring = "Data Source=EMREE\\SQLEXPRESS;Initial Catalog=Sene_Odevi;Integrated Security=True;Encrypt=False";
 
-        using var baglanti = new SqlConnection(connstring);
-        baglanti.Open();
+            using var baglanti = new SqlConnection(connstring);
+            baglanti.Open();
 
-        // Kullanıcının şifresini veri tabanından al
-        string komut = "SELECT PasswordHash FROM Kullanici WHERE Username = @username";
+            // Kullanıcının hash ve salt'ını DB'den al
+            string komut = "SELECT PasswordHash, Salt FROM Kullanici WHERE Username = @username";
 
-        using var islem = new SqlCommand(komut, baglanti);
-        islem.Parameters.AddWithValue("@username", username);
+            using var islem = new SqlCommand(komut, baglanti);
+            islem.Parameters.AddWithValue("@username", username);
 
-        var result = islem.ExecuteScalar();
+            using var reader = islem.ExecuteReader();
 
-        // Kullanıcı bulunamadıysa mesaj dön
-        if (result == null)
-            return "Kullanıcı yok";
+            if (!reader.Read())
+                return "Kullanıcı yok";
 
-        string dbPassword = result.ToString();
+            string dbPassword = reader["PasswordHash"].ToString();
+            string dbSalt = reader["Salt"].ToString();
 
-        // Girilen şifre ile veri tabanındaki şifreyi karşılaştır eyer şifre uyuşmuyor ise mesaj dön 
-        // Not: Eğer PasswordHash kullanılıyorsa burada hash kontrolü yapılmalı
-        if (dbPassword != password)
-            return "Şifre yanlış";
+            // Girilen şifreyi DB'den gelen salt ile hashle
+            string loginHash = hash.Hash(password, dbSalt);
 
-        return "OK";
-    }
+            // Karşılaştır
+            if (loginHash != dbPassword)
+                return "Şifre yanlış";
 
-    // Boş alan girilmesini engellemek için kontrol
-    public static string BosAlanKontrolu(string username, string password)
-    {
-        if (string.IsNullOrWhiteSpace(username))
-            return "Lütfen kullanıcı adınızı girin.";
+            return "OK";
+        }
 
-        if (string.IsNullOrWhiteSpace(password))
-            return "Lütfen şifrenizi giriniz.";
+        public static string BosAlanKontrolu(string username, string password)
+        {
+            if (string.IsNullOrWhiteSpace(username))
+                return "Lütfen kullanıcı adınızı girin.";
 
-        return "OK";
+            if (string.IsNullOrWhiteSpace(password))
+                return "Lütfen şifrenizi giriniz.";
+
+            return "OK";
+        }
     }
 }
