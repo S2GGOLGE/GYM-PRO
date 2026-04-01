@@ -92,6 +92,28 @@
           }
         }
       }
+    },
+    "/sunucu": {
+      "post": {
+        "tags": [
+          "SeneOdev"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SunucuRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -184,6 +206,20 @@
           "passwordRepeat": {
             "type": "string",
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SunucuRequest": {
+        "type": "object",
+        "properties": {
+          "ıp": {
+            "type": "string",
+            "nullable": true
+          },
+          "port": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false

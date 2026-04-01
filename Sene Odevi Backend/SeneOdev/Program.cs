@@ -118,6 +118,19 @@ app.MapPost("/updatepass", ([FromBody] PassUpdateRequest request) =>
         ? Results.Ok(new { success = true, message = message })
         : Results.BadRequest(new { success = false, message = message });
 });
+app.MapPost("/sunucu", ([FromBody] SunucuRequest request) =>
+{
+    if (request == null)
+        return Results.BadRequest(new { success = false, message = "Veri gelmedi" });
+
+    string sonuc = SUNUCU.Client(request.ıp, request.port);
+
+    return Results.Ok(new
+    {
+        success = true,
+        message = sonuc
+    });
+});
 
 app.Run();
 
@@ -144,3 +157,4 @@ public record PassUpdateRequest(
     string NewPass,
     string NewPassRepeat
 );
+public record SunucuRequest(string ıp, int port);
