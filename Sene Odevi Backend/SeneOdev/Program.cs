@@ -3,9 +3,10 @@ using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// PORTU ZORUNLU 7074 YAP
+builder.WebHost.UseUrls("http://localhost:7074");
+
 // --- 1. JSON YAPILANDIRMASI (Kritik!) ---
-// Frontend'den gelen 'username' gibi küçük harfli verilerin 
-// C# tarafındaki 'Username' (büyük harf) kayıtlarına otomatik dolmasını sağlar.
 builder.Services.Configure<Microsoft.AspNetCore.Http.Json.JsonOptions>(options =>
 {
     options.SerializerOptions.PropertyNameCaseInsensitive = true;
@@ -34,7 +35,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
 // Yerel testlerde sorun yaşıyorsan geçici olarak yorum satırı yapabilirsin:
 // app.UseHttpsRedirection();
 

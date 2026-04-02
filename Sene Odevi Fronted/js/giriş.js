@@ -3,7 +3,7 @@ function login() {
     let user = document.getElementById("user").value;
     let pass = document.getElementById("pass").value;
     // Backend e Bağlan ardından User ve pass adlı değişkenleri gonder 
-    fetch("https://localhost:7074/login", {
+    fetch("http://localhost:7074/login", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
