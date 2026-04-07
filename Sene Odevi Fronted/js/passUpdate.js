@@ -1,35 +1,48 @@
-document.getElementById("passForm").addEventListener("submit", function (e) {
+import { closeModal } from "./modal.js";
+
+document.getElementById("passForm").addEventListener("submit", async function (e) {
     e.preventDefault();
 
     const username = document.getElementById("username").value.trim();
     const newPass = document.getElementById("newPass").value.trim();
     const newPassRepeat = document.getElementById("newPassRepeat").value.trim();
+    const resultEl = document.getElementById("result");
 
-    fetch("http://localhost:7074/updatepass", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-            Username: username,
-            NewPass: newPass,
-            NewPassRepeat: newPassRepeat
-        })
-    })
-        .then(async res => {
-            const data = await res.json();
-            console.log("Response status:", res.status);
-            console.log("Response data:", data);
+    // Front validation
+    if (newPass !== newPassRepeat) {
+        resultEl.innerText = "Şifreler uyuşmuyor ❌";
+        return;
+    }
 
-            document.getElementById("result").innerText = data.message || "İşlem tamamlandı";
-
-            if (res.ok && data.success) {
-                console.log("Şifre güncellendi ✅");
-                setTimeout(() => window.location.href = "giriş.html", 1000);
-            } else {
-                console.log("Şifre güncelleme başarısız ❌");
-            }
-        })
-        .catch(err => {
-            console.error("Fetch hatası:", err);
-            document.getElementById("result").innerText = "Sunucuya bağlanılamadı.";
+    try {
+        const res = await fetch("http://localhost:7074/updatepass", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                Username: username,
+                NewPass: newPass,
+                NewPassRepeat: newPassRepeat
+            })
         });
+
+        const data = await res.json();
+
+        resultEl.innerText = data.message || "İşlem tamamlandı";
+
+        if (res.ok && data.success) {
+            console.log("Şifre güncellendi ✅");
+
+            closeModal(); // 🔥 UI bağımlılığı burada temiz çözüldü
+
+            setTimeout(() => {
+                window.location.href = "giriş.html";
+            }, 1000);
+        } else {
+            console.log("Başarısız ❌");
+        }
+
+    } catch (err) {
+        console.error("Fetch hatası:", err);
+        resultEl.innerText = "Sunucuya bağlanılamadı.";
+    }
 });

@@ -1,4 +1,4 @@
-/* RENK DEĞİŞKENLERİ */
+/* --- DEĞİŞKENLER VE TEMEL AYARLAR --- */
 :root {
     --deep-black: #000000;
     --neon-lime: #CCFF00;
@@ -6,102 +6,132 @@
     --white: #FFFFFF;
     --muted-grey: #888888;
     --neon-glow: rgba(204, 255, 0, 0.4);
+    --input-bg: #0a0a0a;
 }
 
-/* GENEL BODY */
-body {
+* {
+    box-sizing: border-box; /* Genişlik hesaplamalarında padding'i içeri alır */
     margin: 0;
-    font-family: 'Segoe UI', Arial, sans-serif;
-
-    /* Deep Black Gradient */
-    background: linear-gradient(270deg, #000000, #1a1a1a, #0a0a0a);
-    background-size: 600% 600%;
-    animation: bgAnim 20s ease infinite;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    color: var(--white);
+    padding: 0;
 }
 
-/* CONTAINER */
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+html, body {
+    height: 100%;
     width: 100%;
-    animation: containerAnim 15s ease-in-out infinite;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
+    color: var(--white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
 
-/* FORM - Dark Grey */
-.form {
+/* --- ÜST MENÜ --- */
+.menu {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
+}
+
+.menu a {
+    color: var(--neon-lime);
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    transition: 0.3s;
+}
+
+.menu a:hover {
+    text-shadow: 0 0 10px var(--neon-glow);
+    opacity: 0.8;
+}
+
+/* --- FORM KONTEYNER (KART) --- */
+.form-container {
+    width: 90%; /* Mobilde ekranın %90'ını kaplar */
+    max-width: 420px; /* Kartın maksimum genişliğini biraz artırdım */
+    padding: 40px;
+    background-color: var(--dark-grey);
+    border-radius: 15px;
+    border: 1px solid #333;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9);
+    animation: slideIn 0.6s ease-out;
+}
+
+/* Form etiketinin içindeki elemanları tam yayması için */
+#passForm {
+    width: 100%; 
     display: flex;
     flex-direction: column;
-    gap: 12px;
-
-    width: 300px;
-    padding: 25px;
-
-    border-radius: 12px;
-    background-color: var(--dark-grey); /* Kart rengi uygulandı */
-    border: 1px solid #333; /* İnce belirginlik hattı */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-
-    transition: transform 0.3s ease, border-color 0.3s ease;
+    gap: 12px; /* Girişler arası mesafe */
 }
 
-.form:hover {
-    transform: scale(1.05);
-    border-color: var(--neon-lime); /* Hoverda neon çerçeve */
+.form-container h3 {
+    margin-bottom: 35px;
+    text-align: center;
+    color: var(--neon-lime);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 1.5rem;
+    text-shadow: 0 0 15px var(--neon-glow);
 }
 
-/* INPUT */
-.form input {
-    height: 38px;
-    border-radius: 6px;
-    border: 1px solid #333;
-    padding: 0 10px;
-    font-size: 14px;
-    background-color: #0a0a0a; /* Input içi daha koyu */
-    color: white;
-
-    transition: transform 0.2s ease, border-color 0.2s ease;
-}
-
-.form input:focus {
-    outline: none;
-    border-color: var(--neon-lime);
-    box-shadow: 0 0 8px var(--neon-glow);
-}
-
-/* BUTTON - Neon Lime */
+/* --- INPUT VE BUTON GENİŞLİK AYARI --- */
+.form-container input,
 .Update-btn {
-    background-color: var(--neon-lime); /* Vurgu rengi */
-    color: var(--deep-black); /* Siyah yazı */
-    height: 40px;
+    width: 100% !important; /* Dışarı taşmayı önler ve tam genişlik sağlar */
+    display: block;
+    outline: none;
+}
+
+.form-container input {
+    padding: 14px;
+    background-color: var(--input-bg);
+    border: 1px solid #2a2a2a;
     border-radius: 8px;
+    color: var(--white);
+    text-align: center;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-container input:focus {
+    border-color: var(--neon-lime);
+    box-shadow: 0 0 12px var(--neon-glow);
+    background-color: #000;
+}
+
+.form-container input::placeholder {
+    color: #444;
+}
+
+/* --- GÜNCELLEME BUTONU --- */
+.Update-btn {
+    padding: 15px;
+    margin-top: 15px;
+    background-color: var(--neon-lime);
+    color: var(--deep-black);
     border: none;
-    font-weight: bold;
+    border-radius: 8px;
+    font-weight: 900;
+    font-size: 1rem;
+    text-transform: uppercase;
     cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
 }
 
 .Update-btn:hover {
-    transform: scale(1.03);
+    background-color: #d4ff00;
     box-shadow: 0 0 20px var(--neon-glow);
-    filter: brightness(1.1);
+    transform: translateY(-2px);
 }
 
-/* ANIMATIONS */
-@keyframes bgAnim {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-@keyframes containerAnim {
-    0%   { transform: translateY(0); opacity: 1; }
-    50%  { transform: translateY(10px); opacity: 0.98; }
-    100% { transform: translateY(0); opacity: 1; }
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
 }

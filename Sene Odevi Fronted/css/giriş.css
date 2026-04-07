@@ -24,13 +24,22 @@ body {
 
 /* Arkaplan animasyonu */
 @keyframes bgAnim {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 .container {
-    width: 100%; /* Daha esnek bir yapı */
+    width: 100%;
+    /* Daha esnek bir yapı */
     height: 100%;
     display: flex;
     align-items: center;
@@ -40,7 +49,8 @@ body {
 
 /* FORM - Dark Grey ve Keskin Tasarım */
 .form {
-    width: 320px; /* Sabit ve şık bir genişlik */
+    width: 320px;
+    /* Sabit ve şık bir genişlik */
     padding: 30px;
     background: var(--dark-grey);
     display: flex;
@@ -59,6 +69,7 @@ body {
         opacity: 0;
         transform: translateY(60px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -114,7 +125,8 @@ body {
     height: 60px;
     display: flex;
     align-items: center;
-    background: transparent; /* Arka plan kaldırıldı */
+    background: transparent;
+    /* Arka plan kaldırıldı */
     padding-left: 20px;
 }
 
