@@ -14,14 +14,12 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Segoe UI', Arial, sans-serif;
-    /* Koyu ve akıcı arka plan */
     background: linear-gradient(to right, #000000, #1a1a1a, #000000);
     background-size: 300% 300%;
     animation: bgAnim 10s ease infinite;
     color: var(--white);
 }
 
-/* Arkaplan animasyonu */
 @keyframes bgAnim {
     0% {
         background-position: 0% 50%;
@@ -42,27 +40,31 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 10px;
+    box-sizing: border-box;
 }
 
-/* FORM - Dark Grey ve Neon Detaylar */
+/* FORM */
 .form {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 350px;
-    /* Daha derli toplu bir genişlik */
+    width: 100%;
+    max-width: 350px;
+    /* Responsive max-width */
     padding: 30px;
     background: var(--dark-grey);
     border: 1px solid #333;
     border-radius: 12px;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
     animation: formAnim 0.8s ease;
+    box-sizing: border-box;
 }
 
 @keyframes formAnim {
     from {
-        opacity: 0;
+        opacity: 0;F
         transform: translateY(50px);
     }
 
@@ -72,7 +74,6 @@ body {
     }
 }
 
-/* Cinsiyet alanı */
 .form .cinsiyet {
     color: var(--white);
     display: flex;
@@ -82,9 +83,9 @@ body {
     font-size: 14px;
 }
 
-/* INPUT - Koyu ve Odaklanınca Parlayan */
 .form input {
-    width: 90%;
+    width: 100%;
+    /* Responsive width */
     text-align: center;
     padding: 10px;
     margin: 8px 0;
@@ -102,9 +103,9 @@ body {
     box-shadow: 0 0 10px var(--neon-glow);
 }
 
-/* KAYIT BUTONU - Neon Lime */
 .kayıt-btn {
-    width: 95%;
+    width: 100%;
+    max-width: 100%;
     height: 42px;
     margin-top: 15px;
     font-weight: bold;
@@ -114,6 +115,9 @@ body {
     border: none;
     cursor: pointer;
     transition: 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .kayıt-btn:hover {
@@ -122,20 +126,20 @@ body {
     box-shadow: 0 0 20px var(--neon-glow);
 }
 
-/* MENÜ - Arka Plan Silindi */
+/* MENÜ */
 .menu {
     height: 60px;
     display: flex;
     align-items: center;
     background: transparent;
-    /* Arka plan kaldırıldı */
     padding-left: 20px;
+    flex-wrap: wrap;
+    gap: 10px;
     animation: fadeDown 0.7s ease;
 }
 
 .menu a {
     color: var(--neon-lime);
-    /* Linkler neon yapıldı */
     text-decoration: none;
     font-weight: bold;
     font-size: 14px;
@@ -147,30 +151,14 @@ body {
     transform: translateX(5px);
 }
 
+/* SOZLEŞME */
 .sozlesme {
     display: flex;
     justify-content: flex-start;
-    outline: none;
-}
-
-a {
-    text-decoration: none;
-    color: var(--neon-lime);
-}
-
-/* FOOTER */
-footer {
-    color: var(--muted-grey);
-    text-align: center;
-    margin-top: 20px;
-    font-size: 13px;
-    animation: fadeUp 0.7s ease;
-}
-
-.sozlesme {
     margin-top: 10px;
     font-size: 14px;
     color: #ccc;
+    outline: none;
 }
 
 .sozlesme label {
@@ -184,7 +172,6 @@ footer {
     width: 16px;
     height: 16px;
     accent-color: var(--white);
-    /* modern tarayıcılar */
     cursor: pointer;
 }
 
@@ -192,6 +179,15 @@ footer {
     color: var(--white);
     text-decoration: none;
     transition: 0.3s;
+}
+
+/* FOOTER */
+footer {
+    color: var(--muted-grey);
+    text-align: center;
+    margin-top: 20px;
+    font-size: 13px;
+    animation: fadeUp 0.7s ease;
 }
 
 /* FADE ANİMASYONLARI */
@@ -216,5 +212,50 @@ footer {
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+/* MEDIA QUERIES */
+@media (max-width: 768px) {
+    .form {
+        padding: 20px;
+        max-width: 90%;
+        /* Tablet uyumlu */
+    }
+
+    .menu a {
+        font-size: 13px;
+        padding: 6px 10px;
+    }
+
+    body {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .form {
+        padding: 15px;
+        max-width: 95%;
+        /* Mobil uyumlu */
+    }
+
+    .menu {
+        justify-content: center;
+    }
+
+    .menu a {
+        font-size: 12px;
+        padding: 5px 8px;
+    }
+
+    body {
+        font-size: 14px;
+    }
+
+    .sozlesme {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
     }
 }
