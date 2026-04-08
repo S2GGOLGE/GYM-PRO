@@ -30,21 +30,21 @@ function login() {
             Password: pass
         })
     })
-    .then(async res => {
-        const data = await res.json().catch(() => null);
+        .then(async res => {
+            const data = await res.json().catch(() => null);
 
-        if (!res.ok) {
-            alert(data?.message || "Kullanıcı adı veya şifre hatalı");
-            return;
-        }
+            if (!res.ok) {
+                alert(data?.message || "Kullanıcı adı veya şifre hatalı");
+                return;
+            }
 
-        alert(data?.message || "Giriş başarılı!");
-        window.location.href = "index.html";
-    })
-    .catch(err => {
-        console.error("Fetch hatası:", err);
-        alert("Sunucuya bağlanılamadı!");
-    });
+            alert(data?.message || "Giriş başarılı!");
+            window.location.href = "index.html";
+        })
+        .catch(err => {
+            console.error("Fetch hatası:", err);
+            alert("Sunucuya bağlanılamadı!");
+        });
 }
 
 // ======================
@@ -99,48 +99,11 @@ function sendCode() {
         },
         body: JSON.stringify({ Username: user })
     })
-    .then(res => res.json())
-    .then(data => {
-        alert(data?.message || "Kod gönderildi");
-    })
-    .catch(() => {
-        alert("Kod gönderilemedi!");
-    });
-}
-
-function resetPassword() {
-    const user = document.getElementById("resetUser").value.trim();
-    const code = document.getElementById("resetCode").value.trim();
-    const newPass = document.getElementById("newPass").value.trim();
-
-    if (!user || !code || !newPass) {
-        alert("Tüm alanları doldur");
-        return;
-    }
-
-    fetch("http://localhost:7074/reset-password", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            Username: user,
-            Code: code,
-            NewPassword: newPass
+        .then(res => res.json())
+        .then(data => {
+            alert(data?.message || "Kod gönderildi");
         })
-    })
-    .then(async res => {
-        const data = await res.json().catch(() => null);
-
-        if (!res.ok) {
-            alert(data?.message || "Şifre güncellenemedi");
-            return;
-        }
-
-        alert("Şifre güncellendi!");
-        closeModal();
-    })
-    .catch(() => {
-        alert("Sunucu hatası!");
-    });
+        .catch(() => {
+            alert("Kod gönderilemedi!");
+        });
 }
