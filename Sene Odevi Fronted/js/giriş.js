@@ -1,8 +1,25 @@
+// ======================
+// GLOBAL
+// ======================
+let modal;
+
+// DOM tamamen yüklendiğinde çalış
+document.addEventListener("DOMContentLoaded", () => {
+    modal = document.getElementById("modal");
+});
+
+// ======================
+// LOGIN
+// ======================
 function login() {
-    //Parametler ve Id Ler tanınlanmıştır 
-    let user = document.getElementById("user").value;
-    let pass = document.getElementById("pass").value;
-    // Backend e Bağlan ardından User ve pass adlı değişkenleri gonder 
+    const user = document.getElementById("user").value.trim();
+    const pass = document.getElementById("pass").value.trim();
+
+    if (!user || !pass) {
+        alert("Boş alan bırakma");
+        return;
+    }
+
     fetch("http://localhost:7074/login", {
         method: "POST",
         headers: {
@@ -13,29 +30,117 @@ function login() {
             Password: pass
         })
     })
-        .then(async res => {
+    .then(async res => {
+        const data = await res.json().catch(() => null);
 
-            const data = await res.json().catch(() => null);
+        if (!res.ok) {
+            alert(data?.message || "Kullanıcı adı veya şifre hatalı");
+            return;
+        }
 
-            if (!res.ok) {
-                alert(data?.message || "Kullanıcı adı veya şifre hatalı");
-                return;
-            }
-
-            alert(data?.message || "Giriş başarılı!"); //Backend Onaylar ise devam et
-            window.location.href = "index.html";
-        })
-        .catch(err => {
-            console.error("Fetch hatası:", err);
-            alert("Sunucuya bağlanılamadı!");
-        });
+        alert(data?.message || "Giriş başarılı!");
+        window.location.href = "index.html";
+    })
+    .catch(err => {
+        console.error("Fetch hatası:", err);
+        alert("Sunucuya bağlanılamadı!");
+    });
 }
 
+// ======================
+// KAYIT SAYFASI
+// ======================
 function kayıt() {
-    //Kayıt Ol sayfasına yonlendirme
     window.location.href = "kayıtol.html";
 }
-function Pass_Update() {
-    //Şifre Yenileme Sayfasına Yonlendirme
-    window.location.href = "passwordupdate.html";
-} 
+
+// ======================
+// MODAL KONTROL
+// ======================
+function openModal() {
+    modal.style.display = "flex"; // FIX
+    document.body.style.overflow = "hidden";
+}
+
+function closeModal() {
+    modal.style.display = "none";
+    document.body.style.overflow = "auto";
+}
+
+// dışarı tıklayınca kapat
+window.addEventListener("click", function (e) {
+    if (e.target === modal) {
+        closeModal();
+    }
+});
+
+// ESC ile kapat
+document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") {
+        closeModal();
+    }
+});
+
+// ======================
+// ŞİFRE SIFIRLAMA
+// ======================
+function sendCode() {
+    const user = document.getElementById("resetUser").value.trim();
+
+    if (!user) {
+        alert("Kullanıcı adı gir");
+        return;
+    }
+
+    fetch("http://localhost:7074/send-code", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ Username: user })
+    })
+    .then(res => res.json())
+    .then(data => {
+        alert(data?.message || "Kod gönderildi");
+    })
+    .catch(() => {
+        alert("Kod gönderilemedi!");
+    });
+}
+
+function resetPassword() {
+    const user = document.getElementById("resetUser").value.trim();
+    const code = document.getElementById("resetCode").value.trim();
+    const newPass = document.getElementById("newPass").value.trim();
+
+    if (!user || !code || !newPass) {
+        alert("Tüm alanları doldur");
+        return;
+    }
+
+    fetch("http://localhost:7074/reset-password", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            Username: user,
+            Code: code,
+            NewPassword: newPass
+        })
+    })
+    .then(async res => {
+        const data = await res.json().catch(() => null);
+
+        if (!res.ok) {
+            alert(data?.message || "Şifre güncellenemedi");
+            return;
+        }
+
+        alert("Şifre güncellendi!");
+        closeModal();
+    })
+    .catch(() => {
+        alert("Sunucu hatası!");
+    });
+}

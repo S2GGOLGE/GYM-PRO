@@ -23,7 +23,22 @@
             <button class="kayıtol-btn" onclick="kayıt()">Kayıt Ol</button>
 
             <!-- Artık modal yok, direkt sayfaya yönlendir -->
-            <button class="şifreupdate-btn"> Şifremi Unuttum</button>
+            <button class="şifreupdate-btn" onclick="openModal()">Şifremi Unuttum</button>
+        </div>
+    </div>
+    <!-- MODAL -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+
+            <h2>Şifre Sıfırla</h2>
+
+            <input type="text" placeholder="Email veya Kullanıcı Adı" id="resetUser">
+            <input type="text" placeholder="Doğrulama Kodu" id="resetCode">
+            <input type="password" placeholder="Yeni Şifre" id="newPass">
+
+            <button onclick="sendCode()">Kod Gönder</button>
+            <button onclick="resetPassword()">Şifreyi Güncelle</button>
         </div>
     </div>
 
