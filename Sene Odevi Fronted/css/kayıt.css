@@ -64,7 +64,7 @@ body {
 
 @keyframes formAnim {
     from {
-        opacity: 0;F
+        opacity: 0;
         transform: translateY(50px);
     }
 

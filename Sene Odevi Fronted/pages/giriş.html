@@ -34,10 +34,18 @@
 
             <h2>Şifre Sıfırla</h2>
 
-            <input type="text" placeholder="Email veya Kullanıcı Adı" id="resetUser">
-            <input type="text" placeholder="Doğrulama Kodu" id="resetCode">
-            <input type="password" placeholder="Yeni Şifre" id="newPass">
-            <button onclick="" class="sıfre-sıfırla-btn">Şifreyi Güncelle</button>
+            <form id="passForm">
+                <input type="text" placeholder="Kullanıcı Adı" id="username" required>
+
+                <!-- 🔥 yanlış: text değil password olmalı -->
+                <input type="password" placeholder="Yeni Şifre" id="newPass" required>
+
+                <input type="password" placeholder="Yeni Şifre Tekrar" id="newPassRepeat" required>
+
+                <button type="submit" class="sıfre-sıfırla-btn">Şifreyi Güncelle</button>
+            </form>
+
+            <p id="result"></p>
         </div>
     </div>
 
@@ -46,6 +54,7 @@
     </footer>
     <script src="/js/global.js"></script>
     <script src="/js/modal.js"></script>
+    <script src="/js/passUpdate.js"></script>
     <script src="/js/giriş.js"></script>
 </body>
 
