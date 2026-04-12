@@ -1,27 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>GYM | PRO İletişim</title>
     <link rel="stylesheet" href="/css/teknikdestek.css">
     <link rel="icon" href="/Images/logo.png">
 </head>
 
 <body>
-    <div class="container">
-        <div class="form">
-            <select name="" id="">
-                <option>Lutfen Konu Seçin</option>
-                <option value="">Destek</option>
-                <option value="">Şikayet</option>
-                <option value="">Öneri</option>
-            </select>
-            <textarea name="" id="" maxlength="150" placeholder="İletiniz ....."></textarea>
-            <button class="gonder-btn">Gönder</button>
-        </div>
+
+    <div class="menu">
+        <a href="/pages/index.html">← Geri Dön</a>
     </div>
+
+    <div class="container">
+        <!-- 🔥 FORM EKLEDİM -->
+        <form class="form" id="contactForm">
+
+            <h2>İletişime Geç</h2>
+
+            <!-- NAME EKLENDİ (backend için şart) -->
+            <input type="text" name="konu" placeholder="Konu..." required>
+
+            <!-- TEXTAREA FIX -->
+            <textarea name="mesaj" maxlength="150" placeholder="Mesajınız..." required></textarea>
+
+            <button type="submit" class="gonder-btn">Gönder</button>
+
+        </form>
+    </div>
+
 </body>
 
 </html>

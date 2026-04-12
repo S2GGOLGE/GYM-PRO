@@ -3,64 +3,166 @@
     --neon-lime: #CCFF00;
     --dark-grey: #1A1A1A;
     --white: #FFFFFF;
+    --muted-grey: #888888;
     --neon-glow: rgba(204, 255, 0, 0.4);
-    --Transparent: #00000000;
 }
-body {
-    background: linear-gradient(to left, #000000, #121212, #000000);
-    color: var(--white);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+/* RESET */
+* {
     margin: 0;
     padding: 0;
-    
-    /* Ortalamayı sağlayan kısım */
-    display: flex;
-    align-items: center;      /* Dikeyde ortalar */
-    justify-content: center;   /* Yatayda ortalar */
-    min-height: 100vh;        /* Ekran yüksekliğinin %100'ünü kullanır */
-}
-:root {
-    --deep-black: #000000;
-    --neon-lime: #CCFF00;
-    --dark-grey: #1A1A1A;
-    --white: #FFFFFF;
-    --neon-glow: rgba(204, 255, 0, 0.4);
+    box-sizing: border-box;
 }
 
-/* Container varsayılan hali */
+/* BODY */
+body {
+    background: linear-gradient(to left, #000000, #1A1A1A);
+    color: var(--white);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+/* CONTAINER */
 .container {
-    width: 50%;
     background-color: var(--dark-grey);
+    /* HATA FIX */
+    width: 90%;
+    max-width: 700px;
+    padding: 30px;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
-    border-radius: 10px;
-    height: 150px;
-    
-    /* Hover geçişinin yumuşak olması için buraya ekledik */
-    transition: all 0.3s ease-in-out;
-    border: 2px solid transparent; /* Kenarlığın kaymaması için başlangıçta şeffaf border */
-}
 
-/* Hover (Üzerine Gelindiğinde) */
-.container:hover {
-    border-radius: 2px;
-    border-color: var(--neon-lime);
-    /* Neon ışıltısı efekti */
-    box-shadow: 0 0 15px var(--neon-glow);
-    transform: translateY(-5px); /* Hafif yukarı kalkma efekti (isteğe bağlı) */
-}
-
-/* Form geçişi */
-.form {
-    background-color: var(--deep-black);
-    width: 60%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    border-radius: 10px;
-    gap: 10px;
+    border-radius: 12px;
+    border: 1px solid #333;
     transition: 0.3s;
+}
+
+/* FORM */
+.form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    padding: 25px;
+    border-radius: 10px;
+    background-color: #111;
+    border: 1px solid #333;
+
+    transition: 0.3s;
+}
+
+/* INPUT + TEXTAREA */
+.form input,
+.form textarea {
+    width: 100%;
+    padding: 12px;
+
+    border-radius: 6px;
+    border: 1px solid #444;
+    background-color: #0a0a0a;
+
+    color: var(--white);
+    font-size: 14px;
+
+    transition: 0.25s;
+}
+
+/* PLACEHOLDER */
+.form input::placeholder,
+.form textarea::placeholder {
+    color: var(--muted-grey);
+}
+
+/* FOCUS EFFECT */
+.form input:focus,
+.form textarea:focus {
+    outline: none;
+    border-color: var(--neon-lime);
+    box-shadow: 0 0 12px var(--neon-glow);
+    transform: scale(1.02);
+}
+
+/* CONTAINER GLOW (input focus olunca) */
+.container:focus-within {
+    box-shadow: 0 0 25px rgba(204, 255, 0, 0.08);
+    border-color: var(--neon-lime);
+}
+
+/* BUTTON */
+.gonder-btn {
+    margin-top: 10px;
+
+    padding: 12px;
+    width: 100%;
+
+    background: var(--neon-lime);
+    color: var(--deep-black);
+
+    border: none;
+    border-radius: 6px;
+
+    font-weight: bold;
+    letter-spacing: 0.5px;
+
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+/* HOVER */
+.gonder-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px var(--neon-glow);
+    background-color: #d4ff33;
+}
+
+/* CLICK EFFECT */
+.gonder-btn:active {
+    transform: scale(0.97);
+}
+
+.menu {
+    position: fixed;
+    /* 🔥 kritik */
+    top: 20px;
+    left: 20px;
+
+    height: 60px;
+    display: flex;
+    align-items: center;
+    background: transparent;
+    padding: 0 20px;
+    gap: 10px;
+    z-index: 1000;
+}
+
+.menu a {
+    color: var(--neon-lime);
+    font-size: 13pt;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 10px 15px;
+    transition: 0.3s;
+}
+
+.menu a:hover {
+    text-shadow: 0 0 10px var(--neon-glow);
+    transform: translateY(-2px);
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+    }
+
+    .form {
+        padding: 20px;
+    }
 }
