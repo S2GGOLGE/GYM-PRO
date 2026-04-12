@@ -32,9 +32,15 @@
 
             <div class="sozlesme">
                 <input type="checkbox" id="sozlesme">
-                <a href="/pages/sozleşme.html" target="_blank">
-                    Kullanıcı Sözleşmesini Okudum Onaylıyorum
-                </a>
+                <a href="#" id="openModalLink">Sözleşmeyi Aç</a>
+
+                <div id="modal" class="modal">
+                    <div class="modal-content">
+                        <span class="close" id="closeModal">&times;</span>
+                        <h2>Sözleşme</h2>
+                        <p>Buraya içerik gelecek...</p>
+                    </div>
+                </div>
             </div>
 
             <input type="password" id="pass" placeholder="Şifre">
@@ -48,7 +54,6 @@
     <footer>
         <p>© 2026 GymPro</p>
     </footer>
-
     <script src="/js/kayit.js"></script>
 
 </body>

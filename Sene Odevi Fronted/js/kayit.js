@@ -11,7 +11,7 @@ function kayit() {
     let passwordRepeat = document.getElementById("passRepeat").value;
 
     let gender = document.getElementById("erkek").checked ? "Erkek" :
-                 document.getElementById("bayan").checked ? "Bayan" : "";
+        document.getElementById("bayan").checked ? "Bayan" : "";
 
     let sozlesme = document.getElementById("sozlesme").checked;
 
@@ -51,17 +51,38 @@ function kayit() {
         },
         body: JSON.stringify(data)
     })
-    .then(async res => {
-        const result = await res.json();
-        if (!res.ok) throw new Error(result.message);
-        return result;
-    })
-    .then(res => {
-        alert(res.message);
-        if (res.success) window.location.href = "giriş.html";
-    })
-    .catch(err => {
-        console.error(err);
-        alert("Hata: " + err.message);
-    });
+        .then(async res => {
+            const result = await res.json();
+            if (!res.ok) throw new Error(result.message);
+            return result;
+        })
+        .then(res => {
+            alert(res.message);
+            if (res.success) window.location.href = "giriş.html";
+        })
+        .catch(err => {
+            console.error(err);
+            alert("Hata: " + err.message);
+        });
 }
+const modal = document.getElementById("modal");
+const openLink = document.getElementById("openModalLink");
+const closeBtn = document.getElementById("closeModal");
+
+// Linke tıklayınca aç
+openLink.addEventListener("click", (e) => {
+    e.preventDefault(); // linkin sayfa yenilemesini engeller
+    modal.style.display = "flex";
+});
+
+// Kapat
+closeBtn.addEventListener("click", () => {
+    modal.style.display = "none";
+});
+
+// Dışarı tıklayınca kapat
+window.addEventListener("click", (e) => {
+    if (e.target === modal) {
+        modal.style.display = "none";
+    }
+});

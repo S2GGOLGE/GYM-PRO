@@ -179,6 +179,9 @@ body {
     color: var(--white);
     text-decoration: none;
     transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* FOOTER */
@@ -258,4 +261,84 @@ footer {
         align-items: flex-start;
         gap: 5px;
     }
+}
+/* ======================
+   MODAL BACKDROP
+====================== */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.75);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+    z-index: 9999;
+}
+
+/* ======================
+   MODAL BOX
+====================== */
+.modal-content {
+    background: var(--dark-grey);
+    color: var(--white);
+
+    width: 500px;
+    max-width: 95%;
+    max-height: 85vh;
+
+    padding: 25px;
+    border-radius: 12px;
+
+    overflow-y: auto;
+    position: relative;
+
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
+}
+
+/* ======================
+   CLOSE BUTTON
+====================== */
+.close {
+    position: absolute;
+    top: 12px;
+    right: 15px;
+
+    font-size: 22px;
+    cursor: pointer;
+
+    color: var(--white);
+    transition: 0.2s;
+}
+
+.close:hover {
+    color: var(--neon-lime);
+}
+
+/* ======================
+   TEXT STYLE (SÖZLEŞME)
+====================== */
+.modal-content h1 {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.modal-content h2 {
+    font-size: 16px;
+    margin-top: 15px;
+    margin-bottom: 8px;
+
+    color: var(--neon-lime);
+}
+
+.modal-content p {
+    font-size: 14px;
+    line-height: 1.6;
+
+    color: #ddd;
+    margin-bottom: 10px;
 }
