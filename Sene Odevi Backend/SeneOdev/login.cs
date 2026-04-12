@@ -5,7 +5,7 @@ namespace SeneOdev
 {
     public class Login
     {
-        public static string GirisYap(string username, string password)
+        public static string GirisYap(string username, string password,string token)
         {
             string sonuc = BosAlanKontrolu(username, password);
             if (sonuc != "OK")
@@ -23,10 +23,9 @@ namespace SeneOdev
             islem.Parameters.AddWithValue("@username", username);
 
             using var reader = islem.ExecuteReader();
-
+            token = username;
             if (!reader.Read())
                 return "Kullanıcı yok";
-
             string dbPassword = reader["PasswordHash"].ToString();
             string dbSalt = reader["Salt"].ToString();
 
