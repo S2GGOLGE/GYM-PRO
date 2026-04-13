@@ -30,8 +30,8 @@
 
             <!-- CİNSİYET -->
             <div class="cinsiyet">
-                <label><input type="radio" name="gender" id="erkek"> Erkek</label>
-                <label><input type="radio" name="gender" id="bayan"> Bayan</label>
+                <label class="erkek"><input type="radio" name="gender" id="erkek"> Erkek</label>
+                <label class="bayan"><input type="radio" name="gender" id="bayan"> Bayan</label>
             </div>
 
             <!-- SÖZLEŞME -->
@@ -39,11 +39,10 @@
 
                 <label>
                     <input type="checkbox" id="sozlesme">
-                    Kullanıcı sözleşmesini kabul ediyorum
                 </label>
 
-                <a href="#" onclick="openModal('sozlesmeModal'); return false;">
-                    Sözleşmeyi Gör
+                <a href="#" onclick="openModal('sozlesmeModal'); return false;" class="sozlesme">
+                    Sözleşmeyi Oku
                 </a>
 
             </div>

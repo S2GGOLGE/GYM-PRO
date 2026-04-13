@@ -148,10 +148,12 @@ body {
 /* SOZLEŞME */
 .sozlesme {
     display: flex;
-    justify-content: flex-start;
-    margin-top: 10px;
+    justify-content: center;
+    align-items: center;
     font-size: 14px;
     color: #ccc;
+    text-decoration: none;
+    padding-left: 5px;
 }
 
 .sozlesme label {
@@ -226,4 +228,7 @@ footer {
     .menu a {
         font-size: 12px;
     }
+}
+.cinsiyet,.erkek,.bayan{
+    text-align: center;
 }

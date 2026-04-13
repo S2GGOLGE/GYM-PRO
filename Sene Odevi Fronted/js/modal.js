@@ -1,40 +1,24 @@
-// TÜM MODALLARI AL
-let modals = {};
+// MODAL SYSTEM (TEK NOKTA KONTROL)
 
-// DOM yüklendiğinde
-document.addEventListener("DOMContentLoaded", () => {
-    document.querySelectorAll(".modal").forEach(m => {
-        modals[m.id] = m;
-    });
-});
-
-// ======================
-// MODAL AÇ
-// ======================
 function openModal(id) {
-    const modal = modals[id];
+    const modal = document.getElementById(id);
     if (!modal) return;
 
     modal.style.display = "flex";
     document.body.style.overflow = "hidden";
 }
 
-// ======================
-// MODAL KAPAT
-// ======================
 function closeModal(id) {
-    const modal = modals[id];
+    const modal = document.getElementById(id);
     if (!modal) return;
 
     modal.style.display = "none";
     document.body.style.overflow = "auto";
 }
 
-// ======================
-// DIŞ CLICK
-// ======================
-window.addEventListener("click", function (e) {
-    Object.values(modals).forEach(modal => {
+// DIŞA TIKLAYINCA KAPAT
+window.addEventListener("click", (e) => {
+    document.querySelectorAll(".modal").forEach(modal => {
         if (e.target === modal) {
             modal.style.display = "none";
             document.body.style.overflow = "auto";
@@ -42,12 +26,10 @@ window.addEventListener("click", function (e) {
     });
 });
 
-// ======================
-// ESC
-// ======================
-document.addEventListener("keydown", function (e) {
+// ESC KAPAT
+document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
-        Object.values(modals).forEach(modal => {
+        document.querySelectorAll(".modal").forEach(modal => {
             modal.style.display = "none";
         });
         document.body.style.overflow = "auto";
