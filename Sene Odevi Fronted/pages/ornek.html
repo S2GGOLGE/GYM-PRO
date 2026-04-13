@@ -6,62 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        .modal {
-            display: none;
+        .modal{
             position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.7);
-            justify-content: center;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
             align-items: center;
-        }
-
-        .modal-content {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            min-width: 300px;
-        }
-
-        .close {
-            cursor: pointer;
-            float: right;
-            font-size: 20px;
+            justify-content: center;
+            background-color: red;
         }
     </style>
 </head>
 
 <body>
-    <a href="#" id="openModalLink">Sözleşmeyi Aç</a>
-
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <span class="close" id="closeModal">&times;</span>
-            
-        </div>
+    <a href="#" id="modal-aç">Modal aç</a>
+    <div class="modal">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus explicabo libero vero sunt perferendis
+        dolor quos dolorem impedit enim? Architecto nostrum consequatur provident quis culpa porro a eius ut deserunt!
+        <button id="form-btn">Sozleşmeyi kabul ettiniz</button>
     </div>
-    <script>
-        const modal = document.getElementById("modal");
-        const openLink = document.getElementById("openModalLink");
-        const closeBtn = document.getElementById("closeModal");
-
-        // Linke tıklayınca aç
-        openLink.addEventListener("click", (e) => {
-            e.preventDefault(); // linkin sayfa yenilemesini engeller
-            modal.style.display = "flex";
-        });
-
-        // Kapat
-        closeBtn.addEventListener("click", () => {
-            modal.style.display = "none";
-        });
-
-        // Dışarı tıklayınca kapat
-        window.addEventListener("click", (e) => {
-            if (e.target === modal) {
-                modal.style.display = "none";
-            }
-        });
-    </script>
 </body>
 
 </html>

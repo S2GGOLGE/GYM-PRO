@@ -5,57 +5,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Giriş | Gym Pro</title>
+
     <link rel="stylesheet" href="/css/giriş.css">
     <link rel="stylesheet" href="/css/modal.css">
     <link rel="icon" href="/Images/logo.png">
 </head>
 
 <body>
+
     <div class="menu">
-        <a href="/pages/başlangıc.html"> ← Geri Dön</a>
+        <a href="/pages/başlangıc.html">← Geri Dön</a>
     </div>
 
     <div class="container">
         <div class="form">
+
             <input type="text" placeholder="Kullanıcı Adı" id="user">
             <input type="password" placeholder="Şifre" id="pass">
 
             <button class="gırıs-btn" onclick="login()">Giriş</button>
             <button class="kayıtol-btn" onclick="kayıt()">Kayıt Ol</button>
 
-            <!-- Artık modal yok, direkt sayfaya yönlendir -->
-            <button class="şifreupdate-btn" onclick="openModal()">Şifremi Unuttum</button>
+            <button class="şifreupdate-btn" onclick="openModal('modal')">
+                Şifremi Unuttum
+            </button>
+
         </div>
     </div>
+
     <!-- MODAL -->
     <div id="modal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
+
+            <span class="close" onclick="closeModal('modal')">&times;</span>
 
             <h2>Şifre Sıfırla</h2>
 
             <form id="passForm">
+
                 <input type="text" placeholder="Kullanıcı Adı" id="username" required>
 
-                <!-- 🔥 yanlış: text değil password olmalı -->
                 <input type="password" placeholder="Yeni Şifre" id="newPass" required>
 
                 <input type="password" placeholder="Yeni Şifre Tekrar" id="newPassRepeat" required>
 
-                <button type="submit" class="sıfre-sıfırla-btn">Şifreyi Güncelle</button>
+                <button type="submit" class="sıfre-sıfırla-btn">
+                    Şifreyi Güncelle
+                </button>
+
             </form>
 
             <p id="result"></p>
+
         </div>
     </div>
 
     <footer>
         <p>© 2026 GymPro</p>
     </footer>
-    <script src="/js/global.js"></script>
+
     <script src="/js/modal.js"></script>
     <script src="/js/passUpdate.js"></script>
     <script src="/js/giriş.js"></script>
+
 </body>
 
 </html>

@@ -37,9 +37,8 @@ function kayit() {
         email,
         phone,
         gender,
-        sozlesme: "true",
-        password,
-        passwordRepeat
+        sozlesme: true,
+        password
     };
 
     console.log("DATA:", data);
@@ -65,24 +64,6 @@ function kayit() {
             alert("Hata: " + err.message);
         });
 }
-const modal = document.getElementById("modal");
-const openLink = document.getElementById("openModalLink");
-const closeBtn = document.getElementById("closeModal");
-
-// Linke tıklayınca aç
-openLink.addEventListener("click", (e) => {
-    e.preventDefault(); // linkin sayfa yenilemesini engeller
-    modal.style.display = "flex";
-});
-
-// Kapat
-closeBtn.addEventListener("click", () => {
-    modal.style.display = "none";
-});
-
-// Dışarı tıklayınca kapat
-window.addEventListener("click", (e) => {
-    if (e.target === modal) {
-        modal.style.display = "none";
-    }
-});
+function sozlesmeOnayla() {
+    document.getElementById("sozlesme").checked = true;
+}
