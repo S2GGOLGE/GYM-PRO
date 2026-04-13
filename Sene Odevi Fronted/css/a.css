@@ -28,15 +28,27 @@ body {
     justify-content: center;
     height: 100vh;
     gap: 20px;
+    order: 1;
 }
 
 .container2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    gap: 20px;
+    order: 2;
+}
+
+.container3 {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     justify-content: center;
     height: 100vh;
     gap: 20px;
+    order: 3;
 }
 
 /* KUTULAR - Neon Etkili */
