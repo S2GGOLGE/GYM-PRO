@@ -9,9 +9,17 @@
 
 /* ANİMASYONLU ARKA PLAN */
 @keyframes gradientBG {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 body {
@@ -46,7 +54,8 @@ body {
 .content {
     display: flex;
     gap: 30px;
-    flex-wrap: wrap; /* responsive için */
+    flex-wrap: wrap;
+    /* responsive için */
     justify-content: center;
 }
 
@@ -94,6 +103,10 @@ footer {
     font-size: 14px;
     text-align: center;
 }
-a{
+
+a {
     text-decoration: none;
+    color: var(--white);
+    font-size: 20pt;
+    display: block;
 }
