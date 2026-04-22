@@ -103,8 +103,6 @@ app.MapPost("/updatepass", ([FromBody] PassUpdateRequest request) =>
 
     Console.WriteLine($"ŞİFRE YENİLEME: {request.Username}");
 
-    // Bu kısmın çalışması için PassUpdate sınıfında 
-    // Update(user, pass, passrepeat) gibi bir metodun olmalı.
     var model = new PassUpdate
     {
         Username = request.Username,

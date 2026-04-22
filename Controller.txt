@@ -1,0 +1,14 @@
+CREATE TABLE Users(
+    UserID       INT IDENTITY(1,1) PRIMARY KEY,
+    Name         NVARCHAR(50)  NOT NULL,
+    Surname      NVARCHAR(50)  NOT NULL,
+    Username     NVARCHAR(50)  NOT NULL UNIQUE,
+    Email        NVARCHAR(100) NOT NULL UNIQUE,
+    Phone        NVARCHAR(20)  NULL,
+    Gender       NVARCHAR(10)  NULL,
+    PasswordHash NVARCHAR(256) NOT NULL,
+    Salt         NVARCHAR(128) NOT NULL,
+    CreatedAt    DATETIME      DEFAULT GETDATE(),
+    IsActive     BIT           DEFAULT 1
+)
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

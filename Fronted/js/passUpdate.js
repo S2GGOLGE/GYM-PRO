@@ -15,7 +15,7 @@ document.getElementById("passForm").addEventListener("submit", async function (e
     }
 
     try {
-        const res = await fetch("http://localhost:7074/updatepass", {
+        const res = await fetch("https://localhost:7074/updatepass", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({

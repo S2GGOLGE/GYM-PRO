@@ -55,7 +55,7 @@ namespace SeneOdev
                 string salt = hash.GenereateSalt();
                 string passwordHash = hash.Hash(Password, salt);
 
-                string query = @"INSERT INTO Users (Name, Surname, Username, Email, Phone, Gender, Hash, Salt) 
+                string query = @"INSERT INTO Users (Name, Surname, Username, Email, Phone, Gender, PasswordHash , Salt) 
                 VALUES (@Name, @Surname, @Username, @Email, @Phone, @Gender, @Hash, @Salt)";
 
                 using var cmd = new SqlCommand(query, baglanti);
