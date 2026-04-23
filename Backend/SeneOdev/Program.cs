@@ -1,5 +1,8 @@
 using SeneOdev;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,6 +26,24 @@ builder.Services.AddCors(options =>
     });
 });
 
+// 🔥 JWT DOĞRULAMA
+var jwtKey = builder.Configuration["Jwt:Key"]
+    ?? throw new Exception("JWT Key bulunamadı! appsettings.json kontrol et.");
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = false,
+            ValidateAudience = false,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey))
+        };
+    });
+
+builder.Services.AddAuthorization();
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -30,16 +51,17 @@ var app = builder.Build();
 
 app.UseCors("AllowAll");
 
+// 🔥 AUTHENTICATION & AUTHORIZATION
+app.UseAuthentication();
+app.UseAuthorization();
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-// Yerel testlerde sorun yaşıyorsan geçici olarak yorum satırı yapabilirsin:
-// app.UseHttpsRedirection();
 
 // --- ENDPOINT'LER ---
-
 // LOGIN
 app.MapPost("/login", ([FromBody] LoginRequest request) =>
 {
@@ -47,14 +69,18 @@ app.MapPost("/login", ([FromBody] LoginRequest request) =>
     string sonuc = Login.GirisYap(request.Username, request.Password);
 
     if (sonuc == "OK")
-        return Results.Ok(new { success = true, message = "Giriş başarılı" });
+    {
+        var token = TokenService.GenerateToken(request.Username);
+        return Results.Ok(new { success = true, message = "Giriş başarılı", token });
+    }
 
     return Results.BadRequest(new { success = false, message = sonuc });
 });
-//SingUp
+
+// SIGNUP
 app.MapPost("/sign_up", ([FromBody] SignupRequest request) =>
 {
-    Console.WriteLine("SIGNUP ÇALIŞTI"); // 🔥 debug
+    Console.WriteLine("SIGNUP ÇALIŞTI");
 
     if (request == null)
         return Results.BadRequest(new { success = false, message = "Veri gelmedi" });
@@ -116,6 +142,8 @@ app.MapPost("/updatepass", ([FromBody] PassUpdateRequest request) =>
         ? Results.Ok(new { success = true, message = message })
         : Results.BadRequest(new { success = false, message = message });
 });
+
+// SUNUCU
 app.MapPost("/sunucu", ([FromBody] SunucuRequest request) =>
 {
     if (request == null)
@@ -123,17 +151,12 @@ app.MapPost("/sunucu", ([FromBody] SunucuRequest request) =>
 
     string sonuc = SUNUCU.Client(request.ıp, request.port);
 
-    return Results.Ok(new
-    {
-        success = true,
-        message = sonuc
-    });
+    return Results.Ok(new { success = true, message = sonuc });
 });
 
 app.Run();
 
-// --- DTO (VERİ TRANSFER) TANIMLARI ---
-
+// --- DTO TANIMLARI ---
 public record LoginRequest(string Username, string Password);
 
 public record SignupRequest(
@@ -155,4 +178,5 @@ public record PassUpdateRequest(
     string NewPass,
     string NewPassRepeat
 );
+
 public record SunucuRequest(string ıp, int port);
