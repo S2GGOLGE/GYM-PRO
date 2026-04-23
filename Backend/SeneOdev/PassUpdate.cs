@@ -21,7 +21,7 @@ namespace SeneOdev
                 using var baglanti = new SqlConnection(connstring);
                 baglanti.Open();
 
-                string islem = "UPDATE Kullanici SET [PasswordHash] = @Password, Salt = @Salt WHERE Username = @Username";
+                string islem = "UPDATE Users SET [PasswordHash] = @Password, Salt = @Salt WHERE Username = @Username";
                 string salt = hash.GenereateSalt();
                 string hashedPassword = hash.Hash(NewPass, salt);
 
