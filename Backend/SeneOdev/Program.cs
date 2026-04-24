@@ -1,7 +1,8 @@
-using SeneOdev;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
+using SeneOdev;
+using System.Net.Sockets;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -143,16 +144,25 @@ app.MapPost("/updatepass", ([FromBody] PassUpdateRequest request) =>
         : Results.BadRequest(new { success = false, message = message });
 });
 
-// SUNUCU
-app.MapPost("/sunucu", ([FromBody] SunucuRequest request) =>
+// ─────────────────────────────────────────
+// HOME SERVER BAĞLANTISI
+// ─────────────────────────────────────────
+try
 {
-    if (request == null)
-        return Results.BadRequest(new { success = false, message = "Veri gelmedi" });
+    var homeClient = new TcpClient();
+    await homeClient.ConnectAsync("192.168.1.115", 8587);
 
-    string sonuc = SUNUCU.Client(request.ıp, request.port);
+    string tanitim = "GYM PRO";
+    byte[] data = Encoding.UTF8.GetBytes(tanitim);
+    NetworkStream stream = homeClient.GetStream();
+    await stream.WriteAsync(data, 0, data.Length);
 
-    return Results.Ok(new { success = true, message = sonuc });
-});
+    Console.WriteLine("GYM-PRO SUNUCUYA BAĞLANDI");
+}
+catch (Exception ex)
+{
+    Console.WriteLine($"GYM-PRO BAĞLANTI HATASI: {ex.Message}");
+}
 
 app.Run();
 
@@ -178,5 +188,3 @@ public record PassUpdateRequest(
     string NewPass,
     string NewPassRepeat
 );
-
-public record SunucuRequest(string ıp, int port);

@@ -41,3 +41,17 @@
 h2{
     color: white;
 }
+.Kabul-btn{
+    background:var(--neon-lime);
+    color: var(--dark-grey);
+    width: 100px;
+    height: 40vh;
+    border-radius: 5px;
+}
+.Red-btn{
+    background: var(--dark-grey);
+    color: red;
+    width: 100px;
+    height: 40vh;
+    border-radius: 5px;
+}

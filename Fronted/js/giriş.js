@@ -24,12 +24,12 @@ function login() {
             }
 
             // 🔥 TOKEN KAYDET
-           // OLMASI GEREKEN
-if (data?.token) {
-    localStorage.setItem("token", data.token);
-    localStorage.setItem("username", user);
-    console.log("Token:", data.token); // 🔥
-}
+            // OLMASI GEREKEN
+            if (data?.token) {
+                localStorage.setItem("token", data.token);
+                localStorage.setItem("username", user);
+                console.log("Token:", data.token); // 🔥
+            }
 
             alert(data?.message || "Giriş başarılı!");
             window.location.href = "index.html";
