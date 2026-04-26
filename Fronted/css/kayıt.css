@@ -1,4 +1,3 @@
-/* RENK DEĞİŞKENLERİ */
 :root {
     --deep-black: #000000;
     --neon-lime: #CCFF00;
@@ -6,229 +5,191 @@
     --white: #FFFFFF;
     --muted-grey: #888888;
     --neon-glow: rgba(204, 255, 0, 0.4);
+    --input-bg: #0a0a0a;
 }
 
-html,
-body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    font-family: 'Segoe UI', Arial, sans-serif;
-    background: linear-gradient(to right, #000000, #1a1a1a, #000000);
-    background-size: 300% 300%;
-    animation: bgAnim 10s ease infinite;
-    color: var(--white);
-}
-
-@keyframes bgAnim {
-    0% {
-        background-position: 0% 50%;
-    }
-
-    50% {
-        background-position: 100% 50%;
-    }
-
-    100% {
-        background-position: 0% 50%;
-    }
-}
-
-/* SAYFA ORTALAMA */
-.container {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
+/* GLOBAL RESET */
+* {
     box-sizing: border-box;
 }
 
-/* FORM */
-.form {
+body {
+    /* Arka planı tamamen siyah-gri geçişli yaptık, sarı tonları silindi */
+    background: #000000;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* ARKA PLANDAKİ HAREKETLİ SARILIĞI SİLDİK (body::before kaldırıldı) */
+
+/* CONTAINER */
+.container {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    width: min(1050px, 95%);
+    min-height: 600px;
+    background: var(--dark-grey);
+    border-radius: 20px;
+    /* Kenar çizgisini daha belirgin ama sarımsı olmayan bir tona çektik */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 1);
+    overflow: hidden;
+    animation: fadeIn 0.8s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* SOL VE SAĞ ORTAK (Gradyanlardaki sarılıklar temizlendi) */
+.sol,
+.sağ {
+    flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    max-width: 350px;
-    padding: 50px;
-    background: var(--dark-grey);
-    border: 1px solid #333;
-    border-radius: 12px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
-    animation: formAnim 0.8s ease;
-    box-sizing: border-box;
+    padding: 40px;
+    /* Tamamen siyah merkezli gradyan */
+    background: radial-gradient(circle at center, #111111 0%, #000000 100%);
 }
 
-@keyframes formAnim {
-    from {
-        opacity: 0;
-        transform: translateY(50px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+/* SOL */
+.sol {
+    border-right: 2px solid var(--neon-lime);
+    /* İçeri sızan sarı ışık (inset shadow) kaldırıldı */
 }
 
-.form .cinsiyet {
-    color: var(--white);
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin: 15px 0;
-    font-size: 14px;
-}
-
-.form input {
-    width: 100%;
-    text-align: center;
-    padding: 10px;
-    margin: 8px 0;
-    border-radius: 6px;
-    border: 1px solid #333;
-    background-color: #0a0a0a;
-    color: var(--white);
-    transition: 0.3s;
-}
-
-.form input:focus {
-    outline: none;
-    border-color: var(--neon-lime);
-    transform: scale(1.02);
-    box-shadow: 0 0 10px var(--neon-glow);
-}
-
-.kayıt-btn {
-    width: 100%;
-    height: 42px;
-    margin-top: 15px;
-    font-weight: bold;
-    border-radius: 6px;
-    background-color: var(--neon-lime);
-    color: var(--deep-black);
-    border: none;
-    cursor: pointer;
-    transition: 0.3s ease;
-}
-
-.kayıt-btn:hover {
-    background-color: #e1ff5e;
-    transform: scale(1.05);
-    box-shadow: 0 0 20px var(--neon-glow);
-}
-
-/* MENÜ */
-.menu {
-    height: 60px;
-    display: flex;
-    align-items: center;
-    background: transparent;
-    padding-left: 20px;
-    flex-wrap: wrap;
-    gap: 10px;
-    animation: fadeDown 0.7s ease;
-}
-
-.menu a {
+.sol h2 {
     color: var(--neon-lime);
+    text-shadow: 0 0 15px var(--neon-glow);
+    font-size: 2rem;
+    text-align: center;
+    margin: 0;
+}
+
+/* SAĞ (FORM) */
+.sağ {
+    gap: 10px;
+}
+
+/* INPUT TASARIMI */
+.sağ input[type="text"],
+.sağ input[type="password"],
+.sağ input[type="email"],
+.sağ input[type="tel"],
+.sağ input {
+    width: 75%;
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 1px solid #222;
+    background: #050505;
+    color: var(--white);
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.sağ input:focus {
+    border-color: var(--neon-lime);
+    box-shadow: 0 0 15px var(--neon-glow);
+    background: #000;
+}
+
+/* CİNSİYET */
+.cinsiyet {
+    display: flex;
+    gap: 30px;
+    margin: 10px 0;
+    text-align: center;
+}
+
+.cinsiyet input[type="radio"] {
+    accent-color: var(--neon-lime);
+}
+
+.sozlesme a {
     text-decoration: none;
-    font-weight: bold;
+    color: var(--white);
     font-size: 14px;
-    transition: 0.3s;
 }
 
-.menu a:hover {
-    text-shadow: 0 0 8px var(--neon-glow);
-    transform: translateX(5px);
-}
-
-/* SOZLEŞME */
+/* SÖZLEŞME */
 .sozlesme {
     display: flex;
-    justify-content: center;
     align-items: center;
-    font-size: 14px;
-    color: #ccc;
-    text-decoration: none;
-    padding-left: 5px;
-}
-
-.sozlesme label {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    cursor: pointer;
+    gap: 10px;
 }
 
 .sozlesme input[type="checkbox"] {
-    width: 16px;
-    height: 16px;
-    accent-color: var(--white);
+    accent-color: var(--neon-lime);
 }
 
-/* FOOTER */
-footer {
+/* KAYIT BUTONU */
+.kayıt-btn {
+    width: 75%;
+    height: 45px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 10px;
+    background: var(--neon-lime);
+    color: var(--deep-black);
+    font-size: 11pt;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.kayıt-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 30px var(--neon-lime);
+}
+
+/* =========================
+   FOOTER
+========================= */
+.main-footer {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+.main-footer p {
+    margin: 0;
+    font-size: 10pt;
+    letter-spacing: 1px;
     color: var(--muted-grey);
-    text-align: center;
-    margin-top: 20px;
-    font-size: 13px;
-    animation: fadeUp 0.7s ease;
+    opacity: 0.6;
+    transition: 0.3s;
 }
 
-/* ANİMASYONLAR */
-@keyframes fadeDown {
-    from {
-        opacity: 0;
-        transform: translateY(-40px);
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .container {
+        flex-direction: column;
+        width: 90%;
+        margin: 20px 0;
     }
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
+    .sol {
+        border-right: none;
+        border-bottom: 2px solid var(--neon-lime);
     }
-}
-
-@keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(40px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* MEDIA */
-@media (max-width: 768px) {
-    .form {
-        padding: 20px;
-        max-width: 90%;
-    }
-
-    .menu a {
-        font-size: 13px;
-    }
-}
-
-@media (max-width: 480px) {
-    .form {
-        padding: 15px;
-        max-width: 95%;
-    }
-
-    .menu {
-        justify-content: center;
-    }
-
-    .menu a {
-        font-size: 12px;
-    }
-}
-.cinsiyet,.erkek,.bayan{
-    text-align: center;
 }

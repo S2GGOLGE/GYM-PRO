@@ -21,3 +21,5 @@ Data Source=Emree;Initial Catalog=GYM-PRO;Integrated Security=True;Multiple Acti
 Yapılacaklar
 Kullanıcı Giriş Yapmış ise çıkış link aktif giriş yapılı değil ise giriş aktif çıkış pasif
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Slider Resim Boyutu
+900*400px

@@ -1,11 +1,14 @@
 /* MODAL ANA EKRAN */
 .modal {
-    display: none; /* JS ile block veya flex yapılacak */
+    display: none;
+    /* JS ile block veya flex yapılacak */
     position: fixed;
     z-index: 9999;
     inset: 0;
-    background: rgba(0, 0, 0, 0.85); /* Biraz daha koyu, odak artar */
-    backdrop-filter: blur(8px); /* Blur miktarını artırdım, daha premium durur */
+    background: rgba(0, 0, 0, 0.85);
+    /* Biraz daha koyu, odak artar */
+    backdrop-filter: blur(8px);
+    /* Blur miktarını artırdım, daha premium durur */
     justify-content: center;
     align-items: center;
     padding: 20px;
@@ -15,9 +18,11 @@
 .modal-content {
     background: var(--dark-grey);
     padding: 30px;
-    border-radius: 20px; /* Container ile uyumlu olması için 20px yaptık */
-    border: 1px solid rgba(204, 255, 0, 0.3); /* Hafif neon çerçeve */
-    
+    border-radius: 20px;
+    /* Container ile uyumlu olması için 20px yaptık */
+    border: 1px solid rgba(204, 255, 0, 0.3);
+    /* Hafif neon çerçeve */
+
     width: 100%;
     max-width: 420px;
     max-height: 85vh;
@@ -26,8 +31,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 15px; /* Boşlukları biraz artırdım */
-    
+    gap: 15px;
+    /* Boşlukları biraz artırdım */
+
     /* MODAL PARLAMASI */
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.9), 0 0 20px rgba(204, 255, 0, 0.1);
 }
@@ -53,7 +59,8 @@
 
 .modal .close:hover {
     color: var(--neon-lime);
-    transform: rotate(90deg); /* Şık bir dönme efekti */
+    transform: rotate(90deg);
+    /* Şık bir dönme efekti */
 }
 
 /* MODAL İÇİNDEKİ FORM VE INPUTLAR */
@@ -66,7 +73,8 @@
 }
 
 .modal-content input {
-    width: 90%; /* Kutunun içine tam otursun */
+    width: 90%;
+    /* Kutunun içine tam otursun */
     padding: 12px;
     background: var(--input-bg);
     border: 1px solid #333;
@@ -98,4 +106,93 @@
 .sıfre-sıfırla-btn:hover {
     transform: scale(1.03);
     box-shadow: 0 0 20px var(--neon-lime);
+}
+
+
+/* 1. SÖZLEŞME İÇERİĞİNDEKİ BAŞLIKLAR (5. Gizlilik, 6. Yaş Sınırı vb.) */
+.modal-content h3,
+.modal-content h4 {
+    color: var(--neon-lime);
+    text-shadow: 0 0 8px var(--neon-glow);
+    margin-top: 20px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    width: 100%;
+    text-align: left;
+    /* Videodaki gibi sola dayalı başlıklar */
+}
+
+/* 2. SÖZLEŞME METNİ */
+.modal-content p {
+    color: var(--white);
+    line-height: 1.6;
+    font-size: 0.9rem;
+    opacity: 0.85;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+/* 3. SCROLLBAR (KAYDIRMA ÇUBUĞU) ÖZELLEŞTİRME */
+/* Videodaki o kaba gri çubuk yerine neon yeşili ince bir çubuk */
+.modal-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+    background: #050505;
+    /* Çubuğun geçtiği yol */
+    border-radius: 10px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background: var(--neon-lime);
+    /* Kaydırdığın parça */
+    border-radius: 10px;
+    box-shadow: 0 0 10px var(--neon-glow);
+}
+
+/* 4. MODAL İÇİNDEKİ BUTONLARIN YAN YANA DURMASI (Opsiyonel) */
+/* Kabul Et / Reddet butonlarını videodaki gibi alt alta değil yan yana istersen: */
+.modal-btn-group {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    margin-top: 20px;
+}
+.modal .Kabul-btn{
+    flex: 1;
+    padding: 12px;
+    background: transparent;
+    color: var(--neon-lime);
+    /* Neon Lime vurgu */
+    border: 1px solid var(--neon-lime);
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+.modal .Kabul-btn:hover {
+    background: var(--neon-glow);
+    color: white;
+    box-shadow: 0 0 15px rgba(255, 68, 68, 0.4);
+}
+/* Reddet Butonu Stili */
+.modal .Red-btn {
+    flex: 1;
+    padding: 12px;
+    background: transparent;
+    color: #ff4444;
+    /* Kırmızı vurgu */
+    border: 1px solid #ff4444;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.modal-red-btn:hover {
+    background: #ff4444;
+    color: white;
+    box-shadow: 0 0 15px rgba(255, 68, 68, 0.4);
 }

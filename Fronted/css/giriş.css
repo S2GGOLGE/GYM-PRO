@@ -29,7 +29,7 @@ body {
     overflow: hidden;
 
     /* animated background */
-    background: linear-gradient(-45deg, #000000, #1a1a1a, #0a0a0a);
+    background: #000000;
     background-size: 400% 400%;
     animation: bgMove 12s ease infinite;
 }

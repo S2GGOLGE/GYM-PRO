@@ -1,27 +1,21 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kayıt Ol | Gym Pro</title>
-
+    <title>GYM-PRO | Kayıt Ol</title>
     <link rel="stylesheet" href="/css/kayıt.css">
     <link rel="stylesheet" href="/css/modal.css">
     <link rel="icon" href="/Images/logo.png">
 </head>
 
 <body>
-
-    <!-- ÜST MENÜ -->
-    <div class="menu">
-        <a href="/pages/giriş.html">← Geri Dön</a>
-    </div>
-
-    <!-- FORM CONTAINER -->
     <div class="container">
-        <div class="form">
-
+        <div class="sol">
+            <h2>Kontrol sende. Sisteme gir ve seviyeni yükselt.</h2>
+        </div>
+        <div class="sağ">
             <input type="text" id="name" placeholder="Ad">
             <input type="text" id="surname" placeholder="Soyad">
             <input type="text" id="username" placeholder="Kullanıcı adı">
@@ -34,18 +28,7 @@
                 <label class="bayan"><input type="radio" name="gender" id="bayan"> Bayan</label>
             </div>
 
-            <!-- SÖZLEŞME -->
-            <div class="sozlesme">
 
-                <label>
-                    <input type="checkbox" id="sozlesme">
-                </label>
-
-                <a href="#" onclick="openModal('sozlesmeModal'); return false;" class="sozlesme">
-                    Sözleşmeyi Oku
-                </a>
-
-            </div>
 
             <!-- MODAL -->
             <div id="sozlesmeModal" class="modal">
@@ -89,19 +72,25 @@
 
             <!-- KAYIT BUTONU -->
             <button onclick="kayit()" class="kayıt-btn">Kayıt Ol</button>
+            <!-- SÖZLEŞME -->
+            <div class="sozlesme">
 
+                <label>
+                    <input type="checkbox" id="sozlesme">
+                </label>
+
+                <a href="#" onclick="openModal('sozlesmeModal'); return false;" class="sozlesme">
+                    Sözleşmeyi Oku
+                </a>
+
+            </div>
         </div>
     </div>
-
-    <!-- FOOTER -->
-    <footer>
-        <p>© 2026 GymPro</p>
+    <footer class="main-footer">
+        <p>&copy; 2026 GYM-PRO. Tüm Hakları Saklıdır.</p>
     </footer>
-
-    <!-- JS -->
     <script src="/js/modal.js"></script>
-    <script src="/js/kayit.js"></script>
-
+    <script src="/js/kayıt.js"></script>
 </body>
 
 </html>
