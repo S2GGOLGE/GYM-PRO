@@ -13,6 +13,7 @@ body {
     margin: 0;
     font-family: Arial;
     background: linear-gradient(-45deg, #000000, #1a1a1a, #0a0a0a);
+    overflow: hidden;
 }
 
 /* ANA YAPI */
@@ -31,12 +32,10 @@ body {
     align-items: center;
 }
 
-/* KAPALI HAL */
 .sidebar.closed {
     width: 70px;
 }
 
-/* BUTON */
 #menuBtn {
     width: 50px;
     height: 50px;
@@ -48,7 +47,6 @@ body {
     cursor: pointer;
 }
 
-/* MENÜ */
 .menu {
     width: 100%;
 }
@@ -63,22 +61,93 @@ body {
 }
 
 .menu a:hover {
-    background: var(--dark-grey);
+    background: var(--input-bg);
+    color: var(--neon-lime);
 }
 
-/* TEXT GİZLE */
 .sidebar.closed .menu a span {
     display: none;
 }
 
-/* CONTENT */
+/* CONTENT AREA */
 .content {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    gap: 15px;
+    overflow-y: auto;
 }
 
-/* iframe FULL */
 .content iframe {
     width: 100%;
-    height: 100vh;
+    height: 60vh; /* Slider'a yer açmak için */
     border: none;
+    border-radius: 12px;
+    background: var(--input-bg);
+}
+
+/* SLIDER */
+.slider {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.slides {
+    display: flex;
+    transition: 0.5s ease;
+}
+
+.slide {
+    min-width: 100%;
+}
+
+.slide img {
+    width: 100%;
+    display: block;
+}
+
+.btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.5);
+    border: none;
+    color: var(--neon-lime);
+    font-size: 20px;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 5;
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+.dots {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+.dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background: gray;
+    margin: 5px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.dot.active {
+    background: var(--neon-lime);
+}
+.footer{
+    text-align: center;
+    color: var(--white);
 }

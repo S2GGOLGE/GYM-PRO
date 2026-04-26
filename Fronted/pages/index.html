@@ -8,38 +8,53 @@
 
     <link rel="stylesheet" href="/css/style.css">
     <link rel="icon" href="/Images/logo.png">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.2.0/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body>
 
     <div class="container">
 
-        <!-- SOL SIDEBAR -->
-        <div id="sidebar" class="sidebar">
-
+        <nav id="sidebar" class="sidebar">
             <button id="menuBtn">
                 <i class="fa-solid fa-bars"></i>
             </button>
 
             <div class="menu">
                 <a href="index.html"><i class="fa fa-home"></i> <span>Ana Sayfa</span></a>
-                <a href="/pages/giriş.html"><i class="fa-solid fa-arrow-right-to-bracket"></i><span>Giriş</span></a>
-                <a href="/pages/giriş.html" ıd="cıkıs"><i class="fa-solid fa-arrow-right-from-bracket"></i><span>Çıkış</span></a>
+                <a href="/pages/giriş.html" target="orta"><i
+                        class="fa-solid fa-arrow-right-to-bracket"></i><span>Giriş</span></a>
+                <a href="/pages/giriş.html" id="cikis"><i
+                        class="fa-solid fa-arrow-right-from-bracket"></i><span>Çıkış</span></a>
                 <a href="/pages/hesap.html" target="orta"><i class="fa fa-user"></i> <span>Profil</span></a>
-               <a href="/pages/teknikdestek.html" target="orta"><i class="fa-solid fa-headset"></i> <span>Teknik Destek</span></a>
-               <a href="/pages/dowland.html" target="orta"><i class="fa-solid fa-download"></i><span>Dowland</span></a>
-               <a href="#Programlar"><i class="fa-solid fa-box-archive"></i><span>Programlar</span></a>
-               <a href="#Hocalarımız" target="orta">  <i class="fa-solid fa-chalkboard-user"><span>Hocalarımız</span></i></a>
+                <a href="/pages/teknikdestek.html" target="orta"><i class="fa-solid fa-headset"></i> <span>Teknik
+                        Destek</span></a>
+                <a href="/pages/download.html" target="orta"><i
+                        class="fa-solid fa-download"></i><span>Download</span></a>
+                <a href="#"><i class="fa-solid fa-box-archive"></i><span>Programlar</span></a>
+                <a href="#"><i class="fa-solid fa-chalkboard-user"></i><span>Hocalarımız</span></a>
             </div>
+        </nav>
 
-        </div>
+        <main class="content">
+            <iframe src="/pages/ilk.html" name="orta"></iframe>
 
-        <!-- SAĞ CONTENT -->
-        <div class="content">
-            <iframe src="" name="orta"></iframe>
-        </div>
+            <div class="slider">
+                <div class="slides" id="slides">
+                    <div class="slide"><img src="https://picsum.photos/id/1015/900/400"></div>
+                    <div class="slide"><img src="https://picsum.photos/id/1016/900/400"></div>
+                    <div class="slide"><img src="https://picsum.photos/id/1018/900/400"></div>
+                </div>
 
+                <button class="btn prev" onclick="prevSlide()">❮</button>
+                <button class="btn next" onclick="nextSlide()">❯</button>
+
+                <div class="dots" id="dots"></div>
+            </div>
+            <div class="footer">
+                <p>&copy; 2026 GYM PRO. Tüm hakları saklıdır.</p>
+            </div>
+        </main>
     </div>
 
     <script src="/js/index.js"></script>
