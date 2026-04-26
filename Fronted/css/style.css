@@ -1,126 +1,84 @@
-/* DEĞİŞKENLER - Kolay yönetim için */
 :root {
-    --bg-deep-black: #000000;
-    --card-dark-grey: #1A1A1A;
-    --text-main-white: #FFFFFF;
-    --text-muted-grey: #888888;
+    --deep-black: #000000;
+    --neon-lime: #CCFF00;
+    --dark-grey: #1A1A1A;
+    --white: #FFFFFF;
+    --muted-grey: #888888;
     --neon-glow: rgba(204, 255, 0, 0.4);
+    --input-bg: #0a0a0a;
 }
 
-/* BODY ve arkaplan */
+/* RESET */
 body {
-    /* Degradeyi daha koyu ve derin bir geçişe çevirdik */
-    background: linear-gradient(to left, #000000, #121212, #000000);
-    background-size: 300% 300%;
-    animation: bgAnim 12s ease infinite;
-    font-family: 'Segoe UI', Arial, sans-serif; /* Daha modern bir font desteği */
-    color: var(--text-main-white);
     margin: 0;
+    font-family: Arial;
+    background: linear-gradient(-45deg, #000000, #1a1a1a, #0a0a0a);
 }
 
-@keyframes bgAnim {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+/* ANA YAPI */
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+/* SIDEBAR */
+.sidebar {
+    width: 220px;
+    background: var(--dark-grey);
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* KAPALI HAL */
+.sidebar.closed {
+    width: 70px;
+}
+
+/* BUTON */
+#menuBtn {
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+    background: var(--deep-black);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
 }
 
 /* MENÜ */
 .menu {
+    width: 100%;
+}
+
+.menu a {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     gap: 10px;
-    padding: 0 20px;
-    background: var(--card-dark-grey); /* Kart rengi */
-    border-bottom: 2px solid #333; /* Hafif belirginlik */
-    border-radius: 0 0 10px 10px;
-    height: 60px;
-    animation: fadeDown 0.8s ease;
-}
-
-.menu .btn {
-    height: 40px;
-    line-height: 40px;
-    padding: 0 15px;
-    font-size: 14px;
-    font-weight: bold;
-    color: var(--bg-deep-black); /* Neon üstüne siyah yazı */
-    background-color: var(--accent-neon-lime);
-    border: none;
-    border-radius: 5px;
+    padding: 12px;
+    color: white;
     text-decoration: none;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s;
 }
 
-.menu .btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 15px var(--neon-glow);
+.menu a:hover {
+    background: var(--dark-grey);
 }
 
-/* PROFİL RESMİ */
-.pp {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    margin: 0;
+/* TEXT GİZLE */
+.sidebar.closed .menu a span {
+    display: none;
 }
 
-.pp img {
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    border: 2px solid var(--accent-neon-lime); /* Resim etrafına neon halka */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.pp img:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 20px var(--neon-glow);
-}
-
-/* CAROUSEL ANİMASYON */
-.carousel-inner img {
-    width: 100%;
-    border-radius: 10px;
-    border: 1px solid #333;
-}
-
-/* CONTENT ve SAĞ ALAN */
+/* CONTENT */
 .content {
-    display: flex;
-    justify-content: center;
-    padding: 20px;
-    animation: fadeUp 0.8s ease;
+    flex: 1;
 }
 
-/* KUTU / KARTLAR */
-.kutu {
+/* iframe FULL */
+.content iframe {
     width: 100%;
-    height: 550px;
-    text-align: center;
-    background-color: var(--card-dark-grey); /* Bölüm rengi */
-    border-radius: 15px;
-    padding: 20px;
-    box-sizing: border-box;
-    border: 1px solid #222;
-}
-
-/* FOOTER */
-footer {
-    text-align: center;
-    padding: 20px 0;
-    color: var(--text-muted-grey); /* Yardımcı gri */
-    font-size: 13px;
-    animation: fadeUp 0.8s ease;
-}
-
-/* FADE ANİMASYONLARI (Aynı kaldı) */
-@keyframes fadeDown {
-    from { opacity: 0; transform: translateY(-40px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes fadeUp {
-    from { opacity: 0; transform: translateY(40px); }
-    to { opacity: 1; transform: translateY(0); }
+    height: 100vh;
+    border: none;
 }

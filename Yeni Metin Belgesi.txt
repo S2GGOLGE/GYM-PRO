@@ -1,3 +1,0 @@
-Bağlantı Dizesi
-Data Source=Emree;Initial Catalog=GYM-PRO;Integrated Security=True;Multiple Active Result Sets=True;Encrypt=False
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

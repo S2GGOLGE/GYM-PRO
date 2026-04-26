@@ -15,3 +15,12 @@ CREATE TABLE Users(
 Token KEY
 /PxTVX0YK0vxhq0IDiNPoU1PCGnWMhaj5BIavsinRys=
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Bağlantı Dizesi
+Data Source=Emree;Initial Catalog=GYM-PRO;Integrated Security=True;Multiple Active Result Sets=True;Encrypt=False
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Yapılacaklar
+Kullanıcı Giriş Yapmış ise çıkış link aktif giriş yapılı değil ise giriş aktif çıkış pasif
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+<a class="dropdown-item" href="#">Yetişkin</a>
+                <a class="dropdown-item" href="#">Genç</a>
+                <a class="dropdown-item" href="#">Bayan</a>
