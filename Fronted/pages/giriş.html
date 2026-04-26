@@ -1,25 +1,22 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Giriş | Gym Pro</title>
-
+    <title>GYM-PRO | Login</title>
+    <link rel="icon" href="/Images/logo.png">
     <link rel="stylesheet" href="/css/giriş.css">
     <link rel="stylesheet" href="/css/modal.css">
-    <link rel="icon" href="/Images/logo.png">
 </head>
 
 <body>
-
-    <div class="menu">
-        <a href="/pages/başlangıc.html">← Geri Dön</a>
-    </div>
-
     <div class="container">
-        <div class="form">
-
+        <div class="sol">
+            <h2>Performans burada başlar.</h5>
+                <h4>Sisteme giriş yap ve devam et.</h4>
+        </div>
+        <div class="sağ">
             <input type="text" placeholder="Kullanıcı Adı" id="user">
             <input type="password" placeholder="Şifre" id="pass">
 
@@ -29,11 +26,12 @@
             <button class="şifreupdate-btn" onclick="openModal('modal')">
                 Şifremi Unuttum
             </button>
-
         </div>
     </div>
-
-    <!-- MODAL -->
+    </div>
+    <footer class="main-footer">
+        <p>&copy; 2026 GYM-PRO. Tüm Hakları Saklıdır.</p>
+    </footer>
     <div id="modal" class="modal">
         <div class="modal-content">
 
@@ -59,15 +57,9 @@
 
         </div>
     </div>
-
-    <footer>
-        <p>© 2026 GymPro</p>
-    </footer>
-
-    <script src="/js/modal.js"></script>
-    <script type="module" src="/js/passUpdate.js"></script>
-    <script src="/js/giriş.js"></script>
-
+</body>
+<script src="/js/giriş.js"></script>
+<script src="/js/modal.js"></script>
 </body>
 
 </html>

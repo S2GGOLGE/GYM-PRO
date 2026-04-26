@@ -21,6 +21,3 @@ Data Source=Emree;Initial Catalog=GYM-PRO;Integrated Security=True;Multiple Acti
 Yapılacaklar
 Kullanıcı Giriş Yapmış ise çıkış link aktif giriş yapılı değil ise giriş aktif çıkış pasif
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-<a class="dropdown-item" href="#">Yetişkin</a>
-                <a class="dropdown-item" href="#">Genç</a>
-                <a class="dropdown-item" href="#">Bayan</a>
