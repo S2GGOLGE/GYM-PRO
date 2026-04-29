@@ -1,0 +1,193 @@
+/* ========================
+   ROOT VARIABLES
+   ======================== */
+:root {
+    --dark-grey: #1A1A1A;
+    --input-bg: #0a0a0a;
+    --neon-glow: rgba(204, 255, 0, 0.3);
+    --neon-lime: #CCFF00;
+}
+
+/* ========================
+   RESET
+   ======================== */
+body {
+    background: #0a0a0a;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+}
+
+/* ========================
+   GLOBAL
+   ======================== */
+a {
+    color: white;
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--neon-lime);
+}
+
+/* ========================
+   BANNER
+   ======================== */
+.banner {
+    align-items: center;
+    background: var(--dark-grey);
+    border-bottom: 1px solid var(--neon-lime);
+    box-shadow: 0 0 12px var(--neon-glow);
+    display: flex;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    justify-content: space-between;
+    padding: 8px 20px;
+    width: 100%;
+}
+
+.orta {
+    justify-content: center;
+}
+
+.sağ {
+    justify-content: flex-end;
+}
+
+.sol,
+.orta,
+.sağ {
+    align-items: center;
+    display: flex;
+    flex: 1;
+}
+
+/* ========================
+   ARAMA
+   ======================== */
+.search-box {
+    align-items: center;
+    background: var(--input-bg);
+    border: 1px solid #333;
+    border-radius: 20px;
+    display: flex;
+    gap: 8px;
+    padding: 6px 14px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    width: 300px;
+}
+
+.search-box:focus-within {
+    border-color: var(--neon-lime);
+    box-shadow: 0 0 8px var(--neon-glow);
+}
+
+.search-box i {
+    color: #555;
+    font-size: 13px;
+    transition: color 0.2s;
+}
+
+.search-box:focus-within i {
+    color: var(--neon-lime);
+}
+
+.search-box input {
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 14px;
+    outline: none;
+    width: 100%;
+}
+
+.search-box input::placeholder {
+    color: #555;
+}
+
+/* ========================
+   BUTONLAR
+   ======================== */
+.btn-bell {
+    align-items: center;
+    background: transparent;
+    border: 1px solid #444;
+    border-radius: 50%;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    height: 38px;
+    justify-content: center;
+    position: relative;
+    transition: border-color 0.2s, color 0.2s;
+    width: 38px;
+}
+
+.btn-bell:hover {
+    border-color: var(--neon-lime);
+    color: var(--neon-lime);
+}
+
+.btn-user {
+    align-items: center;
+    background: transparent;
+    border: 1px solid var(--neon-lime);
+    border-radius: 50%;
+    color: var(--neon-lime);
+    cursor: pointer;
+    display: flex;
+    height: 38px;
+    justify-content: center;
+    transition: background 0.2s, box-shadow 0.2s;
+    width: 38px;
+}
+
+.btn-user:hover {
+    background: var(--neon-glow);
+    box-shadow: 0 0 10px var(--neon-glow);
+}
+
+.daha-btn {
+    background: var(--neon-lime);
+    border-radius: 8px;
+    color: var(--dark-grey);
+    font-weight: bold;
+    padding: 10px 0;
+    transition: background 0.3s ease;
+    width: 50%;
+}
+
+/* ========================
+   CONTENT
+   ======================== */
+.content {
+    color: white;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+}
+
+/* ========================
+   DROPDOWN
+   ======================== */
+.dropdown-divider {
+    border-color: #333 !important;
+}
+
+.dropdown-item {
+    font-size: 14px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.dropdown-item:hover {
+    background: #222 !important;
+    color: var(--neon-lime) !important;
+}
+
+.dropdown-menu {
+    border: 1px solid #333 !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6) !important;
+    margin-top: 8px !important;
+    min-width: 180px !important;
+}
