@@ -22,6 +22,89 @@ body {
     overflow: hidden;
 }
 
+/* ========================
+   KEYFRAMES
+======================== */
+
+@keyframes containerReveal {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scanLine {
+    0%   { top: -2px; opacity: 0.8; }
+    50%  { opacity: 0.4; }
+    100% { top: 100%; opacity: 0; }
+}
+
+@keyframes headerSlide {
+    from { opacity: 0; transform: translateY(-20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes titlePulse {
+    0%, 100% {
+        text-shadow:
+            0 0 20px rgba(204, 255, 0, 0.4),
+            0 0 40px rgba(204, 255, 0, 0.2);
+    }
+    50% {
+        text-shadow:
+            0 0 30px rgba(204, 255, 0, 0.9),
+            0 0 60px rgba(204, 255, 0, 0.5),
+            0 0 90px rgba(204, 255, 0, 0.2);
+    }
+}
+
+@keyframes subtitleFade {
+    from { opacity: 0; letter-spacing: 6px; }
+    to   { opacity: 0.7; letter-spacing: 2px; }
+}
+
+@keyframes textReveal {
+    from { opacity: 0; transform: translateX(-18px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes btnPulse {
+    0%, 100% { box-shadow: 0 0 15px rgba(204, 255, 0, 0.4); }
+    50%       { box-shadow: 0 0 35px rgba(204, 255, 0, 0.8), 0 0 60px rgba(204, 255, 0, 0.3); }
+}
+
+@keyframes footerSlide {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes cardBreath {
+    0%, 100% {
+        box-shadow: 0 0 10px rgba(204, 255, 0, 0.1);
+        border-color: rgba(204, 255, 0, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 22px rgba(204, 255, 0, 0.3);
+        border-color: rgba(204, 255, 0, 0.6);
+    }
+}
+
+@keyframes cornerPulse {
+    0%, 100% { opacity: 0.35; }
+    50%       { opacity: 0.9; }
+}
+
+@keyframes particleFloat {
+    0%, 100% { transform: translateY(0);    opacity: 0.5; }
+    50%       { transform: translateY(-10px); opacity: 1; }
+}
+
+@keyframes ripple {
+    to { width: 300px; height: 300px; opacity: 0; }
+}
+
+/* ========================
+   CONTAINER
+======================== */
+
 .Container {
     display: flex;
     flex-direction: column;
@@ -32,15 +115,50 @@ body {
     overflow: hidden;
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
     position: relative;
+    animation: containerReveal 0.6s ease forwards;
 }
 
-/* HEADER */
+/* Scan line efekti */
+.Container::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--neon-lime), transparent);
+    animation: scanLine 5s linear infinite;
+    z-index: 10;
+    pointer-events: none;
+}
+
+/* Köşe süsleri */
+.corner {
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    border-color: var(--neon-lime);
+    border-style: solid;
+    animation: cornerPulse 3s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 5;
+}
+.corner-tl { top: 10px;    left: 10px;  border-width: 2px 0 0 2px; }
+.corner-tr { top: 10px;    right: 10px; border-width: 2px 2px 0 0; }
+.corner-bl { bottom: 10px; left: 10px;  border-width: 0 0 2px 2px; }
+.corner-br { bottom: 10px; right: 10px; border-width: 0 2px 2px 0; }
+
+/* ========================
+   HEADER
+======================== */
+
 .header {
     width: 100%;
     padding: 40px 0;
     background: #111111;
     text-align: center;
     border-bottom: 1px solid rgba(204, 255, 0, 0.2);
+    animation: headerSlide 0.7s ease 0.2s both;
 }
 
 .header h1 {
@@ -49,6 +167,7 @@ body {
     font-size: 32pt;
     letter-spacing: 4px;
     text-transform: uppercase;
+    animation: titlePulse 3s ease-in-out infinite;
 }
 
 .header h6 {
@@ -56,10 +175,14 @@ body {
     font-size: 10pt;
     margin-top: 10px;
     letter-spacing: 2px;
-    opacity: 0.7;
+    opacity: 0;
+    animation: subtitleFade 0.8s ease 0.9s forwards;
 }
 
-/* CONTENT */
+/* ========================
+   CONTENT
+======================== */
+
 .content {
     display: flex;
     flex: 1;
@@ -77,6 +200,22 @@ body {
 
 .sağ {
     border-left: 1px solid rgba(204, 255, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Parçacık efekti */
+.sağ::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        radial-gradient(1px 1px at 20% 30%, rgba(204, 255, 0, 0.35) 0%, transparent 100%),
+        radial-gradient(1px 1px at 75% 55%, rgba(204, 255, 0, 0.25) 0%, transparent 100%),
+        radial-gradient(1px 1px at 50% 80%, rgba(204, 255, 0, 0.3)  0%, transparent 100%),
+        radial-gradient(1px 1px at 85% 20%, rgba(204, 255, 0, 0.2)  0%, transparent 100%);
+    animation: particleFloat 6s ease-in-out infinite;
+    pointer-events: none;
 }
 
 .sol h1 {
@@ -84,15 +223,20 @@ body {
     font-size: 28pt;
     text-align: center;
     margin-bottom: 10px;
+    animation: textReveal 0.7s ease 0.4s both;
 }
 
 .sol p {
     color: var(--neon-lime);
     font-size: 14pt;
     opacity: 0.9;
+    animation: textReveal 0.7s ease 0.55s both;
 }
 
-/* BUTONLAR */
+/* ========================
+   BUTONLAR
+======================== */
+
 button {
     width: 200px;
     padding: 15px;
@@ -102,6 +246,24 @@ button {
     border-radius: 5px;
     transition: 0.3s;
     text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Ripple efekti */
+button::after {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 0; height: 0;
+    background: rgba(255, 255, 255, 0.18);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 1;
+    transition: none;
+}
+button:active::after {
+    animation: ripple 0.5s ease forwards;
 }
 
 .basla-btn {
@@ -109,25 +271,31 @@ button {
     color: black;
     border: none;
     box-shadow: 0 0 15px var(--neon-glow);
+    animation: btnPulse 2.5s ease-in-out infinite 1.5s, textReveal 0.7s ease 0.7s both;
 }
 
 .basla-btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 25px var(--neon-lime);
+    transform: scale(1.07);
+    box-shadow: 0 0 35px var(--neon-lime), 0 0 60px rgba(204, 255, 0, 0.4);
 }
 
 .kesfet-btn {
     background: transparent;
     color: white;
     border: 2px solid white;
+    animation: textReveal 0.7s ease 0.85s both;
 }
 
 .kesfet-btn:hover {
     background: white;
     color: black;
+    transform: scale(1.05);
 }
 
-/* FOOTER */
+/* ========================
+   FOOTER
+======================== */
+
 .footer {
     display: flex;
     justify-content: space-around;
@@ -135,9 +303,13 @@ button {
     background: #000;
     padding: 20px;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
+    animation: footerSlide 0.6s ease 0.6s both;
 }
 
-/* AKTİF KULLANICI KARTI (KART-1) */
+/* ========================
+   KART-1
+======================== */
+
 .Kart-1 {
     display: flex;
     align-items: center;
@@ -148,6 +320,7 @@ button {
     border-radius: 30px;
     box-shadow: 0 0 10px rgba(204, 255, 0, 0.1);
     transition: 0.4s ease;
+    animation: cardBreath 4s ease-in-out infinite;
 }
 
 .Kart-1 i {
@@ -175,7 +348,10 @@ button {
     transform: scale(1.05);
 }
 
-/* COPYRIGHT & SIGNATURE */
+/* ========================
+   COPYRIGHT & SIGNATURE
+======================== */
+
 .copyright p {
     color: var(--white);
     font-size: 0.8rem;
@@ -193,4 +369,134 @@ button {
     color: var(--neon-lime);
     font-weight: bold;
     font-style: italic;
+}
+
+/* ========================
+   RESPONSIVE — Tablet (≤768px)
+======================== */
+
+@media (max-width: 768px) {
+    body {
+        align-items: flex-start;
+        overflow-y: auto;
+        padding: 16px 0;
+    }
+
+    .Container {
+        width: 95%;
+        min-height: unset;
+        border-radius: 14px;
+        margin: auto;
+    }
+
+    .header {
+        padding: 28px 16px;
+    }
+
+    .header h1 {
+        font-size: 22pt;
+        letter-spacing: 2px;
+    }
+
+    .header h6 {
+        font-size: 8.5pt;
+    }
+
+    /* İçerik dikey dizilir */
+    .content {
+        flex-direction: column;
+    }
+
+    .sol, .sağ {
+        flex: unset;
+        width: 100%;
+        padding: 32px 24px;
+    }
+
+    /* Sağ panelin sol border'ı üst border'a dönüşür */
+    .sağ {
+        border-left: none;
+        border-top: 1px solid rgba(204, 255, 0, 0.3);
+    }
+
+    .sol h1 {
+        font-size: 20pt;
+    }
+
+    .sol p {
+        font-size: 12pt;
+    }
+
+    .footer {
+        flex-direction: column;
+        gap: 14px;
+        padding: 16px;
+        text-align: center;
+    }
+}
+
+/* ========================
+   RESPONSIVE — Mobil (≤480px)
+======================== */
+
+@media (max-width: 480px) {
+    .Container {
+        width: 100%;
+        border-radius: 0;
+    }
+
+    body {
+        padding: 0;
+    }
+
+    .header {
+        padding: 22px 12px;
+    }
+
+    .header h1 {
+        font-size: 17pt;
+        letter-spacing: 1.5px;
+    }
+
+    .header h6 {
+        font-size: 7.5pt;
+        letter-spacing: 1px;
+    }
+
+    .sol, .sağ {
+        padding: 24px 16px;
+    }
+
+    .sol h1 {
+        font-size: 16pt;
+    }
+
+    .sol p {
+        font-size: 11pt;
+    }
+
+    button {
+        width: 170px;
+        padding: 12px;
+        font-size: 9pt;
+    }
+
+    .Kart-1 {
+        padding: 6px 14px;
+        gap: 8px;
+    }
+
+    .uye-sayisi {
+        font-size: 0.8rem;
+    }
+
+    .copyright p,
+    .signature {
+        font-size: 0.7rem;
+    }
+
+    /* Köşe süsleri küçük ekranda gizle */
+    .corner {
+        display: none;
+    }
 }

@@ -12,6 +12,13 @@
 
 <body>
     <div class="Container">
+
+        <!-- Köşe süsleri -->
+        <div class="corner corner-tl"></div>
+        <div class="corner corner-tr"></div>
+        <div class="corner corner-bl"></div>
+        <div class="corner corner-br"></div>
+
         <header class="header">
             <h1>GYM-PRO İLE</h1>
             <h6>Gücünü Ortaya Çıkar</h6>
@@ -24,7 +31,7 @@
             </div>
             <div class="sağ">
                 <button class="basla-btn" onclick="Basla_btn()">İdmana Başla</button>
-                <button class="kesfet-btn">Keşfet</button>
+                <button class="kesfet-btn" onclick="Basla_btn()">Keşfet</button>
             </div>
         </main>
 
@@ -33,38 +40,13 @@
                 <i class="fas fa-users"></i>
                 <span class="uye-sayisi"><span id="aktif-sayi">0</span>+ Aktif Üye</span>
             </div>
-            
+
             <div class="copyright">
                 <p>© 2026 GymPro</p>
             </div>
         </footer>
     </div>
-
-    <script>
-        function sayacBaslat(hedef, elementId) {
-            let baslangic = 0;
-            const artis = hedef / 100; 
-            const element = document.getElementById(elementId);
-
-            const guncelle = setInterval(() => {
-                baslangic += artis;
-                if (baslangic >= hedef) {
-                    element.innerText = Math.floor(hedef).toLocaleString();
-                    clearInterval(guncelle);
-                } else {
-                    element.innerText = Math.floor(baslangic).toLocaleString();
-                }
-            }, 20);
-        }
-
-        window.onload = () => {
-            sayacBaslat(1250, "aktif-sayi");
-        };
-
-        function Basla_btn() {
-         window.location.href = "giriş.html";
-        }
-    </script>
+    <script src="/js/Başlangıc.js"></script>
 </body>
 
 </html>
