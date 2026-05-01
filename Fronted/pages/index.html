@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GYM-PRO | Ana Sayfa</title>
-
     <link rel="stylesheet" href="/css/style.css">
     <link rel="icon" href="/Images/logo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -15,49 +14,173 @@
 
     <div class="container">
 
+        <!-- ========================
+             SIDEBAR
+        ========================= -->
         <nav id="sidebar" class="sidebar">
             <button id="menuBtn">
                 <i class="fa-solid fa-bars"></i>
             </button>
 
             <div class="menu">
-                <a href="index.html"><i class="fa fa-home"></i> <span>Ana Sayfa</span></a>
-                <a href="/pages/giriş.html"><i
-                        class="fa-solid fa-arrow-right-to-bracket"></i><span>Giriş</span></a>
-                <a href="/pages/giriş.html"><i
-                        class="fa-solid fa-arrow-right-from-bracket"></i><span>Çıkış</span></a>
-                <a href="/pages/hesap.html"><i class="fa fa-user"></i> <span>Profil</span></a>
-                <a href="/pages/teknikdestek.html"><i class="fa-solid fa-headset"></i> <span>Teknik
-                        Destek</span></a>
-                <a href="/pages/dowland.html"><i
-                        class="fa-solid fa-download"></i><span>Download</span></a>
+                <a href="index.html"><i class="fa fa-home"></i><span>Ana Sayfa</span></a>
+                <a href="/pages/giris.html"><i class="fa-solid fa-arrow-right-to-bracket"></i><span>Giriş</span></a>
+                <a href="/pages/cikis.html"><i class="fa-solid fa-arrow-right-from-bracket"></i><span>Çıkış</span></a>
+                <a href="/pages/hesap.html"><i class="fa fa-user"></i><span>Profil</span></a>
+                <a href="/pages/teknikdestek.html"><i class="fa-solid fa-headset"></i><span>Teknik Destek</span></a>
+                <a href="/pages/dowland.html"><i class="fa-solid fa-download"></i><span>İndir</span></a>
                 <a href="#"><i class="fa-solid fa-box-archive"></i><span>Programlar</span></a>
                 <a href="#"><i class="fa-solid fa-chalkboard-user"></i><span>Hocalarımız</span></a>
             </div>
         </nav>
 
+        <!-- ========================
+             MAIN CONTENT
+        ========================= -->
         <main class="content">
-            <iframe src="/pages/ilk.html" name="orta" scrolling="no" ></iframe>
 
-            <div class="slider">
-                <div class="slides" id="slides">
-                    <div class="slide"><img src="https://picsum.photos/id/1015/900/400"></div>
-                    <div class="slide"><img src="https://picsum.photos/id/1016/900/400"></div>
-                    <div class="slide"><img src="https://picsum.photos/id/1018/900/400"></div>
+            <!-- ========================
+                 BANNER (ilk.html'den)
+            ========================= -->
+            <div class="banner">
+
+                <!-- SOL -->
+                <div class="sol">
+                    <button class="btn-user" type="button">
+                        <a href="/pages/hesap.html">
+                            <i class="fa-solid fa-user"></i>
+                        </a>
+                    </button>
                 </div>
 
-                <button class="btn prev" onclick="prevSlide()">❮</button>
-                <button class="btn next" onclick="nextSlide()">❯</button>
+                <!-- ORTA -->
+                <div class="orta">
+                    <div class="search-box">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" placeholder="Program, hareket veya diyet ara...">
+                    </div>
+                </div>
 
+                <!-- SAĞ -->
+                <div class="sag">
+                    <div class="btn-group">
+                        <button type="button" class="btn-bell" id="bellBtn" aria-expanded="false">
+                            <i class="fa-regular fa-bell"></i>
+                        </button>
+
+                        <!-- DROPDOWN -->
+                        <div class="dropdown-menu" id="bellDropdown">
+                            <h6 class="dropdown-header">Bildirimler</h6>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">
+                                <i class="fa-solid fa-fire"></i>
+                                Yeni antrenman eklendi
+                            </a>
+                            <a class="dropdown-item" href="#">
+                                <i class="fa-solid fa-dumbbell"></i>
+                                Premium içerik açıldı
+                            </a>
+                            <a class="dropdown-item" href="#">
+                                <i class="fa-solid fa-bolt"></i>
+                                Günlük hedef tamamlandı
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- ========================
+                 CARDS (ilk.html'den)
+            ========================= -->
+            <div class="cards-section">
+
+                <!-- SOL CARD -->
+                <div class="side-card">
+                    <div class="card-box">
+                        <i class="fa-solid fa-fire"></i>
+                        <h3>Günün Programı</h3>
+                        <p>Yağ yakımı ve güç kazanımı için hazırlanmış özel program.</p>
+                        <button>İncele</button>
+                    </div>
+                </div>
+
+                <!-- ORTA -->
+                <div class="center-content">
+                    <h2>GYM-PRO'ya Hoş Geldiniz</h2>
+                    <p>
+                        Profesyonel antrenman sistemleri, özel diyet programları
+                        ve gelişmiş takip araçlarıyla hedeflerine daha hızlı ulaş.
+                    </p>
+                    <a href="#" class="daha-btn">Daha Fazla Bilgi</a>
+
+                    <div class="reklam-1">
+                        <div>
+                            <i class="fa-solid fa-image"></i>
+                            <p>Reklam Alanı 1</p>
+                        </div>
+                    </div>
+
+                    <div class="reklam-2">
+                        <div>
+                            <i class="fa-solid fa-image"></i>
+                            <p>Reklam Alanı 2</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SAĞ CARD -->
+                <div class="side-card">
+                    <div class="card-box">
+                        <i class="fa-solid fa-crown"></i>
+                        <h3>Premium Üyelik</h3>
+                        <p>Özel koçluk sistemi ve gelişmiş içeriklere erişim sağla.</p>
+                        <button>Katıl</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- ========================
+                 SLIDER
+            ========================= -->
+            <div class="slider">
+                <div class="slides" id="slides">
+                    <div class="slide"><img src="https://picsum.photos/id/1015/900/400" alt="slide 1"></div>
+                    <div class="slide"><img src="https://picsum.photos/id/1016/900/400" alt="slide 2"></div>
+                    <div class="slide"><img src="https://picsum.photos/id/1018/900/400" alt="slide 3"></div>
+                </div>
+                <button class="btn prev" onclick="prevSlide()">&#10094;</button>
+                <button class="btn next" onclick="nextSlide()">&#10095;</button>
                 <div class="dots" id="dots"></div>
             </div>
+
+            <!-- ========================
+                 FOOTER
+            ========================= -->
             <div class="footer">
                 <p>&copy; 2026 GYM PRO. Tüm hakları saklıdır.</p>
             </div>
+
         </main>
     </div>
 
     <script src="/js/index.js"></script>
-</body>
 
+    <!-- Bell dropdown toggle (ilk.html dropdown'ı çalışsın diye) -->
+    <script>
+        const bellBtn = document.getElementById('bellBtn');
+        const bellDropdown = document.getElementById('bellDropdown');
+        if (bellBtn && bellDropdown) {
+            bellBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                bellDropdown.classList.toggle('open');
+            });
+            document.addEventListener('click', () => {
+                bellDropdown.classList.remove('open');
+            });
+        }
+    </script>
+
+</body>
 </html>

@@ -6,24 +6,23 @@ const sidebar = document.getElementById("sidebar");
 
 if (menuBtn && sidebar) {
     sidebar.classList.add("closed");
-    menuBtn.onclick = () => {
-        sidebar.classList.toggle("closed");
-    };
+    menuBtn.onclick = () => sidebar.classList.toggle("closed");
 }
 
 // ========================
 // SLIDER KONTROL
 // ========================
-let index = 0;
 const dotsContainer = document.getElementById("dots");
-const slides = document.getElementById("slides");
+const slidesEl = document.getElementById("slides");
 
-if (slides) {
-    const total = slides.children.length;
+if (slidesEl && dotsContainer) {
+    let index = 0; // DÜZELTME: global değil, if bloğu içinde tanımla
+    const total = slidesEl.children.length;
+    let autoTimer = null; // DÜZELTME: timer'ı tutuyoruz, gerekirse durdurabiliriz
 
-    // Noktaları oluştur
+    // Dots oluştur
     for (let i = 0; i < total; i++) {
-        let dot = document.createElement("span");
+        const dot = document.createElement("span");
         dot.classList.add("dot");
         if (i === 0) dot.classList.add("active");
         dot.onclick = () => goSlide(i);
@@ -31,28 +30,33 @@ if (slides) {
     }
 
     function goSlide(i) {
-        index = i;
+        index = (i + total) % total; // DÜZELTME: negatif index'e karşı güvenli
         updateSlider();
     }
 
     function updateSlider() {
-        const allDots = document.querySelectorAll(".dot");
-        allDots.forEach((d, i) => {
+        document.querySelectorAll(".dot").forEach((d, i) => {
             d.classList.toggle("active", i === index);
         });
-        slides.style.transform = `translateX(-${index * 100}%)`;
+        slidesEl.style.transform = `translateX(-${index * 100}%)`;
     }
 
-    window.nextSlide = function () {
-        index = (index + 1) % total;
-        updateSlider();
+    window.nextSlide = () => goSlide(index + 1);
+    window.prevSlide = () => goSlide(index - 1);
+
+    // DÜZELTME: Kullanıcı manuel geçiş yapınca timer sıfırlansın
+    function resetTimer() {
+        clearInterval(autoTimer);
+        autoTimer = setInterval(() => goSlide(index + 1), 8000);
     }
 
-    window.prevSlide = function () {
-        index = (index - 1 + total) % total;
-        updateSlider();
-    }
+    // Buton tıklamalarında timer sıfırla
+    document.querySelector(".prev")?.addEventListener("click", resetTimer);
+    document.querySelector(".next")?.addEventListener("click", resetTimer);
 
-    // 8 saniyede bir otomatik kaydır
-    setInterval(nextSlide, 8000);
+    // Slider'a hover'da durdur, çıkınca devam et
+    slidesEl.closest(".slider")?.addEventListener("mouseenter", () => clearInterval(autoTimer));
+    slidesEl.closest(".slider")?.addEventListener("mouseleave", resetTimer);
+
+    resetTimer(); // setInterval yerine bunu çağır
 }
