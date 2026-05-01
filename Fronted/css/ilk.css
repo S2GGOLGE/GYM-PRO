@@ -1,47 +1,109 @@
-/* ========================
+/* =========================
    ROOT VARIABLES
-   ======================== */
+========================= */
 :root {
+    --deep-black: #000000;
+    --dark-bg: #0a0a0a;
     --dark-grey: #1A1A1A;
-    --input-bg: #0a0a0a;
-    --neon-glow: rgba(204, 255, 0, 0.3);
+    --card-bg: #111111;
+    --border-color: #2b2b2b;
+
+    --white: #ffffff;
+    --muted-text: #8a8a8a;
+
     --neon-lime: #CCFF00;
+    --neon-glow: rgba(204, 255, 0, 0.30);
+    --strong-glow: rgba(204, 255, 0, 0.55);
+
+    --radius: 18px;
+    --transition: 0.3s ease;
 }
 
-/* ========================
+/* =========================
    RESET
-   ======================== */
-body {
-    background: #0a0a0a;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+========================= */
+* {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* ========================
+body {
+    background: var(--dark-bg);
+    color: var(--white);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-x: hidden;
+}
+
+/* =========================
    GLOBAL
-   ======================== */
+========================= */
 a {
-    color: white;
+    color: var(--white);
     text-decoration: none;
+    transition: var(--transition);
 }
 
 a:hover {
     color: var(--neon-lime);
 }
 
-/* ========================
+button {
+    outline: none;
+    border: none;
+}
+
+/* =========================
+   SCROLLBAR
+========================= */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #111;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--neon-lime);
+    border-radius: 20px;
+}
+
+/* =========================
    BANNER
-   ======================== */
+========================= */
 .banner {
-    align-items: center;
-    background: var(--dark-grey);
-    border-bottom: 1px solid var(--neon-lime);
-    box-shadow: 0 0 12px var(--neon-glow);
-    display: flex;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    justify-content: space-between;
-    padding: 8px 20px;
     width: 100%;
+    height: 75px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 25px;
+
+    background: rgba(20, 20, 20, 0.95);
+
+    border-bottom: 1px solid rgba(204, 255, 0, 0.2);
+
+    box-shadow: 0 0 15px rgba(204, 255, 0, 0.08);
+
+    position: sticky;
+    top: 0;
+    z-index: 999;
+
+    backdrop-filter: blur(10px);
+}
+
+/* =========================
+   HEADER SECTIONS
+========================= */
+.sol,
+.orta,
+.sağ {
+    display: flex;
+    align-items: center;
+    flex: 1;
 }
 
 .orta {
@@ -52,38 +114,43 @@ a:hover {
     justify-content: flex-end;
 }
 
-.sol,
-.orta,
-.sağ {
-    align-items: center;
+/* =========================
+   SEARCH BOX
+========================= */
+.search-box {
+    width: 320px;
+    height: 45px;
+
     display: flex;
-    flex: 1;
+    align-items: center;
+    gap: 10px;
+
+    padding: 0 16px;
+
+    background: #0f0f0f;
+
+    border: 1px solid #222;
+    border-radius: 40px;
+
+    transition: var(--transition);
 }
 
-/* ========================
-   ARAMA
-   ======================== */
-.search-box {
-    align-items: center;
-    background: var(--input-bg);
-    border: 1px solid #333;
-    border-radius: 20px;
-    display: flex;
-    gap: 8px;
-    padding: 6px 14px;
-    transition: border-color 0.2s, box-shadow 0.2s;
-    width: 300px;
+.search-box:hover {
+    border-color: rgba(204, 255, 0, 0.3);
 }
 
 .search-box:focus-within {
     border-color: var(--neon-lime);
-    box-shadow: 0 0 8px var(--neon-glow);
+
+    box-shadow:
+        0 0 10px var(--neon-glow),
+        0 0 20px rgba(204, 255, 0, 0.12);
 }
 
 .search-box i {
     color: #555;
-    font-size: 13px;
-    transition: color 0.2s;
+    font-size: 14px;
+    transition: var(--transition);
 }
 
 .search-box:focus-within i {
@@ -91,107 +158,404 @@ a:hover {
 }
 
 .search-box input {
+    width: 100%;
+
     background: transparent;
     border: none;
-    color: #fff;
-    font-size: 14px;
     outline: none;
-    width: 100%;
+
+    color: var(--white);
+
+    font-size: 14px;
 }
 
 .search-box input::placeholder {
     color: #555;
 }
 
-/* ========================
-   BUTONLAR
-   ======================== */
+/* =========================
+   BUTTONS
+========================= */
+.btn-user,
 .btn-bell {
-    align-items: center;
-    background: transparent;
-    border: 1px solid #444;
-    border-radius: 50%;
-    color: #fff;
-    cursor: pointer;
+    width: 42px;
+    height: 42px;
+
     display: flex;
-    height: 38px;
+    align-items: center;
     justify-content: center;
-    position: relative;
-    transition: border-color 0.2s, color 0.2s;
-    width: 38px;
+
+    border-radius: 50%;
+
+    background: #111;
+
+    cursor: pointer;
+
+    transition: var(--transition);
+}
+
+/* USER BUTTON */
+.btn-user {
+    border: 1px solid var(--neon-lime);
+    color: var(--neon-lime);
+}
+
+.btn-user:hover {
+    transform: translateY(-3px);
+
+    background: rgba(204, 255, 0, 0.08);
+
+    box-shadow:
+        0 0 10px var(--neon-glow),
+        0 0 20px rgba(204, 255, 0, 0.08);
+}
+
+/* BELL BUTTON */
+.btn-bell {
+    border: 1px solid #333;
+    color: var(--white);
 }
 
 .btn-bell:hover {
     border-color: var(--neon-lime);
     color: var(--neon-lime);
+
+    box-shadow: 0 0 12px rgba(204, 255, 0, 0.15);
 }
 
-.btn-user {
-    align-items: center;
-    background: transparent;
-    border: 1px solid var(--neon-lime);
-    border-radius: 50%;
-    color: var(--neon-lime);
-    cursor: pointer;
-    display: flex;
-    height: 38px;
-    justify-content: center;
-    transition: background 0.2s, box-shadow 0.2s;
-    width: 38px;
-}
-
-.btn-user:hover {
-    background: var(--neon-glow);
-    box-shadow: 0 0 10px var(--neon-glow);
-}
-
-.daha-btn {
-    background: var(--neon-lime);
-    border-radius: 8px;
-    color: var(--dark-grey);
-    font-weight: bold;
-    padding: 10px 0;
-    transition: background 0.3s ease;
-    width: 50%;
-}
-
-/* ========================
-   CONTENT
-   ======================== */
-.content {
-    color: white;
-    display: flex;
-    height: 100vh;
-    justify-content: center;
-    text-align: center;
-    width: 100%;
-}
-
-/* ========================
+/* =========================
    DROPDOWN
-   ======================== */
+========================= */
+.dropdown-menu {
+    background: #111 !important;
+
+    border: 1px solid #222 !important;
+
+    border-radius: 14px !important;
+
+    padding: 10px !important;
+
+    min-width: 220px !important;
+
+    margin-top: 12px !important;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.5),
+        0 0 15px rgba(204, 255, 0, 0.08) !important;
+}
+
+.dropdown-header {
+    color: #888 !important;
+    font-size: 13px;
+}
+
 .dropdown-divider {
-    border-color: #333 !important;
+    border-color: #222 !important;
 }
 
 .dropdown-item {
+    color: white !important;
+
+    border-radius: 10px;
+
+    padding: 10px 12px;
+
     font-size: 14px;
-    transition: background 0.2s, color 0.2s;
+
+    transition: var(--transition);
 }
 
 .dropdown-item:hover {
-    background: #222 !important;
+    background: #1a1a1a !important;
     color: var(--neon-lime) !important;
 }
 
-.dropdown-menu {
-    border: 1px solid #333 !important;
-    border-radius: 8px !important;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6) !important;
-    margin-top: 8px !important;
-    min-width: 180px !important;
+/* =========================
+   CONTENT AREA
+========================= */
+.content {
+    width: 100%;
+    min-height: calc(100vh - 75px);
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    gap: 30px;
+
+    padding: 40px;
 }
-.reklam-1{
-    width: 10%;
-    height: 500px;
+
+/* =========================
+   MAIN CONTENT
+========================= */
+.Content {
+    width: 60%;
+    min-height: 600px;
+
+    background: linear-gradient(
+        145deg,
+        #111111,
+        #0d0d0d
+    );
+
+    border: 1px solid rgba(204, 255, 0, 0.08);
+
+    border-radius: 25px;
+
+    padding: 50px 40px;
+
+    text-align: center;
+
+    position: relative;
+    overflow: hidden;
+
+    box-shadow:
+        0 0 25px rgba(0, 0, 0, 0.45),
+        0 0 30px rgba(204, 255, 0, 0.04);
+}
+
+/* PARLAMA */
+.Content::before {
+    content: "";
+
+    position: absolute;
+
+    width: 250%;
+    height: 60px;
+
+    background: rgba(204, 255, 0, 0.04);
+
+    transform: rotate(45deg);
+
+    top: -120px;
+    left: -180%;
+
+    animation: shine 6s linear infinite;
+}
+
+@keyframes shine {
+    100% {
+        left: 180%;
+    }
+}
+
+.Content h2 {
+    font-size: 42px;
+    margin-bottom: 18px;
+
+    color: var(--white);
+}
+
+.Content p {
+    color: var(--muted-text);
+
+    font-size: 17px;
+    line-height: 1.7;
+
+    margin-bottom: 30px;
+}
+
+/* =========================
+   BUTTON
+========================= */
+.daha-btn {
+    width: 250px;
+    height: 50px;
+
+    border: none !important;
+    border-radius: 14px !important;
+
+    background: var(--neon-lime) !important;
+
+    color: black !important;
+
+    font-weight: 700 !important;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: var(--transition) !important;
+}
+
+.daha-btn:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 0 15px var(--neon-glow),
+        0 0 30px rgba(204, 255, 0, 0.15) !important;
+}
+
+/* =========================
+   SIDE CARDS
+========================= */
+.side-card {
+    width: 260px;
+}
+
+.card-box {
+    background: linear-gradient(
+        145deg,
+        #151515,
+        #0d0d0d
+    );
+
+    border: 1px solid rgba(204, 255, 0, 0.08);
+
+    border-radius: 22px;
+
+    padding: 30px 25px;
+
+    text-align: center;
+
+    position: sticky;
+    top: 100px;
+
+    overflow: hidden;
+
+    transition: var(--transition);
+}
+
+.card-box:hover {
+    transform: translateY(-8px);
+
+    border-color: rgba(204, 255, 0, 0.4);
+
+    box-shadow:
+        0 0 20px rgba(204, 255, 0, 0.15),
+        0 0 40px rgba(204, 255, 0, 0.06);
+}
+
+.card-box i {
+    font-size: 36px;
+    color: var(--neon-lime);
+
+    margin-bottom: 18px;
+}
+
+.card-box h3 {
+    font-size: 22px;
+    margin-bottom: 12px;
+}
+
+.card-box p {
+    color: #888;
+    font-size: 14px;
+    line-height: 1.6;
+
+    margin-bottom: 20px;
+}
+
+.card-box button {
+    width: 100%;
+    height: 45px;
+
+    border-radius: 12px;
+
+    background: var(--neon-lime);
+
+    color: black;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: var(--transition);
+}
+
+.card-box button:hover {
+    transform: scale(1.04);
+}
+
+/* =========================
+   REKLAM ALANLARI
+========================= */
+.reklam-1,
+.reklam-2 {
+    width: 100%;
+    height: 180px;
+
+    margin-top: 30px;
+
+    border-radius: 18px;
+
+    border: 1px dashed rgba(204, 255, 0, 0.2);
+
+    background:
+        linear-gradient(
+            145deg,
+            #111,
+            #0c0c0c
+        );
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #555;
+
+    overflow: hidden;
+
+    transition: var(--transition);
+}
+
+.reklam-1:hover,
+.reklam-2:hover {
+    border-color: rgba(204, 255, 0, 0.5);
+
+    box-shadow:
+        0 0 15px rgba(204, 255, 0, 0.08);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 1200px) {
+
+    .Content {
+        width: 100%;
+    }
+
+    .side-card {
+        width: 100%;
+        max-width: 500px;
+    }
+
+    .content {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .banner {
+        padding: 0 12px;
+        gap: 10px;
+    }
+
+    .search-box {
+        width: 100%;
+    }
+
+    .Content {
+        padding: 35px 20px;
+    }
+
+    .Content h2 {
+        font-size: 30px;
+    }
+
+    .Content p {
+        font-size: 15px;
+    }
+
+    .daha-btn {
+        width: 100%;
+    }
+
+    .content {
+        padding: 20px;
+    }
 }
