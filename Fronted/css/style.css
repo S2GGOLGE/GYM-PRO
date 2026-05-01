@@ -486,9 +486,99 @@ body {
    ======================== */
 .footer {
     border-top: 1px solid #1a1a1a;
-    color: #555; /* DÜZELTME: white → muted */
+    color: #555;
     flex-shrink: 0;
     font-size: 12px;
     padding: 12px;
     text-align: center;
+}
+
+/* ========================
+   RESPONSIVE — TABLET (768px)
+   ======================== */
+@media (max-width: 768px) {
+
+    /* Cards alt alta */
+    .cards-section {
+        grid-template-columns: 1fr;
+        padding: 12px;
+        gap: 12px;
+    }
+
+    /* Banner arama kutusu tam genişlik */
+    .orta {
+        padding: 0 10px;
+    }
+
+    .search-box {
+        max-width: 100%;
+    }
+
+    /* Slider küçülsün */
+    .slider {
+        height: 220px;
+        max-width: 100%;
+    }
+}
+
+/* ========================
+   RESPONSIVE — MOBİL (480px)
+   ======================== */
+@media (max-width: 480px) {
+
+    /* Banner kompakt */
+    .banner {
+        padding: 8px 12px;
+    }
+
+    .sol .btn-user {
+        width: 34px;
+        height: 34px;
+        font-size: 14px;
+    }
+
+    .search-box {
+        padding: 6px 12px;
+    }
+
+    .search-box input {
+        font-size: 12px;
+    }
+
+    /* Dropdown sağ kenardan taşmasın */
+    .dropdown-menu {
+        right: 0;
+        min-width: 190px;
+    }
+
+    /* Cards */
+    .cards-section {
+        padding: 10px;
+        gap: 10px;
+    }
+
+    .card-box {
+        padding: 16px;
+    }
+
+    .card-box h3 { font-size: 14px; }
+    .card-box p  { font-size: 11px; }
+
+    .center-content h2 { font-size: 18px; }
+    .center-content p  { font-size: 12px; }
+
+    /* Slider */
+    .slider {
+        height: 180px;
+    }
+
+    .btn {
+        font-size: 14px;
+        padding: 8px 10px;
+    }
+
+    .footer {
+        font-size: 11px;
+        padding: 10px;
+    }
 }
