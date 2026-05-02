@@ -1,30 +1,49 @@
-﻿namespace SeneOdev
+﻿using Microsoft.Data.SqlClient;
+using Microsoft.IdentityModel.Tokens;
+using System.Data;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
+
+namespace SeneOdev
 {
     public class tema
     {
-        public static string Tema { get; set; }
-        public static string Açık_Tema { get; set; }
-        public static string Koyu_Tema { get; set; }
+        public string Theme { get; set; }
+        public string Token { get; set; } // Token'ı buraya set edeceksin
+
         private readonly string connstring =
-          "Data Source=EMREE\\SQLEXPRESS;Initial Catalog=Sene_Odevi;Integrated Security=True;Encrypt=False";
-        public bool koyu()
+            "Data Source=Emree;Initial Catalog=GYM-PRO;Integrated Security=True;Encrypt=False";
+
+        private string GetUsernameFromToken()
+        {
+            var handler = new JwtSecurityTokenHandler();
+            var jwt = handler.ReadJwtToken(Token);
+            return jwt.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Name)?.Value;
+        }
+
+        public bool Kaydet()
         {
             try
             {
-                if (Açık_Tema != Tema)
-                {
-                    Tema = Koyu_Tema;
-                }
-                else if (Koyu_Tema != Tema)
-                {
-                    Tema = Açık_Tema;
-                }
-            }
-            catch(Exception ex)
-            {
+                string username = GetUsernameFromToken();
 
+                using var bağlantı = new SqlConnection(connstring);
+                bağlantı.Open();
+
+                string query = @"UPDATE Users SET Theme = @Theme WHERE Username = @Username";
+
+                using var cmd = new SqlCommand(query, bağlantı);
+                cmd.Parameters.Add("@Theme", SqlDbType.NVarChar, 20).Value = (object)Theme ?? DBNull.Value;
+                cmd.Parameters.Add("@Username", SqlDbType.NVarChar, 50).Value = (object)username ?? DBNull.Value;
+
+                return cmd.ExecuteNonQuery() > 0;
             }
-            return false;
+            catch (Exception ex)
+            {
+                Console.WriteLine("SQL HATASI: " + ex.Message);
+                return false;
+            }
         }
     }
 }

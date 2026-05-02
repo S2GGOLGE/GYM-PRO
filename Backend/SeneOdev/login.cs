@@ -11,7 +11,7 @@ namespace SeneOdev
             if (sonuc != "OK")
                 return sonuc;
 
-            string connstring = "Data Source=Emree;Initial Catalog=GYM-PRO;Integrated Security=True;Multiple Active Result Sets=True;Encrypt=False";
+            string connstring = "Data Source=Emree;Initial Catalog=GYM-PRO;Integrated Security=True;Encrypt=False";
 
             using var baglanti = new SqlConnection(connstring);
             baglanti.Open();

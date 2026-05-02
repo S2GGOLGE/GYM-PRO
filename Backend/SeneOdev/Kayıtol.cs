@@ -33,7 +33,7 @@ namespace SeneOdev
         [JsonPropertyName("username")]
         public string Username { get; set; }
 
-        private readonly string connstring = "Data Source=Emree;Initial Catalog=GYM-PRO;Integrated Security=True;Multiple Active Result Sets=True;Encrypt=False";
+        private readonly string connstring = "Data Source=Emree;Initial Catalog=GYM-PRO;Integrated Security=True;Encrypt=False";
 
         public bool Kayit()
         {
