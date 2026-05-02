@@ -60,3 +60,17 @@ if (slidesEl && dotsContainer) {
 
     resetTimer(); // setInterval yerine bunu çağır
 }
+const bellBtn = document.getElementById('bellBtn');
+const bellDropdown = document.getElementById('bellDropdown');
+if (bellBtn && bellDropdown) {
+    bellBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        bellDropdown.classList.toggle('open');
+    });
+    document.addEventListener('click', () => {
+        bellDropdown.classList.remove('open');
+    });
+}
+function Abonelik() {
+    window.location.href = "aboneliklerim.html";
+}

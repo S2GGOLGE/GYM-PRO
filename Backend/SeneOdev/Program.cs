@@ -221,8 +221,8 @@ app.MapPost("/updatepass", ([FromBody] PassUpdateRequest request) =>
         Token = request.token
     };
 
-    Console.WriteLine("THEME: " + request.theme);   // 👈 buraya ekle
-    Console.WriteLine("TOKEN: " + request.token);   // 👈 buraya ekle
+    Console.WriteLine("THEME: " + request.theme); 
+    Console.WriteLine("TOKEN: " + request.token); 
 
     bool success = model.Kaydet();
 

@@ -135,7 +135,7 @@
                         <i class="fa-solid fa-crown"></i>
                         <h3>Premium Üyelik</h3>
                         <p>Özel koçluk sistemi ve gelişmiş içeriklere erişim sağla.</p>
-                        <button>Katıl</button>
+                        <button onclick="Abonelik()">Katıl</button>
                     </div>
                 </div>
 
@@ -165,22 +165,8 @@
         </main>
     </div>
 
+
     <script src="/js/index.js"></script>
-
-    <!-- Bell dropdown toggle (ilk.html dropdown'ı çalışsın diye) -->
-    <script>
-        const bellBtn = document.getElementById('bellBtn');
-        const bellDropdown = document.getElementById('bellDropdown');
-        if (bellBtn && bellDropdown) {
-            bellBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                bellDropdown.classList.toggle('open');
-            });
-            document.addEventListener('click', () => {
-                bellDropdown.classList.remove('open');
-            });
-        }
-    </script>
-
 </body>
+
 </html>
