@@ -1,15 +1,19 @@
 ﻿using Microsoft.Data.SqlClient;
 using System.Data;
+using SeneOdev.Sql;
 
 namespace SeneOdev
 {
-    public class PassUpdate
+    public class PassUpdateControllers
     {
         public string NewPass { get; set; }
         public string NewPassRepeat { get; set; }
         public string Username { get; set; }
 
-        private readonly string connstring = "Data Source=Emree;Initial Catalog=GYM-PRO;Integrated Security=True;Encrypt=False";
+        // Connection string artık DefaultConnection üzerinden alınacak
+        private readonly string connstring = new DefaultConnection(
+            "Server=Emree;Database=GYM-PRO;Integrated Security=True;Encrypt=False;TrustServerCertificate=True;"
+        ).ConnectionString;
 
         public (bool success, string message) Update()
         {
@@ -37,7 +41,7 @@ namespace SeneOdev
             }
             catch (Exception ex)
             {
-                Console.WriteLine("HATA: " + ex.Message);
+                Console.WriteLine("KRİTİK SQL HATASI: " + ex.Message);
                 return (false, "Sunucu hatası oluştu.");
             }
         }

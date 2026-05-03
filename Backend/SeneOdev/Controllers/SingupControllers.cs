@@ -1,6 +1,7 @@
 ﻿using Microsoft.Data.SqlClient;
 using System.Data;
 using System.Text.Json.Serialization;
+using SeneOdev.Sql;
 
 namespace SeneOdev
 {
@@ -33,7 +34,10 @@ namespace SeneOdev
         [JsonPropertyName("username")]
         public string Username { get; set; }
 
-        private readonly string connstring = "Data Source=Emree;Initial Catalog=GYM-PRO;Integrated Security=True;Encrypt=False";
+        // Connection string artık DefaultConnection üzerinden alınacak
+        private readonly string connstring = new DefaultConnection(
+            "Server=Emree;Database=GYM-PRO;Integrated Security=True;Encrypt=False;TrustServerCertificate=True;"
+        ).ConnectionString;
 
         public bool Kayit()
         {
@@ -43,20 +47,23 @@ namespace SeneOdev
                 baglanti.Open();
 
                 if (Password != PasswordRepeat) return false;
-
                 if (!Sozlesme) return false;
 
+                // Kullanıcı adı veya email daha önce var mı kontrol et
                 string kontrol = "SELECT COUNT(*) FROM Users WHERE Username=@U OR Email=@E";
                 using var cmdKontrol = new SqlCommand(kontrol, baglanti);
                 cmdKontrol.Parameters.AddWithValue("@U", Username);
                 cmdKontrol.Parameters.AddWithValue("@E", Email);
                 if ((int)cmdKontrol.ExecuteScalar() > 0) return false;
 
+                // Salt ve hash üret
                 string salt = hash.GenereateSalt();
                 string passwordHash = hash.Hash(Password, salt);
 
-                string query = @"INSERT INTO Users (Name, Surname, Username, Email, Phone, Gender, PasswordHash , Salt) 
-                VALUES (@Name, @Surname, @Username, @Email, @Phone, @Gender, @Hash, @Salt)";
+                // Yeni kullanıcı ekle
+                string query = @"INSERT INTO Users 
+                    (Name, Surname, Username, Email, Phone, Gender, PasswordHash, Salt) 
+                    VALUES (@Name, @Surname, @Username, @Email, @Phone, @Gender, @Hash, @Salt)";
 
                 using var cmd = new SqlCommand(query, baglanti);
                 cmd.Parameters.Add("@Name", SqlDbType.NVarChar, 50).Value = Name;

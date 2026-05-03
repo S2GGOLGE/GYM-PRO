@@ -4,9 +4,13 @@ using Microsoft.IdentityModel.Tokens;
 using SeneOdev;
 using System.Net.Sockets;
 using System.Text;
-
+using SeneOdev.Dto;
+using SeneOdev.Data;
+using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
-
+var connstring = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+options.UseSqlServer(connstring));
 // PORT
 builder.WebHost.UseUrls("http://localhost:7074");
 
@@ -44,7 +48,6 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 Encoding.UTF8.GetBytes(jwtKey))
         };
     });
-
 builder.Services.AddAuthorization();
 
 builder.Services.AddEndpointsApiExplorer();
@@ -56,7 +59,7 @@ app.UseCors("AllowAll");
 
 app.UseAuthentication();
 app.UseAuthorization();
-
+ 
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -67,7 +70,7 @@ app.MapPost("/login", ([FromBody] LoginRequest request) =>
 {
     Console.WriteLine($"LOGIN İSTEĞİ: {request.Username}");
 
-    string sonuc = Login.GirisYap(request.Username, request.Password);
+    string sonuc = LoginControllers.GirisYap(request.Username, request.Password);
 
     if (sonuc == "OK")
     {
@@ -143,27 +146,7 @@ app.MapPost("/sign_up", ([FromBody] SignupRequest request) =>
 //
 app.MapPost("/adminlogin", ([FromBody] AdminLoginRequest request) =>
 {
-    Console.WriteLine($"ADMIN LOGIN: {request.Username}");
-
-    string sonuc = admin.Login(
-        request.Username,
-        request.Password,
-        request.Role);
-
-    if (sonuc == "OK")
-    {
-        return Results.Ok(new
-        {
-            success = true,
-            message = $"Giriş başarılı. Hoş geldin {request.Username}"
-        });
-    }
-
-    return Results.BadRequest(new
-    {
-        success = false,
-        message = sonuc
-    });
+   //Yapılcak
 });
 
 //
@@ -182,7 +165,7 @@ app.MapPost("/updatepass", ([FromBody] PassUpdateRequest request) =>
 
     Console.WriteLine($"ŞİFRE YENİLEME: {request.Username}");
 
-    var model = new PassUpdate
+    var model = new PassUpdateControllers
     {
         Username = request.Username,
         NewPass = request.NewPass,
@@ -215,7 +198,7 @@ app.MapPost("/updatepass", ([FromBody] PassUpdateRequest request) =>
         });
     }
 
-    var model = new tema
+    var model = new ThemaControllers
     {
         Theme = request.theme,
         Token = request.token
@@ -255,40 +238,3 @@ catch (Exception ex)
 }
 
 app.Run();
-
-//
-// DTO
-//
-
-public record LoginRequest(
-    string Username,
-    string Password
-);
-
-public record SignupRequest(
-    string Name,
-    string Surname,
-    string Username,
-    string Email,
-    string Phone,
-    string Gender,
-    bool Sozlesme,
-    string Password,
-    string PasswordRepeat
-);
-
-public record AdminLoginRequest(
-    string Username,
-    string Password,
-    string Role
-);
-
-public record PassUpdateRequest(
-    string Username,
-    string NewPass,
-    string NewPassRepeat
-); public class ThemeaRequest
-{
-    public string theme { get; set; }
-    public string token { get; set; }
-}

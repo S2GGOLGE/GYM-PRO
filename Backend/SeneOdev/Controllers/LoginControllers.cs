@@ -1,9 +1,9 @@
 ﻿using Microsoft.Data.SqlClient;
-using System.Data;
+using SeneOdev.Sql;
 
 namespace SeneOdev
 {
-    public class Login
+    public class LoginControllers
     {
         public static string GirisYap(string username, string password)
         {
@@ -11,9 +11,12 @@ namespace SeneOdev
             if (sonuc != "OK")
                 return sonuc;
 
-            string connstring = "Data Source=Emree;Initial Catalog=GYM-PRO;Integrated Security=True;Encrypt=False";
+            // Connection string'i DefaultConnection üzerinden al
+            var defaultConn = new DefaultConnection(
+                "Server=Emree;Database=GYM-PRO;Integrated Security=True;Encrypt=False;TrustServerCertificate=True;"
+            );
 
-            using var baglanti = new SqlConnection(connstring);
+            using var baglanti = new SqlConnection(defaultConn.ConnectionString);
             baglanti.Open();
 
             // Kullanıcının hash ve salt'ını DB'den al
@@ -25,6 +28,7 @@ namespace SeneOdev
             using var reader = islem.ExecuteReader();
             if (!reader.Read())
                 return "Kullanıcı yok";
+
             string dbPassword = reader["PasswordHash"].ToString();
             string dbSalt = reader["Salt"].ToString();
 

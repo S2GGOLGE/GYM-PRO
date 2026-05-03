@@ -7,7 +7,7 @@ using System.Text;
 
 namespace SeneOdev
 {
-    public class tema
+    public class ThemaControllers
     {
         public string Theme { get; set; }
         public string Token { get; set; } // Token'ı buraya set edeceksin
